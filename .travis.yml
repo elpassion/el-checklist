@@ -10,3 +10,4 @@ script:
   - npm ts
   - npm run lint:js
   - npm test
+  - npm run e2e
