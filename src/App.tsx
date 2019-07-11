@@ -3,7 +3,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const App: React.FC = () => (
+export const App: React.FC = () => (
   <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -21,5 +21,3 @@ const App: React.FC = () => (
     </header>
   </div>
 );
-
-export default App;

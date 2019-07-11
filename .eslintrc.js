@@ -55,6 +55,7 @@ module.exports = {
         'newlines-between': 'always'
       }
     ],
+    'import/no-default-export': ['error', 'always'],
     'prefer-const': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
