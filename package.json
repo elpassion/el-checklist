@@ -17,9 +17,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts  --collectCoverageFrom=!src/index.tsx",
     "test:watch": "npm run test -- --watchAll --watch",
-    "eject": "react-scripts eject",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./src",
-    "lint:js:fix": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix"
+    "lint:js:fix": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
+    "ts": "tsc -p ./tsconfig.json",
+    "ts:watch": "npm run ts --watch",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
