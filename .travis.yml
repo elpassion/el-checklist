@@ -8,4 +8,5 @@ cache:
     - node_modules
 script:
   - npm ts
+  - npm run lint:js
   - npm test
