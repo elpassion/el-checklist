@@ -3,9 +3,9 @@ describe('counter', () => {
     cy.visit('/');
   });
 
-  it('can click buttons', () => {
+  it('can click counter buttons', () => {
     cy
-      .visit('/')
+      .visit('/counter')
       .getByText('increase it')
       .click()
       .click()
