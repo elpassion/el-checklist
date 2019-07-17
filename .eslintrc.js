@@ -26,7 +26,13 @@ module.exports = {
     'react',
     'react-hooks',
     'jest',
+    'prettier',
   ],
+  'settings': {
+    'react': {
+      'version': 'detect',
+    },
+  },
   'rules': {
     'indent': 'off',
     '@typescript-eslint/indent': ['error', 2],
@@ -38,6 +44,7 @@ module.exports = {
     'no-var': ['error'],
     'object-curly-spacing': ['error', 'always'],
     'no-console': ['error', { allow: ['error', 'warn'] }],
+    'quotemark': [true, 'single', 'jsx-double'],
     '@typescript-eslint/prefer-interface': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
@@ -59,5 +66,6 @@ module.exports = {
     'prefer-const': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'prettier/prettier': 'error',
   }
 };
