@@ -6,7 +6,7 @@ import { IndexPage } from './IndexPage';
 afterEach(cleanup);
 
 it('renders "Hello"', () => {
-  const { getByText } = render(<IndexPage/>);
+  const { getByText } = render(<IndexPage />);
 
   getByText('Hello');
 });

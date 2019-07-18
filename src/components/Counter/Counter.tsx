@@ -9,9 +9,13 @@ export const Counter: React.FC = () => {
 
   return (
     <>
-      <p>current count is: <strong data-testid="counter-value">{count}</strong></p>
+      <p>
+        current count is: <strong data-testid="counter-value">{count}</strong>
+      </p>
 
-      <button type="button" onClick={increaseCount}>increase it</button>
+      <button type="button" onClick={increaseCount}>
+        increase it
+      </button>
     </>
   );
 };
