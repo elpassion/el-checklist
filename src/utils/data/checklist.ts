@@ -3,6 +3,7 @@ import { Maybe } from '../../@types/utils';
 
 const checklists: { [key: string]: TChecklist } = {
   'best-practices': {
+    id: '1',
     name: 'Best Practices',
     slug: 'best-practices',
     sections: [
@@ -10,6 +11,7 @@ const checklists: { [key: string]: TChecklist } = {
         name: 'HEAD',
         items: [
           {
+            id: '1',
             title: 'Doctype',
             description:
               'The Doctype is HTML5 and is at the top of all your HTML pages.',
@@ -20,6 +22,7 @@ const checklists: { [key: string]: TChecklist } = {
             isDone: false,
           },
           {
+            id: '1',
             title: 'Favicons',
             description:
               'Each favicon has been created and displays correctly.',
@@ -37,6 +40,7 @@ const checklists: { [key: string]: TChecklist } = {
         name: 'HTML',
         items: [
           {
+            id: '1',
             title: 'Adblockers test:',
             description:
               'Your website shows your content correctly with adblockers enabled',

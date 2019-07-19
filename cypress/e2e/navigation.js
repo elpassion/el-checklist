@@ -20,4 +20,13 @@ describe('navigation', () => {
       .location('pathname')
       .should('eq', '/counter');
   });
+
+  it('can go to checklists page', () => {
+    cy
+      .getByText('Checklists')
+      .click();
+    cy
+      .location('pathname')
+      .should('eq', '/checklists');
+  });
 });

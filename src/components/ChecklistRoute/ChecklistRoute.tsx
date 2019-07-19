@@ -1,18 +1,29 @@
 import React from 'react';
 import { Redirect, RouteComponentProps } from 'react-router';
 
-import { getChecklist } from '../../utils/data/checklist';
 import { Checklist } from '../Checklist/Checklist';
+import { useApiData } from '../../hooks/getData';
+import { TChecklist } from '../../@types/checklist';
 
-type TParams = { slug: string };
+type TParams = { id: string };
 type TProps = RouteComponentProps<TParams>;
 
 export const ChecklistRoute: React.FC<TProps> = ({ match }: TProps) => {
-  const checklist = getChecklist(match.params.slug);
+  const { data, isLoading, hasError } = useApiData<TChecklist>(
+    `/checklist/${match.params.id}`,
+  );
 
-  if (!checklist) {
-    return <Redirect to="/" />;
+  if (data) {
+    return <Checklist checklist={data} />;
   }
 
-  return <Checklist checklist={checklist} />;
+  if (isLoading) {
+    return <p>loading</p>;
+  }
+
+  if (hasError) {
+    return <Redirect to="/checklists" />;
+  }
+
+  return null;
 };

@@ -6,6 +6,7 @@ export type TChecklistSectionItem = {
   severity: number;
   slug: string;
   isDone: boolean;
+  id: string;
 };
 export type TChecklistSection = {
   name: string;
@@ -14,5 +15,11 @@ export type TChecklistSection = {
 export type TChecklist = {
   name: string;
   slug: string;
+  id: string;
   sections: TChecklistSection[];
 };
+export type TChecklistsIndex = {
+  name: string;
+  slug: string;
+  id: string;
+}[];
