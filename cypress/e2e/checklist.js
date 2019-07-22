@@ -22,8 +22,15 @@ describe('checklist page', () => {
 
     it('displays data', () => {
       cy.fixture('checklist').then(f => {
-        cy.contains('this is a');
-        cy.contains(f.name);
+        cy.contains('h1', f.name);
+
+        f.sections.forEach(section => {
+          cy.contains('h2', section.name);
+
+          section.items.forEach(item => {
+            cy.contains('h3', item.title);
+          })
+        })
       });
     });
   });
