@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useApiData } from '../../hooks/getData';
+import { useApiData } from '../../hooks/useApiData';
 import { TChecklistsIndex } from '../../@types/checklist';
 import { ChecklistsIndex } from '../ChecklistsIndex/ChecklistsIndex';
 

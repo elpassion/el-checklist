@@ -1,4 +1,4 @@
-describe('checklist index', () => {
+describe('checklists index', () => {
   beforeEach(() => {
     cy.server({ force404: true });
   });

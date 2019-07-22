@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, RouteComponentProps } from 'react-router';
 
 import { Checklist } from '../Checklist/Checklist';
-import { useApiData } from '../../hooks/getData';
+import { useApiData } from '../../hooks/useApiData';
 import { TChecklist } from '../../@types/checklist';
 
 type TParams = { id: string };
