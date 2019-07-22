@@ -13,7 +13,7 @@ export const ChecklistRoute: React.FC<TProps> = ({ match }: TProps) => {
     `/checklist/${match.params.id}`,
   );
 
-  if (data) {
+  if (data !== null) {
     return <Checklist checklist={data} />;
   }
 
