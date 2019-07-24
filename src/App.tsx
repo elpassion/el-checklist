@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 
 import './App.css';
 import { IndexPage } from './components/IndexPage/IndexPage';
@@ -23,12 +18,7 @@ export const App: React.FC = () => (
     <div className="App">
       <nav className="App__nav">
         {navLinks.map(link => (
-          <NavLink
-            key={link.label}
-            to={link.to}
-            className="link"
-            activeClassName="link--active"
-          >
+          <NavLink key={link.label} to={link.to} className="link" activeClassName="link--active">
             {link.label}
           </NavLink>
         ))}

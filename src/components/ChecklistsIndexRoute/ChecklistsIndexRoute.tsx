@@ -5,9 +5,7 @@ import { TChecklistsIndex } from '../../@types/checklist';
 import { ChecklistsIndex } from '../ChecklistsIndex/ChecklistsIndex';
 
 export const ChecklistsIndexRoute: React.FC = () => {
-  const { data, isLoading, hasError } = useApiData<TChecklistsIndex>(
-    '/checklists',
-  );
+  const { data, isLoading, hasError } = useApiData<TChecklistsIndex>('/checklists');
 
   if (data) {
     return <ChecklistsIndex checklists={data} />;

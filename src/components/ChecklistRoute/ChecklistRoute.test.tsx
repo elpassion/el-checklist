@@ -22,25 +22,20 @@ const mockedResponse: TChecklist = {
         {
           id: '7',
           title: 'Doctype',
-          description:
-            'The Doctype is HTML5 and is at the top of all your HTML pages.',
+          description: 'The Doctype is HTML5 and is at the top of all your HTML pages.',
           solutions: [],
           categories: ['meta tag'],
           severity: 3,
           slug: 'doctype',
-          isDone: false,
         },
         {
           id: '7',
           title: 'Favicons',
           description: 'Each favicon has been created and displays correctly.',
-          solutions: [
-            '[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)',
-          ],
+          solutions: ['[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)'],
           categories: ['meta tag'],
           severity: 2,
           slug: 'favicons',
-          isDone: false,
         },
       ],
     },
@@ -50,13 +45,11 @@ const mockedResponse: TChecklist = {
         {
           id: '7',
           title: 'Adblockers test:',
-          description:
-            'Your website shows your content correctly with adblockers enabled',
+          description: 'Your website shows your content correctly with adblockers enabled',
           solutions: [],
           categories: ['html', 'testing'],
           severity: 2,
           slug: 'adblockers-test',
-          isDone: false,
         },
       ],
     },
