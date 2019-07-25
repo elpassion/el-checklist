@@ -3,8 +3,7 @@ import { Context, createContext } from 'react';
 
 import { store } from '../utils/storage/store';
 import { FulfillmentContextData, TItemFulfillment } from '../@types/fulfillment';
-
-import { composeKey, decomposeKey } from './helpers';
+import { composeKey, decomposeKey } from '../utils/misc/helpers';
 
 const initialData: FulfillmentContextData = {
   fulfillments: [] as TItemFulfillment[],

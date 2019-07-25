@@ -4,7 +4,7 @@ import { Redirect, RouteComponentProps } from 'react-router';
 import { Checklist } from '../Checklist/Checklist';
 import { useApiData } from '../../hooks/useApiData';
 import { TChecklist } from '../../@types/checklist';
-import { FulfillmentContextProvider } from '../../contexts/Fulfillment';
+import { FulfillmentContextProvider } from '../../contexts/FulfillmentContext';
 
 type TParams = { id: string };
 type TProps = RouteComponentProps<TParams>;
