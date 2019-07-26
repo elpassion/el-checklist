@@ -7,7 +7,7 @@
       "name": "HEAD",
       "items": [
         {
-          "id": "7",
+          "id": "one",
           "title": "Doctype",
           "description": "The Doctype is HTML5 and is at the top of all your HTML pages.",
           "solutions": [],
@@ -15,11 +15,10 @@
             "meta tag"
           ],
           "severity": 3,
-          "slug": "doctype",
-          "isDone": false
+          "slug": "doctype"
         },
         {
-          "id": "7",
+          "id": "two",
           "title": "Favicons",
           "description": "Each favicon has been created and displays correctly.",
           "solutions": [
@@ -29,8 +28,7 @@
             "meta tag"
           ],
           "severity": 2,
-          "slug": "favicons",
-          "isDone": false
+          "slug": "favicons"
         }
       ]
     },
@@ -38,7 +36,7 @@
       "name": "HTML",
       "items": [
         {
-          "id": "7",
+          "id": "three",
           "title": "Adblockers test:",
           "description": "Your website shows your content correctly with adblockers enabled",
           "solutions": [],
@@ -47,8 +45,7 @@
             "testing"
           ],
           "severity": 2,
-          "slug": "adblockers-test",
-          "isDone": false
+          "slug": "adblockers-test"
         }
       ]
     }

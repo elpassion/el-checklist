@@ -11,6 +11,7 @@ type TProps = TChecklistSectionItem & {
 export const ChecklistItem: React.FC<TProps> = ({
   id,
   title,
+  slug, // eslint-disable-line @typescript-eslint/no-unused-vars
   severity,
   description,
   categories,
@@ -27,8 +28,10 @@ export const ChecklistItem: React.FC<TProps> = ({
   return (
     <Tag {...rest}>
       <h3>
-        <input type="checkbox" checked={isChecked} onChange={onCheckboxChange} />
-        {title} ({severity})
+        <label htmlFor={id}>
+          <input type="checkbox" id={id} checked={isChecked} onChange={onCheckboxChange} />
+          {title} ({severity})
+        </label>
       </h3>
 
       {categories.length > 0 && (
