@@ -1,4 +1,4 @@
-const realModule = jest.requireActual('localForage');
+const realModule = jest.requireActual('localforage');
 
 module.exports = {
   ...realModule,
