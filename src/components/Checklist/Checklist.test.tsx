@@ -2,6 +2,7 @@ import { cleanup, render } from '@testing-library/react';
 import React from 'react';
 
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
+import { TChecklistSectionItem } from '../../@types/checklist';
 
 import { Checklist } from './Checklist';
 
@@ -54,7 +55,13 @@ const mockedChecklist = {
   ],
 };
 
-const allItems = mockedChecklist.sections.flatMap(section => section.items);
+const allItems = mockedChecklist.sections.reduce(
+  (acc, section) => {
+    section.items.forEach(item => acc.push(item));
+    return acc;
+  },
+  [] as TChecklistSectionItem[],
+);
 const mockedFulfillmentContextValue = {
   fulfillments: [],
   isFulfilled: jest.fn(),
