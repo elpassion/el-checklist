@@ -17,7 +17,7 @@ describe('checklist item', () => {
   });
 
   context('checking and unchecking', () => {
-    it('should be unchecked at the begining', () => {
+    it('should be unchecked at the beginning', () => {
       const checkbox = getCheckbox();
       checkbox.uncheck({force: true});
       checkbox.should('not.be.checked');
@@ -37,6 +37,26 @@ describe('checklist item', () => {
     it('should be unchecked after second click', () => {
       const checkbox = getCheckbox();
       checkbox.click();
+      checkbox.should('not.be.checked');
+    });
+
+    it('should be unchecked when refreshing', () => {
+      const checkbox = getCheckbox();
+      checkbox.should('not.be.checked');
+    });
+  });
+
+  context('clearing all', () => {
+    it('should be checked at the beginning', () => {
+      const checkbox = getCheckbox();
+      checkbox.check({force: true});
+      checkbox.should('be.checked');
+    });
+
+    it('should be unchecked after click', () => {
+      const button =  cy.getByText('clear');
+      button.click();
+      const checkbox = getCheckbox();
       checkbox.should('not.be.checked');
     });
 

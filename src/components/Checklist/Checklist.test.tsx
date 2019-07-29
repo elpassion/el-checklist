@@ -66,6 +66,7 @@ const mockedFulfillmentContextValue = {
   fulfillments: [],
   isFulfilled: jest.fn(),
   setFulfillment: jest.fn(),
+  clearFulfillments: jest.fn(),
 };
 
 test('renders title', () => {
@@ -76,6 +77,16 @@ test('renders title', () => {
   );
 
   getByText(mockedChecklist.name, { exact: false });
+});
+
+test('renders "clear" button', () => {
+  const { getByText } = render(
+    <FulfillmentContext.Provider value={mockedFulfillmentContextValue}>
+      <Checklist checklist={mockedChecklist} />
+    </FulfillmentContext.Provider>,
+  );
+
+  getByText('clear');
 });
 
 test('renders all checkboxes', () => {

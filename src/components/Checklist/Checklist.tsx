@@ -7,13 +7,15 @@ import { ChecklistItem } from '../ChecklistItem/ChecklistItem';
 type TProps = { checklist: TChecklist };
 
 export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => {
-  const { isFulfilled, setFulfillment } = useContext(FulfillmentContext);
+  const { isFulfilled, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
 
   const onChange = useCallback((id, value) => setFulfillment({ name: id, isDone: value }), [setFulfillment]);
 
   return (
     <>
       <h1>{checklist.name}</h1>
+
+      <button onClick={clearFulfillments}>clear</button>
 
       {checklist.sections &&
         checklist.sections.map(section => (

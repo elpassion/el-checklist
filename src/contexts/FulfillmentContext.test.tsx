@@ -9,6 +9,7 @@ import { FulfillmentContext, FulfillmentContextProvider } from './FulfillmentCon
 jest.mock('../utils/storage/store');
 store.iterate = jest.fn().mockResolvedValue(null);
 store.setItem = jest.fn().mockResolvedValue(null);
+store.removeItem = jest.fn().mockResolvedValue(null);
 
 afterEach(cleanup);
 
@@ -84,4 +85,43 @@ test('sets fulfillment state correctly', async () => {
   buttonFalse.click();
   await waitForDomChange();
   expect(currentState.innerHTML).toEqual(expect.stringContaining('F'));
+});
+
+test('clears fulfillment state correctly', async () => {
+  const TestClear: FC = () => {
+    const { fulfillments, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
+    return (
+      <>
+        <p data-testid="currentState">{fulfillments.length}</p>
+
+        <button data-testid="buttonTrue" onClick={() => setFulfillment({ name: 'testName', isDone: true })}>
+          Set fulfillment to true
+        </button>
+
+        <button data-testid="buttonClear" onClick={() => clearFulfillments()}>
+          clear
+        </button>
+      </>
+    );
+  };
+
+  const { getByTestId } = render(
+    <FulfillmentContextProvider prefix={'xxx'}>
+      <TestClear />
+    </FulfillmentContextProvider>,
+  );
+
+  await waitForDomChange();
+  const currentState = getByTestId('currentState');
+  const buttonTrue = getByTestId('buttonTrue');
+  const buttonClear = getByTestId('buttonClear');
+
+  buttonTrue.click();
+  await waitForDomChange();
+  expect(parseInt(currentState.innerHTML) > 0).toBeTruthy();
+
+  buttonClear.click();
+  await waitForDomChange();
+  expect(store.removeItem).toHaveBeenCalled();
+  expect(parseInt(currentState.innerHTML)).toEqual(0);
 });

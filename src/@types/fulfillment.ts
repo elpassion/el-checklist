@@ -7,4 +7,5 @@ export type FulfillmentContextData = {
   fulfillments: TItemFulfillment[];
   isFulfilled: (name: string) => boolean;
   setFulfillment: (fulfillment: TItemFulfillment) => void;
+  clearFulfillments: () => void;
 };

@@ -10,6 +10,7 @@ const initialData: FulfillmentContextData = {
   fulfillments: [] as TItemFulfillment[],
   isFulfilled: () => false,
   setFulfillment: () => null,
+  clearFulfillments: () => null,
 };
 
 export const FulfillmentContext: Context<FulfillmentContextData> = createContext(initialData);
@@ -59,6 +60,18 @@ export const FulfillmentContextProvider: FC<TProps> = ({ prefix, children }: Pro
     return !!(fulfillment && fulfillment.isDone);
   };
 
+  const clearFulfillments = useCallback(() => {
+    store
+      .iterate((value, key) => {
+        if (isInScope(prefix, key)) {
+          store.removeItem(key);
+        }
+      })
+      .then(() => {
+        setFulfillments([]);
+      });
+  }, [prefix]);
+
   if (isInitialized) {
     return (
       <FulfillmentContext.Provider
@@ -66,6 +79,7 @@ export const FulfillmentContextProvider: FC<TProps> = ({ prefix, children }: Pro
           fulfillments,
           isFulfilled,
           setFulfillment,
+          clearFulfillments,
         }}
       >
         {children}
