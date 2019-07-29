@@ -3,7 +3,7 @@ import { Context, createContext } from 'react';
 
 import { store } from '../utils/storage/store';
 import { FulfillmentContextData, TItemFulfillment } from '../@types/fulfillment';
-import { composeKey, decomposeKey, isInScope } from '../utils/misc/helpers';
+import { composeKey, decomposeKey, isInScope } from '../utils/misc/storageKeyComposition';
 import { STORAGE_FALSE, STORAGE_TRUE } from '../config/variables';
 
 const initialData: FulfillmentContextData = {

@@ -1,6 +1,6 @@
 import { STORAGE_PREFIX } from '../../config/variables';
 
-import { composeKey, decomposeKey, isInScope } from './helpers';
+import { composeKey, decomposeKey, isInScope } from './storageKeyComposition';
 
 it('composes keys properly', () => {
   const result = composeKey('testPrefix', 'testName');
