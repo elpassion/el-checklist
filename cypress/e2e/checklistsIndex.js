@@ -5,20 +5,21 @@ describe('checklists index', () => {
 
   context('server working', () => {
     beforeEach(() => {
-      cy.route({
-        method: 'GET',
-        url: '/checklists',
-        response: 'fixture:checklistsIndex.json'
-      });
-      cy.route({
-        method: 'GET',
-        url: '/checklist/*',
-        response: {}
-      });
-      
-      cy.visit('/checklists');
-    });
+      cy.fixture('checklistsIndex').then(f => {
+        cy.route({
+          method: 'GET',
+          url: '/checklists',
+          response: 'fixture:checklistsIndex.json'
+        });
+        cy.route({
+          method: 'GET',
+          url: `/checklist/${f[0].id}`,
+          response: f,
+        });
 
+        cy.visit('/checklists');
+      });
+    });
 
     it('displays loader', () => {
       cy.getByText('loading')
