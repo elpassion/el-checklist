@@ -6,7 +6,7 @@ describe('checklist page', () => {
     cy.server({force404: true});
     cy.route({
       method: 'GET',
-      url: '/checklist/7',
+      url: `/checklist/${validId}`,
       response: 'fixture:checklist.json'
     });
   });
@@ -20,7 +20,7 @@ describe('checklist page', () => {
       cy.getByText('loading')
     });
 
-    it('displays data', () => {
+    it('displays all items', () => {
       cy.fixture('checklist').then(f => {
         cy.contains('h1', f.name);
 

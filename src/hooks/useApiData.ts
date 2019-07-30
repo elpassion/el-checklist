@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import { client } from '../utils/api/client';
 import { Maybe } from '../@types/utils';
 
-export const useApiData = <T = {}>(
-  url: string,
-): { data: Maybe<T>; isLoading: boolean; hasError: boolean } => {
+export const useApiData = <T = {}>(url: string): { data: Maybe<T>; isLoading: boolean; hasError: boolean } => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);

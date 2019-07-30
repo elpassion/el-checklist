@@ -15,11 +15,7 @@ export const ChecklistsIndex: React.FC<TProps> = ({ checklists }: TProps) => {
     <ul>
       {checklists.map(item => (
         <li key={item.id}>
-          <NavLink
-            to={`/checklist/${item.id}`}
-            className="link"
-            activeClassName="link--active"
-          >
+          <NavLink to={`/checklist/${item.id}`} className="link" activeClassName="link--active">
             {item.name}
           </NavLink>
         </li>

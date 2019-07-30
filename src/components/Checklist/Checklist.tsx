@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import { TChecklist } from '../../@types/checklist';
-
-import { ChecklistItem } from './ChecklistItem';
+import { FulfillmentContext } from '../../contexts/FulfillmentContext';
+import { ChecklistItem } from '../ChecklistItem/ChecklistItem';
 
 type TProps = { checklist: TChecklist };
 
-export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => (
-  <>
-    <h1>{checklist.name}</h1>
+export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => {
+  const { isFulfilled, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
 
-    {checklist.sections &&
-      checklist.sections.map(section => (
-        <section key={section.name}>
-          <h2>{section.name}</h2>
+  const onChange = useCallback((id, value) => setFulfillment({ name: id, isDone: value }), [setFulfillment]);
 
-          <ul>
-            {section.items.map(item => (
-              <ChecklistItem {...item} key={item.slug} Tag="li" />
-            ))}
-          </ul>
-        </section>
-      ))}
-  </>
-);
+  return (
+    <>
+      <h1>{checklist.name}</h1>
+
+      <button onClick={clearFulfillments}>clear</button>
+
+      {checklist.sections &&
+        checklist.sections.map(section => (
+          <section key={section.name}>
+            <h2>{section.name}</h2>
+
+            <ul>
+              {section.items.map(item => (
+                <ChecklistItem
+                  {...item}
+                  key={item.slug}
+                  Tag="li"
+                  isChecked={isFulfilled(item.id)}
+                  onChange={onChange}
+                />
+              ))}
+            </ul>
+          </section>
+        ))}
+    </>
+  );
+};
