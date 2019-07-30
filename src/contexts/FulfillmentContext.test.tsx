@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { render, waitForDomChange, cleanup } from '@testing-library/react';
+import { render, waitForDomChange } from '@testing-library/react';
 
 import { store } from '../utils/storage/store';
 import { STORAGE_PREFIX, STORAGE_TRUE } from '../config/variables';
@@ -10,8 +10,6 @@ jest.mock('../utils/storage/store');
 store.iterate = jest.fn().mockResolvedValue(null);
 store.setItem = jest.fn().mockResolvedValue(null);
 store.removeItem = jest.fn().mockResolvedValue(null);
-
-afterEach(cleanup);
 
 test('iterates over existing items when initializing and renders them', async () => {
   const TestList: FC = () => {

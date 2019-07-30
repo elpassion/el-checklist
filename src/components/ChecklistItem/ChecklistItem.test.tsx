@@ -1,4 +1,4 @@
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { TChecklist } from '../../@types/checklist';
@@ -15,8 +15,6 @@ const mockedItem = {
   severity: 3,
   slug: 'doctype',
 };
-
-afterEach(cleanup);
 
 test('should render unchecked checkbox by default', () => {
   const { getByLabelText } = render(<ChecklistItem {...mockedItem} />);
