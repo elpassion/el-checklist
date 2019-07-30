@@ -33,6 +33,22 @@ describe('checklist page', () => {
         })
       });
     });
+
+    it('displays sections completion', () => {
+      cy.fixture('checklist').then(f => {
+        const section = f.sections[0];
+
+        const donePoints = section.items[0].severity;
+        const totalPoints = section.items.reduce((acc, item) =>  acc + item.severity, 0);
+
+        cy.getAllByText('Done: 0%');
+
+        const checkbox = cy.getByLabelText(section.items[0].title, { exact: false });
+        checkbox.check();
+
+        cy.getAllByText(`Done: ${donePoints / totalPoints * 100}%`);
+      });
+    });
   });
 
   context('invalid id', () => {
