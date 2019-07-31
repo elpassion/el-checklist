@@ -1,12 +1,18 @@
+import { cleanup } from '@testing-library/react';
+
+// localstorage mock
 const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-
 global.localStorage = localStorageMock;
 
+// document cleanup
+afterEach(cleanup);
+
+// ignoring known console.errors
 const ignoreKnownErrors = () => {
   const KNOWN_ERRORS = [new RegExp(/An update to .* inside a test was not wrapped in act/)];
 

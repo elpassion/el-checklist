@@ -1,9 +1,7 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { Counter } from './Counter';
-
-afterEach(cleanup);
 
 it('initializes with count equal 0', () => {
   const { getByTestId } = render(<Counter />);
