@@ -1,14 +1,18 @@
-import React, { FC, Fragment, useCallback } from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+import { FC, ReactDOM, Fragment, useCallback } from 'react';
 
 import { TChecklistSectionItem } from '../../@types/checklist';
 
+import { titleStyle, wrapperStyle } from './ChecklistItem.styles';
+
 type TProps = TChecklistSectionItem & {
-  Tag?: string | FC;
+  Tag?: keyof ReactDOM | FC;
   isChecked?: boolean;
   onChange?: (id: string, value: boolean) => void;
 };
 
-export const ChecklistItem: React.FC<TProps> = ({
+export const ChecklistItem: FC<TProps> = ({
   id,
   title,
   slug, // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -26,8 +30,8 @@ export const ChecklistItem: React.FC<TProps> = ({
   }, [onChange, id, isChecked]);
 
   return (
-    <Tag {...rest}>
-      <h3>
+    <Tag {...rest} css={wrapperStyle}>
+      <h3 css={titleStyle}>
         <label htmlFor={id}>
           <input type="checkbox" id={id} checked={isChecked} onChange={onCheckboxChange} />
           {title} ({severity})
@@ -35,7 +39,7 @@ export const ChecklistItem: React.FC<TProps> = ({
       </h3>
 
       {categories.length > 0 && (
-        <ul>
+        <ul className="ul--pointed">
           {categories.map(category => (
             <li key={category}>
               <small>{category}</small>
@@ -47,7 +51,7 @@ export const ChecklistItem: React.FC<TProps> = ({
       {description && <p>{description}</p>}
 
       {solutions.length > 0 && (
-        <>
+        <Fragment>
           <h4>Solutions:</h4>
 
           <ul>
@@ -55,7 +59,7 @@ export const ChecklistItem: React.FC<TProps> = ({
               <li key={solution}>{solution}</li>
             ))}
           </ul>
-        </>
+        </Fragment>
       )}
     </Tag>
   );
