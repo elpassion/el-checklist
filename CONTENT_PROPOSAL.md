@@ -4,7 +4,6 @@ category_name (string), category_slug (based on name), category_introdution (mar
 # 2. Checklist Tasks
 category (correlation to category_name), task_name (string), task_slug (based on name), task_detailed_description (markdown),
 task_priority (low, medium, high), task_tags (correlation to tag_name [multiple choice]), 
-task_detailed_solutions (correlation to detailed_solution_name)
 
 task_solution_title (string), task_solution (markdown)
 
