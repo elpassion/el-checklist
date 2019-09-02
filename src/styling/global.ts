@@ -1,6 +1,12 @@
+import { CSSObject } from '@emotion/core';
+
 import { Theme } from '../@types/styling';
 
-export const globalStyles = (theme: Theme) => ({
+import { listStyles } from './global/list';
+import { headingStyles } from './global/heading';
+import { checkboxStyles } from './global/checkbox';
+
+export const globalStyles = (theme: Theme): CSSObject => ({
   '*': {
     boxSizing: 'border-box' as 'border-box',
   },
@@ -10,23 +16,9 @@ export const globalStyles = (theme: Theme) => ({
     fontFamily: theme.fonts.default,
     backgroundColor: theme.palette.background,
     color: theme.palette.text,
-    '-webkit-font-smoothing': 'antialiased',
-    '-moz-osx-font-smoothing': 'grayscale',
   },
 
-  'h1, h2, h3, h4, h5, h6': {
-    fontFamily: theme.fonts.significant,
-    color: theme.palette.heading,
-    margin: 0,
-  },
-
-  ul: {
-    paddingLeft: 0,
-    listStyle: 'none',
-  },
-
-  '.ul--pointed': {
-    paddingLeft: 4 * theme.spacing.unit,
-    listStyle: 'initial',
-  },
+  ...listStyles(theme),
+  ...headingStyles(theme),
+  ...checkboxStyles(theme),
 });

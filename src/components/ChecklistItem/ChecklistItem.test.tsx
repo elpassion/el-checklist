@@ -23,8 +23,8 @@ test('should render unchecked checkbox by default', () => {
   expect(checkbox.checked).toBe(false);
 });
 
-test('should render checked checkbox if isChecked prop is true', () => {
-  const { getByLabelText } = render(<ChecklistItem {...mockedItem} isChecked={true} />);
+test('should render checked checkbox if isFulfilled prop is true', () => {
+  const { getByLabelText } = render(<ChecklistItem {...mockedItem} isFulfilled={true} />);
   const checkbox = getByLabelText(mockedItem.title, { exact: false }) as HTMLInputElement;
 
   expect(checkbox.checked).toBe(true);
@@ -32,7 +32,7 @@ test('should render checked checkbox if isChecked prop is true', () => {
 
 test('should call onChange fn when checkbox changes', () => {
   const mockOnChange = jest.fn();
-  const { getByLabelText } = render(<ChecklistItem {...mockedItem} isChecked={true} onChange={mockOnChange} />);
+  const { getByLabelText } = render(<ChecklistItem {...mockedItem} isFulfilled={true} onChange={mockOnChange} />);
   const checkbox = getByLabelText(mockedItem.title, { exact: false }) as HTMLInputElement;
 
   checkbox.click();

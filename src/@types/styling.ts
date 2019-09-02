@@ -23,9 +23,13 @@ export type Theme = {
     significant: FontFamily;
   };
 
+  duration: {
+    default: number;
+  };
+
   shape: {
     radii: {
-      default: 8;
+      default: number;
     };
   };
 };

@@ -28,6 +28,10 @@ export const defaultTheme: Theme = {
     significant: 'source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace',
   },
 
+  duration: {
+    default: 200,
+  },
+
   shape: {
     radii: {
       default: 8,

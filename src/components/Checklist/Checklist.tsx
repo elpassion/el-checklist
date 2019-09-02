@@ -49,7 +49,7 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
                     {...item}
                     key={item.slug}
                     Tag="li"
-                    isChecked={isFulfilled(item.id)}
+                    isFulfilled={isFulfilled(item.id)}
                     onChange={onChange}
                   />
                 ))}
