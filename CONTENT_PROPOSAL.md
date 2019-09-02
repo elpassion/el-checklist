@@ -6,16 +6,14 @@ category (correlation to category_name), task_name (string), task_slug (based on
 task_priority (low, medium, high), task_tags (correlation to tag_name [multiple choice]), 
 task_detailed_solutions (correlation to detailed_solution_name)
 
-# 3. Task Tags
-tag_name (string), tag_slug (based on name)
+task_solution_title (string), task_solution (markdown)
 
-# 4. Detailed solution
-detailed_solution_name (string [ex. Deployment - Stagging Password Protection] with proper name to make it easily searchable)
-detailed_solution_slug (based on name), detailed_solution (markdown)
-
-***QUICK NOTE:*** Detailed solution is rich markdown editor in admin panel where we probably use cusotm markdown elements
+***QUICK NOTE:*** Detailed solution is rich markdown editor in admin panel where we probably use custom markdown elements
 to display tabs or some styled list with possible solutions for Netlify, Apache if it comes to deployment, ESLint or other linters
 if it comes to linting etc.
+
+# 3. Task Tags
+tag_name (string), tag_slug (based on name)
 
 ## Samples:
 ```bazaar
