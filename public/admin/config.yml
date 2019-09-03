@@ -18,6 +18,7 @@ collections:
   - name: "categories"
     label: "Task Categories"
     folder: "content/categories"
+    identifier_field: category_name
     create: true
     slug: "{{slug}}"
     fields:
@@ -28,6 +29,7 @@ collections:
   - name: "tags"
     label: "Task Tags"
     folder: "content/tags"
+    identifier_field: tag_name
     create: true
     slug: "{{slug}}"
     fields:
@@ -36,6 +38,7 @@ collections:
   - name: "tasks"
     label: "Checklist Tasks"
     folder: "content/tasks"
+    identifier_field: task_name
     create: true
     slug: "{{slug}}"
     fields:
