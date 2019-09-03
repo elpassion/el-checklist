@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: elpassion/el-checklist
+  name: git-gateway
+  branch: feature/cms
   commit_messages:
     create: Create {{collection}} “{{slug}}”
     update: Update {{collection}} “{{slug}}”
@@ -8,6 +8,9 @@ backend:
     uploadMedia: Upload “{{path}}”
     deleteMedia: Delete “{{path}}”
 
+site_url: https://example.com/
+display_url: https://example.com/
+logo_url: https://example.com/logotype.png
 publish_mode: editorial_workflow
 media_folder: public/images/uploads
 public_folder: /images/uploads
