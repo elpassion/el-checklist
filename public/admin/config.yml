@@ -10,7 +10,6 @@ backend:
 
 site_url: https://example.com/
 display_url: https://example.com/
-logo_url: https://example.com/logotype.png
 publish_mode: editorial_workflow
 media_folder: public/images/uploads
 public_folder: /images/uploads
