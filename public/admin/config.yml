@@ -44,7 +44,7 @@ collections:
     fields:
       - {label: "Layout", name: "layout", widget: "hidden", default: "tasks"}
       - {label: "Task Name", name: "task_name", widget: "string"}
-      - {label: "Task Category", name: "task_category", widget: "relation", multiple: true, collection: "categories", searchFields: "Name", valueField: "category_name", displayFields: "category_name"}
+      - {label: "Task Category", name: "task_category", widget: "relation", multiple: false, collection: "categories", searchFields: "Name", valueField: "category_name", displayFields: "category_name"}
       - {label: "Task Tags", name: "task_tags", widget: "relation", multiple: true, collection: "tags", searchFields: "Name", valueField: "tag_name", displayFields: "tag_name"}
       - {label: "Task Priority", name: "task_priority", widget: "select", options: ["low", "medium", "high"]}
       - {label: "Task Description", name: "task_detailed_description", widget: "markdown"}
