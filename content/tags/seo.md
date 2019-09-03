@@ -1,5 +1,5 @@
 ---
 layout: tag
-tag_name: Meta tag
+tag_name: SEO
 ---
 
