@@ -1,0 +1,38 @@
+backend:
+  name: github
+  repo: elpassion/el-checklist
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+
+publish_mode: editorial_workflow
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Published on", name: "date", widget: "date", format: "YYYYMMDD"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "SEO Friendly url", name: "url", widget: "string"}
+      - {label: "Category", name: "category", widget: "relation", multiple: true, collection: "categories", searchFields: "title", valueField: "slug", displayFields: "title"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Excerpt", name: "excerpt", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "categories"
+    label: "Blog Categories"
+    folder: "content/categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "categories"}
+      - {label: "Category Name", name: "title", widget: "string"}
+      - {label: "Category slug", name: "slug", widget: "string"}
