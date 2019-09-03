@@ -10,6 +10,9 @@ backend:
 
 site_url: https://example.com/
 display_url: https://example.com/
+publish_mode: editorial_workflow
+media_folder: public/cms/uploads
+public_folder: /cms/uploads
 
 collections:
   - name: "categories"
