@@ -37,10 +37,8 @@
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
-          console.log('NETLIFY INIT');
           if (!user) {
             window.netlifyIdentity.on("login", () => {
-              console.log('NETLIFY LOGIN');
               document.location.href = "/admin/index.html";
             });
           }
