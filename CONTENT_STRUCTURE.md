@@ -1,11 +1,11 @@
 # 1. Task Categories
-category_name (string), category_slug (based on name), category_introdution (markdown), order (num)
+category_name (string), category_slug (based on name), category_introduction (markdown), order (num)
 
 # 2. Checklist Tasks
 category (correlation to category_name), task_name (string), task_slug (based on name), task_detailed_description (markdown),
 task_priority (low, medium, high), task_tags (correlation to tag_name [multiple choice]), 
 
-task_solution_title (string), task_solution (markdown)
+task_solution (markdown)
 
 ***QUICK NOTE:*** Detailed solution is rich markdown editor in admin panel where we probably use custom markdown elements
 to display tabs or some styled list with possible solutions for Netlify, Apache if it comes to deployment, ESLint or other linters
