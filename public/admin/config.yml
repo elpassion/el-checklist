@@ -8,8 +8,8 @@ backend:
     uploadMedia: Upload “{{path}}”
     deleteMedia: Delete “{{path}}”
 
-site_url: https://elchecklist.netlify.com/
-display_url: https://elchecklist.netlify.com/
+site_url: https://wonderful-bassi-6086c0.netlify.com/
+display_url: https://wonderful-bassi-6086c0.netlify.com/
 publish_mode: editorial_workflow
 media_folder: public/cms/uploads
 public_folder: /cms/uploads
