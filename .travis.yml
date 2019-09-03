@@ -1,11 +1,18 @@
 language: node_js
 node_js:
-  - "lts/*"
+  - 10.13.0
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+cache:
+  npm: true
+  directories:
+    - ~/.cache
+install:
+  - npm ci
 before_script:
   - npm install
-cache:
-  directories:
-    - node_modules
 script:
   - npm ts
   - npm run lint:js
