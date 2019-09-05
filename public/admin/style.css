@@ -1,3 +1,4 @@
-body {
-  background: red; /* Testing Styles */
+.frame-content {
+  background: #f5f5f5;
+  border: 2px solid red; /* Testing Styles */
 }
