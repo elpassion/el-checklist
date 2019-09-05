@@ -67,17 +67,17 @@
           };
         },
         toBlock: function (obj) {
+          return '<div>BLOCK</div>';
+        },
+        toPreview: function () {
           const noTabs = isEmpty(obj);
           const galleryItems = !noTabs ? obj.items : false;
 
           return galleryItems ? '<div>' +
             galleryItems.map((el) => (
-              '<p>' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>'
+              '<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>'
             )) + '</div>'
             : null;
-        },
-        toPreview: function () {
-          return '<div>toPreview</div>';
         },
       });
     </script>
