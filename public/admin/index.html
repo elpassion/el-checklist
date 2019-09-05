@@ -59,14 +59,11 @@
         },
         toBlock: function(obj) {
           const labelID = slugify(obj.label);
-          console.log('Block object ', obj);
           return (
             '<div class=\"solution\"><input hidden type=\"checkbox\" id=\"' + labelID + '\"/><label class=\"solution__label\" for=\"' + labelID + '\">' + obj.label + '</label><div class=\"solution__details\">' + obj.solution + '</div></div>'
           );
         },
         toPreview: function(obj) {
-          const labelID = slugify(obj.label);
-          console.log('Preview object ', obj);
           return obj.label + obj.solution;
         },
       });
