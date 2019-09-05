@@ -50,7 +50,7 @@
           label: 'Solution',
           widget: 'markdown'
         }],
-        pattern: /^<div class="solution"><input hidden type="checkbox" id="(.*)"><label class="solution__label" for="(.*)">(.*)<\/label><div class="solution__details">(.*)<\/div><\/div>/,
+        pattern: /^<div class="solution"><input hidden type="checkbox" id="([\w-]*)"><label class="solution__label" for="([\w-]*)">([\w+\s]+)<\/label><div class="solution__details">(.*)<\/div><\/div>/,
         fromBlock: function(match) {
           return {
             label: match[1],
