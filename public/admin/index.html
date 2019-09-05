@@ -29,6 +29,9 @@
   <body>
     <script src="https://unpkg.com/netlify-cms/dist/netlify-cms.js"></script>
     <script>
+      const TAB_NAME = 'tabName';
+      const TAB_CONTENT = 'tabContent';
+
       // Register Custom CMS styles
       window.CMS.registerPreviewStyle('/admin/style.css');
 
@@ -46,12 +49,12 @@
           fields: [
             {
               label: 'Tab Name',
-              name: 'tabName',
+              name: TAB_NAME,
               widget: 'string',
             },
             {
               label: 'Tab Content',
-              name: 'tabContent',
+              name: TAB_CONTENT,
               widget: 'markdown',
             },
           ],
@@ -65,11 +68,12 @@
         toBlock: function (solutions) {
           console.log(solutions);
           console.log(solutions.tabItems);
-          return solutions && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
+          return solutions && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => ('<p>' + el.tabName || TAB_NAME + '</p><br/>' + '<p>' + el.tabContent || TAB_CONTENT+ '</p>')) + '</div>';
         },
         toPreview: function (solutions) {
           console.log(solutions);
-          return solutions && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
+          console.log(solutions.tabItems);
+          return solutions && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => ('<p>' + el.tabName || TAB_NAME + '</p><br/>' + '<p>' + el.tabContent || TAB_CONTENT+ '</p>')) + '</div>';
         },
       });
     </script>
