@@ -59,12 +59,14 @@
         },
         toBlock: function(obj) {
           const labelID = slugify(obj.label);
+          console.log(obj.label, labelID);
           return (
             '<div class=\"solution\"><input hidden type=\"checkbox\" id=\"' + labelID + '\"/><label class=\"solution__label\" for=\"' + labelID + '\">' + obj.label + '</label><div class=\"solution__details\">' + obj.solution + '</div></div>'
           );
         },
         toPreview: function(obj) {
           const labelID = slugify(obj.label);
+          console.log('PREV: ', obj.label, labelID);
           return (
             '<div class=\"solution\"><input hidden type=\"checkbox\" id=\"' + labelID + '\"/><label class=\"solution__label\" for=\"' + labelID + '\">' + obj.label + '</label><div class=\"solution__details\">' + obj.solution + '</div></div>'
           );
