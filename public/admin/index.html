@@ -50,7 +50,7 @@
           label: 'Solution',
           widget: 'markdown'
         }],
-        pattern: /^<div class="solution"><span class="solution__toggle">(.*)<\/span><span class="solution__note">(.*)<\/span><\/span>/,
+        pattern: /^<div class="solution"><input(.*)><label(.*)<\/label><div class="solution__details">(.*)<\/div><\/div>/,
         fromBlock: function(match) {
           return {
             label: match[1],
