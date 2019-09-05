@@ -10,6 +10,7 @@ backend:
 
 site_url: https://el-checklist.netlify.com
 display_url: https://el-checklist.netlify.com
+logo_url: admin/logo_elp.svg
 publish_mode: editorial_workflow
 media_folder: public/cms/uploads
 public_folder: /cms/uploads
