@@ -66,12 +66,14 @@
           };
         },
         toBlock: function (solutions) {
-          return solutions.tabItems && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => ('<p>' + el.tabName || TAB_NAME + '</p><br/>' + '<p>' + el.tabContent || TAB_CONTENT+ '</p>')) + '</div>';
+          console.log('Solutions Block:', solutions);
+          console.log('tabItems Block:', solutions.tabItems);
+          return solutions.tabItems && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => (el.tabName || TAB_NAME + '<br />' + el.tabContent || TAB_CONTENT)) + '</div>';
         },
         toPreview: function (solutions) {
-          console.log('SOLUTION OBJ:', solutions);
-          console.log('TABITEMS OBJ:',solutions.tabItems);
-          return solutions.tabItems && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => ('<p>' + el.tabName || TAB_NAME + '</p><br/>' + '<p>' + el.tabContent || TAB_CONTENT+ '</p>')) + '</div>';
+          console.log('Solutions Preview:', solutions);
+          console.log('tabItems Preview:', solutions.tabItems);
+          return solutions.tabItems && '<div class="solutions__wrapper">' + solutions.tabItems.map((el) => (el.tabName || TAB_NAME + '<br />' + el.tabContent || TAB_CONTENT)) + '</div>';
         },
       });
     </script>
