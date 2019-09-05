@@ -80,6 +80,37 @@
             : null;
         },
       });
+
+      CMS.registerEditorComponent({
+        id: "sidenote",
+        label: "Sidenote",
+        fields: [{
+          name: 'element',
+          label: 'In-Text Element',
+          widget: 'string'
+        }, {
+          name: 'sidenote',
+          label: 'Sidenote',
+          widget: 'markdown'
+        }],
+        pattern: /^<span class="sidenote"><span class="sidenote__toggle">(.*)<\/span><span class="sidenote__note">(.*)<\/span><\/span>/,
+        fromBlock: function(match) {
+          return {
+            element: match[1],
+            sidenote: match[2],
+          };
+        },
+        toBlock: function(obj) {
+          return (
+            '<span class="sidenote"><span class="sidenote__toggle">' + obj.element + '</span><span class="sidenote__note">' + obj.sidenote + '</span></span>'
+          );
+        },
+        toPreview: function(obj) {
+          return (
+            '<span class="sidenote"><span class="sidenote__toggle">' + obj.element + '</span><span class="sidenote__note">' + obj.sidenote + '</span></span>'
+          );
+        },
+      });
     </script>
   </body>
 </html>
