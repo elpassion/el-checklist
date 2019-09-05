@@ -25,7 +25,7 @@ collections:
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "categories" }
       - { label: "Name", name: "category_name", widget: "string"}
-      - { label: "Short Description", required: false, ame: "category_introduction", widget: "markdown" }
+      - { label: "Short Description", required: false, name: "category_introduction", widget: "markdown" }
       - { label: "Order", name: "order", widget: "number" }
   - name: "tags"
     label: "Task Tags"
