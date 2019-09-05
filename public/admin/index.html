@@ -42,7 +42,7 @@
         id: 'tabContent',
         label: 'Solution Tabs',
         widget: 'list',
-        pattern: /^<div class="tab_wrapper">(.*)<\/div>/,
+        pattern: /^<div class="solutions__wrapper">(.*)<\/div>/,
         fields: [{
           id: 'tabbedContent',
           label: 'Solution Tabs',
@@ -67,17 +67,16 @@
           };
         },
         toBlock: function (obj) {
-          return '<div>BLOCK</div>';
-        },
-        toPreview: function () {
           const noTabs = isEmpty(obj);
-          const galleryItems = !noTabs ? obj.items : false;
+          const solutionItems = !noTabs ? obj.items : false;
 
-          return galleryItems ? '<div>' +
-            galleryItems.map((el) => (
-              '<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>'
-            )) + '</div>'
-            : null;
+          return JSON.stringify(solutionItems);
+        },
+        toPreview: function (obj) {
+          const noTabs = isEmpty(obj);
+          const solutionItems = !noTabs ? obj.items : false;
+
+          return solutionItems ? '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>' : null;
         },
       });
 
