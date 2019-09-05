@@ -63,20 +63,23 @@
         }],
         fromBlock: function (match) {
           return {
-            id: match[1],
+            tabItems: match[1],
+            tabContent: match[2],
           };
         },
         toBlock: function (obj) {
           const noTabs = isEmpty(obj);
           const solutionItems = !noTabs ? obj.items : false;
 
-          return JSON.stringify(solutionItems);
+          console.log(solutionItems);
+
+          return solutionItems && '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
         },
         toPreview: function (obj) {
           const noTabs = isEmpty(obj);
           const solutionItems = !noTabs ? obj.items : false;
 
-          return solutionItems ? '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>' : null;
+          return solutionItems && '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
         },
       });
 
