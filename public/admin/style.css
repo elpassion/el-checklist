@@ -1,4 +1,7 @@
-.frame-content {
+body {
   background: #f5f5f5;
-  border: 2px solid red; /* Testing Styles */
+}
+
+.frame-content {
+  /* Specific Component Styles goes here */
 }
