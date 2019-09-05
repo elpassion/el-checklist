@@ -27,7 +27,7 @@
   </head>
 
   <body>
-    <script src="https://unpkg.com/netlify-cms/dist/cms.js"></script>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script>
       // Helper Functions for Netlify CMS
       function isEmpty(obj) {
@@ -63,7 +63,7 @@
         }],
         fromBlock: function (match) {
           return {
-            tabItems: match[1],
+            tabName: match[1],
             tabContent: match[2],
           };
         },
@@ -72,6 +72,8 @@
           const solutionItems = !noTabs ? obj.items : false;
 
           console.log(solutionItems);
+          console.log('----');
+          console.log(obj);
 
           return solutionItems && '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
         },
