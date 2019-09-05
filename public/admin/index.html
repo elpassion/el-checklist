@@ -67,21 +67,11 @@
             tabContent: match[2],
           };
         },
-        toBlock: function (obj) {
-          const noTabs = isEmpty(obj);
-          const solutionItems = !noTabs ? obj.items : false;
-
-          console.log(solutionItems);
-          console.log('----');
-          console.log(obj);
-
-          return solutionItems && '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
+        toBlock: function (solutions) {
+          return solutions && '<div class="solutions__wrapper">' + solutions.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
         },
-        toPreview: function (obj) {
-          const noTabs = isEmpty(obj);
-          const solutionItems = !noTabs ? obj.items : false;
-
-          return solutionItems && '<div class="solutions__wrapper">' + solutionItems.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
+        toPreview: function (solutions) {
+          return solutions && '<div class="solutions__wrapper">' + solutions.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
         },
       });
 
