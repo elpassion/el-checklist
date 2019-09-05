@@ -29,8 +29,10 @@
   <body>
     <script src="https://unpkg.com/netlify-cms/dist/netlify-cms.js"></script>
     <script>
-      const TAB_NAME = 'tabName';
-      const TAB_CONTENT = 'tabContent';
+      function slugify(str) {
+        const stringToSlugify = str.toString().toLowerCase();
+        return stringToSlugify.replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+      }
 
       // Register Custom CMS styles
       window.CMS.registerPreviewStyle('/admin/style.css');
@@ -48,7 +50,7 @@
           label: 'Solution',
           widget: 'markdown'
         }],
-        pattern: /^<span class="solution"><span class="solution__toggle">(.*)<\/span><span class="solution__note">(.*)<\/span><\/span>/,
+        pattern: /^<div class="solution"><span class="solution__toggle">(.*)<\/span><span class="solution__note">(.*)<\/span><\/span>/,
         fromBlock: function(match) {
           return {
             label: match[1],
@@ -56,13 +58,15 @@
           };
         },
         toBlock: function(obj) {
+          const labelID = slugify(obj.label);
           return (
-            '<div class="solution"><span class="solution__toggle">' + obj.label + '</span><span class="solution__note">' + obj.solution + '</span></div>'
+            '<div class="solution"><input hidden type="checkbox" id="' + labelID + '"/><label class="solution__label" for="' + labelID + '">' + obj.label + '</label><div class="solution__details">' + obj.solution + '</div></div>'
           );
         },
         toPreview: function(obj) {
+          const labelID = slugify(obj.label);
           return (
-            '<div class="solution"><span class="solution__toggle">' + obj.label + '</span><span class="solution__note">' + obj.solution + '</span></div>'
+            '<div class="solution"><input hidden type="checkbox" id="' + labelID + '"/><label class="solution__label" for="' + labelID + '">' + obj.label + '</label><div class="solution__details">' + obj.solution + '</div></div>'
           );
         },
       });
