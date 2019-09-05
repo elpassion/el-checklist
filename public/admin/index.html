@@ -27,13 +27,8 @@
   </head>
 
   <body>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script src="https://unpkg.com/netlify-cms/dist/netlify-cms.js"></script>
     <script>
-      // Helper Functions for Netlify CMS
-      function isEmpty(obj) {
-        return Object.keys(obj).length === 0;
-      }
-
       // Register Custom CMS styles
       window.CMS.registerPreviewStyle('/admin/style.css');
 
@@ -68,41 +63,12 @@
           };
         },
         toBlock: function (solutions) {
+          console.log(solutions);
           return solutions && '<div class="solutions__wrapper">' + solutions.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
         },
         toPreview: function (solutions) {
+          console.log(solutions);
           return solutions && '<div class="solutions__wrapper">' + solutions.map((el) => ('<p> PREVIEW!' + el.tabName + '</p><br/>' + '<p>' + el.tabContent + '</p>')) + '</div>';
-        },
-      });
-
-      window.CMS.registerEditorComponent({
-        id: "sidenote",
-        label: "Sidenote",
-        fields: [{
-          name: 'element',
-          label: 'In-Text Element',
-          widget: 'string'
-        }, {
-          name: 'sidenote',
-          label: 'Sidenote',
-          widget: 'markdown'
-        }],
-        pattern: /^<span class="sidenote"><span class="sidenote__toggle">(.*)<\/span><span class="sidenote__note">(.*)<\/span><\/span>/,
-        fromBlock: function(match) {
-          return {
-            element: match[1],
-            sidenote: match[2],
-          };
-        },
-        toBlock: function(obj) {
-          return (
-            '<span class="sidenote"><span class="sidenote__toggle">' + obj.element + '</span><span class="sidenote__note">' + obj.sidenote + '</span></span>'
-          );
-        },
-        toPreview: function(obj) {
-          return (
-            '<span class="sidenote"><span class="sidenote__toggle">' + obj.element + '</span><span class="sidenote__note">' + obj.sidenote + '</span></span>'
-          );
         },
       });
     </script>
