@@ -23,10 +23,10 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "categories"}
-      - {label: "Name", name: "category_name", widget: "string"}
-      - {label: "Short Description", name: "category_introduction", widget: "markdown"}
-      - {label: "Order", name: "order", widget: "number"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "categories" }
+      - { label: "Name", name: "category_name", widget: "string"}
+      - { label: "Short Description", required: false, ame: "category_introduction", widget: "markdown" }
+      - { label: "Order", name: "order", widget: "number" }
   - name: "tags"
     label: "Task Tags"
     folder: "content/tags"
@@ -34,8 +34,8 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "tag"}
-      - {label: "Name", name: "tag_name", widget: "string"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "tag" }
+      - { label: "Name", name: "tag_name", widget: "string" }
   - name: "tasks"
     label: "Checklist Tasks"
     folder: "content/tasks"
@@ -43,10 +43,10 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "tasks"}
-      - {label: "Task Name", name: "task_name", widget: "string"}
-      - {label: "Task Category", name: "task_category", widget: "relation", multiple: false, collection: "categories", searchFields: "Name", valueField: "category_name", displayFields: "category_name"}
-      - {label: "Task Tags", name: "task_tags", widget: "relation", multiple: true, collection: "tags", searchFields: "Name", valueField: "tag_name", displayFields: "tag_name"}
-      - {label: "Task Priority", name: "task_priority", widget: "select", options: ["low", "medium", "high"]}
-      - {label: "Task Description", name: "task_detailed_description", widget: "markdown"}
-      - {label: "Task Solution", name: "task_solution", widget: "markdown"}
+      - { label: "Layout", name: "layout", widget: "hidden", default: "tasks"}
+      - { label: "Task Name", name: "task_name", widget: "string"}
+      - { label: "Task Category", name: "task_category", widget: "relation", multiple: false, collection: "categories", searchFields: "Name", valueField: "category_name", displayFields: "category_name" }
+      - { label: "Task Tags", required: false, name: "task_tags", widget: "relation", multiple: true, collection: "tags", searchFields: "Name", valueField: "tag_name", displayFields: "tag_name" }
+      - { label: "Task Priority", name: "task_priority", widget: "select", options: ["low", "medium", "high"] }
+      - { label: "Task Description", name: "task_detailed_description", widget: "markdown" }
+      - { label: "Task Solution", required: false, name: "task_solution", widget: "markdown" }
