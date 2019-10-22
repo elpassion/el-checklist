@@ -19,6 +19,8 @@ collections:
   - name: "tags"
     label: "Task Tags"
     folder: "content/tags"
+    format: "json"
+    extension: "json"
     identifier_field: tag_name
     create: true
     slug: "{{slug}}"
@@ -28,6 +30,8 @@ collections:
   - name: "tasks"
     label: "Checklist Tasks"
     folder: "content/tasks"
+    format: "json"
+    extension: "json"
     identifier_field: task_name
     create: true
     slug: "{{slug}}"
@@ -41,6 +45,8 @@ collections:
   - name: "checklists"
     label: "Checklists"
     folder: "content/checklists"
+    format: "json"
+    extension: "json"
     identifier_field: checklist_name
     create: true
     slug: "{{slug}}"
