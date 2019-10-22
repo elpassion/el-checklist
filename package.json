@@ -22,9 +22,9 @@
     "typescript": "3.5.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts --collectCoverageFrom=!src/@types/* --collectCoverageFrom=!src/config/* --collectCoverageFrom=!src/index.tsx",
+    "start": "node tools/prepareContent.js && react-scripts start",
+    "build": "node tools/prepareContent.js && react-scripts build",
+    "test": "node tools/prepareContent.js && react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts --collectCoverageFrom=!src/@types/* --collectCoverageFrom=!src/config/* --collectCoverageFrom=!src/index.tsx",
     "test:watch": "npm run test -- --watchAll --watch",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:js:fix": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
