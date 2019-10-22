@@ -2,11 +2,11 @@ backend:
   name: git-gateway
   branch: feature/data-loading
   commit_messages:
-    create: Create {{collection}} “{{slug}}”
-    update: Update {{collection}} “{{slug}}”
-    delete: Delete {{collection}} “{{slug}}”
-    uploadMedia: Upload “{{path}}”
-    deleteMedia: Delete “{{path}}”
+    create: CMS - Create {{collection}} “{{slug}}”
+    update: CMS - Update {{collection}} “{{slug}}”
+    delete: CMS - Delete {{collection}} “{{slug}}”
+    uploadMedia: CMS - Upload “{{path}}”
+    deleteMedia: CMS - Delete “{{path}}”
 
 site_url: https://el-checklist.netlify.com
 display_url: https://el-checklist.netlify.com
