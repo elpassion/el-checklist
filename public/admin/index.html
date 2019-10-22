@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>EL Checklist content admin</title>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style type="text/css">
+      #nc-root section button {
+        height: 46px;
+        padding: 0 18px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 42px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        background-color: #28c23e;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        transition: background-color .2s ease-in-out;
+      }
+
+      #nc-root section button:hover {
+        background-color: #2fd447;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/netlify-cms/dist/netlify-cms.js"></script>
+    <script>
+      function slugify(str) {
+        const stringToSlugify = str.toString().toLowerCase();
+        return stringToSlugify.replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+      }
+
+      // Register Custom CMS styles
+      window.CMS.registerPreviewStyle('/admin/style.css');
+
+      // Register Custom Widgets
+      window.CMS.registerEditorComponent({
+        id: "solutions",
+        label: "Solution",
+        fields: [{
+          name: 'label',
+          label: 'Solution Name',
+          widget: 'string'
+        }, {
+          name: 'solution',
+          label: 'Solution',
+          widget: 'markdown'
+        }],
+        pattern: /^<div class="solution"><input hidden type="checkbox" id="([\w-]*)"><label class="solution__label" for="([\w-]*)">([\w+\s]+)<\/label><div class="solution__details">(.*)<\/div><\/div>/,
+        fromBlock: function(match) {
+          return {
+            label: match[1],
+            solution: match[2],
+          };
+        },
+        toBlock: function(obj) {
+          const labelID = slugify(obj.label);
+          return (
+            '<div class=\"solution\"><input hidden type=\"checkbox\" id=\"' + labelID + '\"/><label class=\"solution__label\" for=\"' + labelID + '\">' + obj.label + '</label><div class=\"solution__details\">' + obj.solution + '</div></div>'
+          );
+        },
+        toPreview: function(obj) {
+          return obj.label + obj.solution;
+        },
+      });
+    </script>
+  </body>
+</html>
