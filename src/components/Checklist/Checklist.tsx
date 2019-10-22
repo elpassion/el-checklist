@@ -1,4 +1,6 @@
-import React, { useCallback, useContext } from 'react';
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
+import { FC, Fragment, useCallback, useContext } from 'react';
 
 import { TChecklist, TChecklistSectionItem } from '../../@types/checklist';
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
@@ -8,7 +10,7 @@ import { Completion } from '../Completion/Completion';
 
 type TProps = { checklist: TChecklist };
 
-export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => {
+export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
   const { isFulfilled, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
 
   const onChange = useCallback((id, value) => setFulfillment({ name: id, isDone: value }), [setFulfillment]);
@@ -27,7 +29,7 @@ export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => {
   );
 
   return (
-    <>
+    <Fragment>
       <h1>{checklist.name}</h1>
 
       <button onClick={clearFulfillments}>clear</button>
@@ -47,7 +49,7 @@ export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => {
                     {...item}
                     key={item.slug}
                     Tag="li"
-                    isChecked={isFulfilled(item.id)}
+                    isFulfilled={isFulfilled(item.id)}
                     onChange={onChange}
                   />
                 ))}
@@ -55,6 +57,6 @@ export const Checklist: React.FC<TProps> = ({ checklist }: TProps) => {
             </section>
           );
         })}
-    </>
+    </Fragment>
   );
 };

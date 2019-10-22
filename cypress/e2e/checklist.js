@@ -44,7 +44,7 @@ describe('checklist page', () => {
         cy.getAllByText('Done: 0%');
 
         const checkbox = cy.getByLabelText(section.items[0].title, { exact: false });
-        checkbox.check();
+        checkbox.check({force: true});
 
         cy.getAllByText(`Done: ${donePoints / totalPoints * 100}%`);
       });

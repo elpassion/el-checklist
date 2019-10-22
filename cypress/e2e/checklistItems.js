@@ -25,7 +25,7 @@ describe('checklist item', () => {
 
     it('should be checked after first click', () => {
       const checkbox = getCheckbox();
-      checkbox.click();
+      checkbox.click({force: true});
       checkbox.should('be.checked');
     });
 
@@ -36,7 +36,7 @@ describe('checklist item', () => {
 
     it('should be unchecked after second click', () => {
       const checkbox = getCheckbox();
-      checkbox.click();
+      checkbox.click({force: true});
       checkbox.should('not.be.checked');
     });
 
