@@ -1,7 +1,6 @@
 ---
 layout: tasks
 task_name: Apple meta-tags are present.
-task_category: Head
 task_tags:
   - Meta
 task_priority: low

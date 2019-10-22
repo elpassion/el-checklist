@@ -1,7 +1,6 @@
 ---
 layout: tasks
 task_name: Each favicon has been created and displays correctly.
-task_category: Head
 task_tags:
   - Meta
 task_priority: medium

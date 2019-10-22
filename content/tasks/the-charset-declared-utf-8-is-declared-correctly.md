@@ -1,7 +1,6 @@
 ---
 layout: tasks
 task_name: The charset declared (UTF-8) is declared correctly.
-task_category: Head
 task_tags:
   - Meta
   - HTML

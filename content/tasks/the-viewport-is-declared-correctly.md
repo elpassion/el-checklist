@@ -1,7 +1,6 @@
 ---
 layout: tasks
 task_name: The viewport is declared correctly.
-task_category: Head
 task_tags:
   - HTML
   - Best Practices

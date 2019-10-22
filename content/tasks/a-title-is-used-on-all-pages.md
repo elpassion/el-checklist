@@ -1,7 +1,6 @@
 ---
 layout: tasks
 task_name: A title is used on all pages
-task_category: Head
 task_tags:
   - HTML
   - Best Practices

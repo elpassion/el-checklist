@@ -1,8 +1,6 @@
 ---
 layout: tasks
 task_name: The Doctype is HTML5 and is at the top of all your HTML pages.
-task_category:
-  - Head
 task_tags:
   - Meta
   - Best Practices

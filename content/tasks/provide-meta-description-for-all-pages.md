@@ -1,7 +1,6 @@
 ---
 layout: tasks
 task_name: Provide meta description for all pages
-task_category: Head
 task_tags:
   - Best Practices
   - HTML

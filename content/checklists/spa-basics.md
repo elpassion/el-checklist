@@ -1,0 +1,12 @@
+---
+layout: checklist
+checklist_name: SPA Basics
+sections:
+  - title: "Part 1"
+    tasks: 
+      - A title is used on all pages
+  - title: "Part 2"
+    tasks:
+      - "Apple meta-tags are present."
+      - "Each favicon has been created and displays correctly." 
+---

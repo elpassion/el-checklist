@@ -1,9 +1,9 @@
-# 1. Task Categories
-category_name (string), category_slug (based on name), category_introduction (markdown), order (num)
+# 1. Checklists
+checklist_name (string), slug (based on name), sections - consisting of title (string) and tasks (relation to task_name [multiple choice])
 
 # 2. Checklist Tasks
-category (correlation to category_name), task_name (string), task_slug (based on name), task_detailed_description (markdown),
-task_priority (low, medium, high), task_tags (correlation to tag_name [multiple choice]), 
+task_name (string), task_slug (based on name), task_detailed_description (markdown),
+task_priority (low, medium, high), task_tags (relation to tag_name [multiple choice]), 
 
 task_solution (markdown)
 
