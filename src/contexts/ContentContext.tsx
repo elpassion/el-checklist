@@ -18,7 +18,6 @@ export const ContentContextProvider: FC<TProps> = ({ children }: PropsWithChildr
 
   const getChecklistBySlug = useCallback(
     (slug: TChecklist['slug']) => {
-      console.warn('hello', slug, checklists);
       return checklists.find(checklist => checklist.slug === slug) || null;
     },
     [checklists],
