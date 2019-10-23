@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: feature/data-loading
+  branch: master
   commit_messages:
     create: CMS - Create {{collection}} “{{slug}}”
     update: CMS - Update {{collection}} “{{slug}}”
