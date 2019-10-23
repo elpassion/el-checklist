@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import { FC, Fragment, useCallback, useContext } from 'react';
 
-import { TChecklist, TChecklistSectionItem } from '../../@types/checklist';
+import { TChecklist, TChecklistTask } from '../../@types/checklist';
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
 import { ChecklistItem } from '../ChecklistItem/ChecklistItem';
 import { TCompletion } from '../../@types/completion';
@@ -13,14 +13,14 @@ type TProps = { checklist: TChecklist };
 export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
   const { isFulfilled, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
 
-  const onChange = useCallback((id, value) => setFulfillment({ name: id, isDone: value }), [setFulfillment]);
+  const onChange = useCallback((slug, value) => setFulfillment({ name: slug, isDone: value }), [setFulfillment]);
 
   const getSectionCompletion = useCallback(
-    ({ items }) =>
-      items.reduce(
-        (acc: TCompletion, item: TChecklistSectionItem) => {
-          acc.doneUnits += isFulfilled(item.id) ? item.severity : 0;
-          acc.totalUnits += item.severity;
+    ({ tasks }) =>
+      tasks.reduce(
+        (acc: TCompletion, task: TChecklistTask) => {
+          acc.doneUnits += isFulfilled(task.slug) ? task.severity : 0;
+          acc.totalUnits += task.severity;
           return acc;
         },
         { totalUnits: 0, doneUnits: 0 },
@@ -44,12 +44,12 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
               <Completion {...completion} />
 
               <ul>
-                {section.items.map(item => (
+                {section.tasks.map(task => (
                   <ChecklistItem
-                    {...item}
-                    key={item.slug}
+                    {...task}
+                    key={task.slug}
                     Tag="li"
-                    isFulfilled={isFulfilled(item.id)}
+                    isFulfilled={isFulfilled(task.slug)}
                     onChange={onChange}
                   />
                 ))}

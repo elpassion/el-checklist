@@ -27,8 +27,8 @@ describe('checklist page', () => {
         f.sections.forEach(section => {
           cy.contains('h2', section.name);
 
-          section.items.forEach(item => {
-            cy.contains('h3', item.title);
+          section.tasks.forEach(task => {
+            cy.contains('h3', task.name);
           })
         })
       });
@@ -38,12 +38,12 @@ describe('checklist page', () => {
       cy.fixture('checklist').then(f => {
         const section = f.sections[0];
 
-        const donePoints = section.items[0].severity;
-        const totalPoints = section.items.reduce((acc, item) =>  acc + item.severity, 0);
+        const donePoints = section.tasks[0].severity;
+        const totalPoints = section.tasks.reduce((acc, task) =>  acc + task.severity, 0);
 
         cy.getAllByText('Done: 0%');
 
-        const checkbox = cy.getByLabelText(section.items[0].title, { exact: false });
+        const checkbox = cy.getByLabelText(section.tasks[0].name, { exact: false });
         checkbox.check({force: true});
 
         cy.getAllByText(`Done: ${donePoints / totalPoints * 100}%`);

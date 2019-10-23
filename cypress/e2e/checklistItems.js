@@ -1,6 +1,6 @@
 describe('checklist item', () => {
   let checklist;
-  const getItem = () => checklist.sections[0].items[0];
+  const getItem = () => checklist.sections[0].tasks[0];
   const getCheckbox = () => cy.getByLabelText(getItem(checklist).title, { exact: false });
 
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe('checklist item', () => {
         url: '/checklist/7',
         response: 'fixture:checklist.json'
       });
-      cy.visit(`/checklist/${checklist.id}`);
+      cy.visit(`/checklist/${checklist.slug}`);
     });
   });
 

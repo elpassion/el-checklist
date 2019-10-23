@@ -13,7 +13,7 @@ describe('checklists index', () => {
         });
         cy.route({
           method: 'GET',
-          url: `/checklist/${f[0].id}`,
+          url: `/checklist/${f[0].slug}`,
           response: f,
         });
 
@@ -37,7 +37,7 @@ describe('checklists index', () => {
         cy.getByText(item.name).click();
         cy
           .location('pathname')
-          .should('eq', `/checklist/${item.id}`);
+          .should('eq', `/checklist/${item.slug}`);
       });
     });
   });

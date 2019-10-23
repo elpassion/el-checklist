@@ -10,30 +10,27 @@ import { ChecklistRoute } from './ChecklistRoute';
 jest.mock('../../utils/api/client');
 const mockedAxios = client as jest.Mocked<typeof client>;
 
-const mockedId: TChecklist['id'] = '7';
+const mockedSlug: TChecklist['slug'] = 'best-practices';
 const mockedResponse: TChecklist = {
-  id: mockedId,
   name: 'Best Practices',
   slug: 'best-practices',
   sections: [
     {
       name: 'HEAD',
-      items: [
+      tasks: [
         {
-          id: '7',
-          title: 'Doctype',
+          name: 'Doctype',
           description: 'The Doctype is HTML5 and is at the top of all your HTML pages.',
-          solutions: [],
-          categories: ['meta tag'],
+          solution: '',
+          tags: ['meta tag'],
           severity: 3,
           slug: 'doctype',
         },
         {
-          id: '7',
-          title: 'Favicons',
+          name: 'Favicons',
           description: 'Each favicon has been created and displays correctly.',
-          solutions: ['[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)'],
-          categories: ['meta tag'],
+          solution: '[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)',
+          tags: ['meta tag'],
           severity: 2,
           slug: 'favicons',
         },
@@ -41,13 +38,12 @@ const mockedResponse: TChecklist = {
     },
     {
       name: 'HTML',
-      items: [
+      tasks: [
         {
-          id: '7',
-          title: 'Adblockers test:',
+          name: 'Adblockers test:',
           description: 'Your website shows your content correctly with adblockers enabled',
-          solutions: [],
-          categories: ['html', 'testing'],
+          solution: '',
+          tags: ['html', 'testing'],
           severity: 2,
           slug: 'adblockers-test',
         },
@@ -62,7 +58,7 @@ const mockedRouteProps = {
   history: mockedAny,
   location: mockedAny,
   match: {
-    params: { id: mockedId },
+    params: { slug: mockedSlug },
     isExact: mockedAny,
     path: mockedAny,
     url: mockedAny,
@@ -70,7 +66,7 @@ const mockedRouteProps = {
 };
 
 test('should call client to fetch data', () => {
-  const dataUrl = `/checklist/${mockedId}`;
+  const dataUrl = `/checklist/${mockedSlug}`;
   const resp = { data: mockedResponse };
   mockedAxios.get.mockResolvedValue(resp);
 

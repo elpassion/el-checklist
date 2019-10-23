@@ -1,18 +1,18 @@
 # 1. Checklists
-checklist_name (string), slug (based on name), sections - consisting of title (string) and tasks (relation to task_name [multiple choice])
+name (string), slug (based on name), sections - consisting of name (string) and tasks (relation to name [multiple choice])
 
 # 2. Checklist Tasks
-task_name (string), task_slug (based on name), task_detailed_description (markdown),
-task_priority (low, medium, high), task_tags (relation to tag_name [multiple choice]), 
+name (string), slug (based on name), description (markdown),
+priority (low, medium, high), tags (relation to name [multiple choice]), 
 
-task_solution (markdown)
+solution (markdown)
 
 ***QUICK NOTE:*** Detailed solution is rich markdown editor in admin panel where we probably use custom markdown elements
 to display tabs or some styled list with possible solutions for Netlify, Apache if it comes to deployment, ESLint or other linters
 if it comes to linting etc.
 
 # 3. Task Tags
-tag_name (string), tag_slug (based on name)
+name (string), slug (based on name)
 
 ## Samples:
 ```bazaar

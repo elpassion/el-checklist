@@ -14,12 +14,10 @@ const mockedResponse: TChecklistsIndex = [
   {
     name: 'Best Practices 1',
     slug: 'best-practices-1',
-    id: '1',
   },
   {
     name: 'Best Practices 2',
     slug: 'best-practices-2',
-    id: '2',
   },
 ];
 

@@ -1,11 +1,11 @@
 {
   "layout": "tasks",
-  "task_name": "Apple meta-tags are present.",
-  "task_tags": [
+  "name": "Apple meta-tags are present.",
+  "tags": [
     "SEO",
     "HTML"
   ],
-  "task_priority": "low",
-  "task_detailed_description": "This is for proper displaying of Apple icons.",
-  "task_solution": "```\n  <link rel=\"apple-touch-icon\" href=\"/custom-icon.png\">\n```\n\n```\n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n```\n\n```\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\">\n```"
+  "severity": 1,
+  "description": "This is for proper displaying of Apple icons.",
+  "solution": "```\n  <link rel=\"apple-touch-icon\" href=\"/custom-icon.png\">\n```\n\n```\n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n```\n\n```\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\">\n```"
 }

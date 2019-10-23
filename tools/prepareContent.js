@@ -1,6 +1,8 @@
 /*eslint-disable @typescript-eslint/no-var-requires*/
 const fs = require('fs');
 
+const _ = require('lodash');
+
 const storeFile = require('../tools/storeFile');
 const logError = require('../tools/logError');
 
@@ -14,7 +16,7 @@ const getCollection = collectionName => {
     const directory = `${CONTENT_SOURCE_DIR}/${collectionName}`;
     fs.readdirSync(directory).forEach(filename => {
       const checklist = require(`../${directory}/${filename}`);
-      checklists.push(checklist);
+      checklists.push({ ...checklist, slug: _.kebabCase(checklist.name).toLowerCase() });
     });
   } catch (e) {
     logError(e);
@@ -31,7 +33,7 @@ const fillChecklistsWithTasks = ({ checklistsCollection, tasksCollection }) =>
       if (section.tasks) {
         try {
           tasks = section.tasks.reduce((acc, taskName) => {
-            const task = tasksCollection.find(t => t.task_name === taskName);
+            const task = tasksCollection.find(t => t.name === taskName);
             if (task) {
               acc.push(task);
             }
