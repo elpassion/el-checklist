@@ -3,7 +3,7 @@ export type TItemFulfillment = {
   isDone: boolean;
 };
 
-export type FulfillmentContextData = {
+export type TFulfillmentContextData = {
   fulfillments: TItemFulfillment[];
   isFulfilled: (name: string) => boolean;
   setFulfillment: (fulfillment: TItemFulfillment) => void;
