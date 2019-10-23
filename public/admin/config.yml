@@ -1,12 +1,12 @@
 backend:
   name: git-gateway
-  branch: feature/cms
+  branch: feature/data-loading
   commit_messages:
-    create: Create {{collection}} “{{slug}}”
-    update: Update {{collection}} “{{slug}}”
-    delete: Delete {{collection}} “{{slug}}”
-    uploadMedia: Upload “{{path}}”
-    deleteMedia: Delete “{{path}}”
+    create: CMS - Create {{collection}} “{{slug}}”
+    update: CMS - Update {{collection}} “{{slug}}”
+    delete: CMS - Delete {{collection}} “{{slug}}”
+    uploadMedia: CMS - Upload “{{path}}”
+    deleteMedia: CMS - Delete “{{path}}”
 
 site_url: https://el-checklist.netlify.com
 display_url: https://el-checklist.netlify.com
@@ -19,37 +19,43 @@ collections:
   - name: "tags"
     label: "Task Tags"
     folder: "content/tags"
-    identifier_field: tag_name
+    format: "json"
+    extension: "json"
+    identifier_field: name
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "tag" }
-      - { label: "Name", name: "tag_name", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
   - name: "tasks"
     label: "Checklist Tasks"
     folder: "content/tasks"
-    identifier_field: task_name
+    format: "json"
+    extension: "json"
+    identifier_field: name
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "tasks"}
-      - { label: "Task Name", name: "task_name", widget: "string"}
-      - { label: "Task Tags", required: false, name: "task_tags", widget: "relation", multiple: true, collection: "tags", searchFields: "Name", valueField: "tag_name", displayFields: "tag_name" }
-      - { label: "Task Priority", name: "task_priority", widget: "select", options: ["low", "medium", "high"] }
-      - { label: "Task Description", name: "task_detailed_description", widget: "markdown" }
-      - { label: "Task Solution", required: false, name: "task_solution", widget: "markdown" }
+      - { label: "Task Name", name: "name", widget: "string"}
+      - { label: "Task Tags", required: false, name: "tags", widget: "relation", multiple: true, collection: "tags", searchFields: "Name", valueField: "name", displayFields: "name" }
+      - { label: "Task Priority", name: "severity", widget: "select", options: [1, 2, 3] }
+      - { label: "Task Description", name: "description", widget: "markdown" }
+      - { label: "Task Solution", required: false, name: "solution", widget: "markdown" }
   - name: "checklists"
     label: "Checklists"
     folder: "content/checklists"
-    identifier_field: checklist_name
+    format: "json"
+    extension: "json"
+    identifier_field: name
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "checklist"}
-      - { label: "Checklist Name", name: "checklist_name", widget: "string"}
+      - { label: "Checklist Name", name: "name", widget: "string"}
       - label: "Sections"
         name: "sections"
         widget: "list"
         fields:
-          - { label: "Title", name: "title", widget: "string"}
-          - { label: "Tasks", name: "tasks",  widget: "relation", multiple: true, collection: "tasks", searchFields: ["task_name", "task_tags"], valueField: "task_name", displayFields: ["task_name", "task_tags"] }
+          - { label: "Name", name: "name", widget: "string"}
+          - { label: "Tasks", name: "tasks",  widget: "relation", multiple: true, collection: "tasks", searchFields: ["name", "tags"], valueField: "name", displayFields: ["name", "tags"] }

@@ -12,6 +12,9 @@
 # production
 /build
 
+#generated files
+src/_prepared_content.json
+
 # misc
 .idea
 .DS_Store

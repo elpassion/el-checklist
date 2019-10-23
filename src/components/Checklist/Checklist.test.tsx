@@ -2,7 +2,7 @@ import { cleanup, render } from '@testing-library/react';
 import React from 'react';
 
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
-import { TChecklistSectionItem } from '../../@types/checklist';
+import { TChecklistTask } from '../../@types/checklist';
 
 import { Checklist } from './Checklist';
 
@@ -17,22 +17,20 @@ const mockedChecklist = {
   sections: [
     {
       name: 'HEAD',
-      items: [
+      tasks: [
         {
-          id: 'one',
-          title: 'Doctype',
+          name: 'Doctype',
           description: 'The Doctype is HTML5 and is at the top of all your HTML pages.',
-          solutions: [],
-          categories: ['meta tag'],
+          solution: '',
+          tags: ['meta tag'],
           severity: 3,
           slug: 'doctype',
         },
         {
-          id: 'two',
-          title: 'Favicons',
+          name: 'Favicons',
           description: 'Each favicon has been created and displays correctly.',
-          solutions: ['[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)'],
-          categories: ['meta tag'],
+          solution: '[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)',
+          tags: ['meta tag'],
           severity: 2,
           slug: 'favicons',
         },
@@ -40,13 +38,12 @@ const mockedChecklist = {
     },
     {
       name: 'HTML',
-      items: [
+      tasks: [
         {
-          id: 'three',
-          title: 'Adblockers test:',
+          name: 'Adblockers test:',
           description: 'Your website shows your content correctly with adblockers enabled',
-          solutions: [],
-          categories: ['html', 'testing'],
+          solution: '',
+          tags: ['html', 'testing'],
           severity: 2,
           slug: 'adblockers-test',
         },
@@ -57,10 +54,10 @@ const mockedChecklist = {
 
 const allItems = mockedChecklist.sections.reduce(
   (acc, section) => {
-    section.items.forEach(item => acc.push(item));
+    section.tasks.forEach((item: TChecklistTask) => acc.push(item));
     return acc;
   },
-  [] as TChecklistSectionItem[],
+  [] as TChecklistTask[],
 );
 const mockedFulfillmentContextValue = {
   fulfillments: [],
@@ -69,7 +66,7 @@ const mockedFulfillmentContextValue = {
   clearFulfillments: jest.fn(),
 };
 
-test('renders title', () => {
+test('renders name', () => {
   const { getByText } = render(
     <FulfillmentContext.Provider value={mockedFulfillmentContextValue}>
       <Checklist checklist={mockedChecklist} />
@@ -97,7 +94,7 @@ test('renders all checkboxes', () => {
   );
 
   allItems.forEach(item => {
-    getByLabelText(item.title, { exact: false });
+    getByLabelText(item.name, { exact: false });
   });
 });
 
@@ -115,8 +112,8 @@ test('checks if items are fulfilled when rendering', () => {
   );
 
   allItems.forEach(item => {
-    const checkbox = getByLabelText(item.title, { exact: false }) as HTMLInputElement;
-    expect(mockIsFulfilled).toHaveBeenCalledWith(item.id);
+    const checkbox = getByLabelText(item.name, { exact: false }) as HTMLInputElement;
+    expect(mockIsFulfilled).toHaveBeenCalledWith(item.slug);
     expect(checkbox.checked).toBe(true);
   });
 });
@@ -134,9 +131,9 @@ test('calls setFulfillment when fulfillment value changes', () => {
     </FulfillmentContext.Provider>,
   );
   const item = allItems[0];
-  const checkbox = getByLabelText(item.title, { exact: false }) as HTMLInputElement;
+  const checkbox = getByLabelText(item.name, { exact: false }) as HTMLInputElement;
 
   checkbox.click();
 
-  expect(mockSetFulfillment).toHaveBeenCalledWith({ name: item.id, isDone: true });
+  expect(mockSetFulfillment).toHaveBeenCalledWith({ name: item.slug, isDone: true });
 });

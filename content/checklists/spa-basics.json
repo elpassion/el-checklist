@@ -1,0 +1,18 @@
+{
+  "layout": "checklist",
+  "name": "SPA Basics",
+  "sections": [
+    {
+      "name": "Part 1",
+      "tasks": [
+        "A title is used on all pages"
+      ]
+    },
+    {
+      "name": "Part 2",
+      "tasks": [
+        "Apple meta-tags are present."
+      ]
+    }
+  ]
+}

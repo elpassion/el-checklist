@@ -2,18 +2,18 @@ import React, { FC, PropsWithChildren, useCallback, useEffect, useState } from '
 import { Context, createContext } from 'react';
 
 import { store } from '../utils/storage/store';
-import { FulfillmentContextData, TItemFulfillment } from '../@types/fulfillment';
+import { TFulfillmentContextData, TItemFulfillment } from '../@types/fulfillment';
 import { composeKey, decomposeKey, isInScope } from '../utils/misc/storageKeyComposition';
 import { STORAGE_FALSE, STORAGE_TRUE } from '../config/variables';
 
-const initialData: FulfillmentContextData = {
+const initialData: TFulfillmentContextData = {
   fulfillments: [] as TItemFulfillment[],
   isFulfilled: () => false,
   setFulfillment: () => null,
   clearFulfillments: () => null,
 };
 
-export const FulfillmentContext: Context<FulfillmentContextData> = createContext(initialData);
+export const FulfillmentContext: Context<TFulfillmentContextData> = createContext(initialData);
 
 type TProps = { prefix: string };
 export const FulfillmentContextProvider: FC<TProps> = ({ prefix, children }: PropsWithChildren<TProps>) => {

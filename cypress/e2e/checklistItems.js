@@ -1,18 +1,12 @@
 describe('checklist item', () => {
   let checklist;
-  const getItem = () => checklist.sections[0].items[0];
-  const getCheckbox = () => cy.getByLabelText(getItem(checklist).title, { exact: false });
+  const getItem = () => checklist.sections[0].tasks[0];
+  const getCheckbox = () => cy.getByLabelText(getItem(checklist).name, { exact: false });
 
   beforeEach(() => {
     cy.fixture('checklist').then(f => {
       checklist = f;
-      cy.server({ force404: true });
-      cy.route({
-        method: 'GET',
-        url: '/checklist/7',
-        response: 'fixture:checklist.json'
-      });
-      cy.visit(`/checklist/${checklist.id}`);
+      cy.visit(`/checklist/${checklist.slug}`);
     });
   });
 
