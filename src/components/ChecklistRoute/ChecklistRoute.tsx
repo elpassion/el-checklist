@@ -1,32 +1,26 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Redirect, RouteComponentProps } from 'react-router';
 
 import { Checklist } from '../Checklist/Checklist';
-import { useApiData } from '../../hooks/useApiData';
 import { TChecklist } from '../../@types/checklist';
 import { FulfillmentContextProvider } from '../../contexts/FulfillmentContext';
+import { ContentContext } from '../../contexts/ContentContext';
 
 type TParams = { slug: TChecklist['slug'] };
 type TProps = RouteComponentProps<TParams>;
 
 export const ChecklistRoute: React.FC<TProps> = ({ match }: TProps) => {
-  const { data, isLoading, hasError } = useApiData<TChecklist>(`/checklist/${match.params.slug}`);
+  const { slug } = match.params;
+  const { getChecklistBySlug } = useContext(ContentContext);
+  const checklist = useMemo(() => getChecklistBySlug(slug), [getChecklistBySlug, slug]);
 
-  if (data !== null) {
+  if (checklist) {
     return (
-      <FulfillmentContextProvider prefix={data.slug}>
-        <Checklist checklist={data} />
+      <FulfillmentContextProvider prefix={checklist.slug}>
+        <Checklist checklist={checklist} />
       </FulfillmentContextProvider>
     );
   }
 
-  if (isLoading) {
-    return <p>loading</p>;
-  }
-
-  if (hasError) {
-    return <Redirect to="/checklists" />;
-  }
-
-  return null;
+  return <Redirect to="/checklists" />;
 };

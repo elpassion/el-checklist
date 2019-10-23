@@ -10,8 +10,8 @@ import { ChecklistsIndexRoute } from './components/ChecklistsIndexRoute/Checklis
 import { ChecklistRoute } from './components/ChecklistRoute/ChecklistRoute';
 import { defaultTheme } from './styling/themes/default';
 import { globalStyles } from './styling/global';
-
 import './App.css';
+import { ContentContextProvider } from './contexts/ContentContext';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -21,29 +21,31 @@ const navLinks = [
 
 export const App: FC = () => (
   <ThemeProvider theme={defaultTheme}>
-    <Global styles={globalStyles} />
+    <ContentContextProvider>
+      <Global styles={globalStyles} />
 
-    <Router>
-      <div className="App">
-        <nav className="App__nav">
-          {navLinks.map(link => (
-            <NavLink key={link.label} to={link.to} className="link" activeClassName="link--active">
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+      <Router>
+        <div className="App">
+          <nav className="App__nav">
+            {navLinks.map(link => (
+              <NavLink key={link.label} to={link.to} className="link" activeClassName="link--active">
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
 
-        <div className="App__container">
-          <main className="App__content">
-            <Switch>
-              <Route path="/" exact component={IndexPage} />
-              <Route path="/counter/" component={Counter} />
-              <Route path="/checklists" component={ChecklistsIndexRoute} />
-              <Route path="/checklist/:id" component={ChecklistRoute} />
-            </Switch>
-          </main>
+          <div className="App__container">
+            <main className="App__content">
+              <Switch>
+                <Route path="/" exact component={IndexPage} />
+                <Route path="/counter/" component={Counter} />
+                <Route path="/checklists" component={ChecklistsIndexRoute} />
+                <Route path="/checklist/:slug" component={ChecklistRoute} />
+              </Switch>
+            </main>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </ContentContextProvider>
   </ThemeProvider>
 );

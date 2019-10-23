@@ -37,7 +37,8 @@ export const ChecklistItem: FC<TProps> = ({
         </Checkbox>
       </h3>
 
-      {tags.length > 0 && (
+      {
+        tags.length > 0 && (
         <ul className="ul--pointed">
           {tags.map(tag => (
             <li key={tag}>

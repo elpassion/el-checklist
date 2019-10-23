@@ -1,53 +1,38 @@
 {
-  "id": "7",
-  "name": "Best Practices 7",
-  "slug": "best-practices-7",
+  "name": "SPA Basics",
   "sections": [
     {
-      "name": "HEAD",
-      "items": [
+      "name": "Part 1",
+      "tasks": [
         {
-          "id": "one",
-          "title": "Doctype",
-          "description": "The Doctype is HTML5 and is at the top of all your HTML pages.",
-          "solutions": [],
-          "categories": [
-            "meta tag"
-          ],
-          "severity": 3,
-          "slug": "doctype"
-        },
-        {
-          "id": "two",
-          "title": "Favicons",
-          "description": "Each favicon has been created and displays correctly.",
-          "solutions": [
-            "[Favicon Cheat Sheet](https://github.com/audreyr/favicon-cheat-sheet)"
-          ],
-          "categories": [
-            "meta tag"
+          "name": "A title is used on all pages",
+          "description": "Google calculates the pixel width of the characters used in the title and cuts off between 472 and 482 pixels. Average character limit **would be around 55 characters**.",
+          "solution": "```<title>Page Title</title>```",
+          "tags": [
+            "HTML",
+            "SEO"
           ],
           "severity": 2,
-          "slug": "favicons"
+          "slug": "a-title-is-used-on-all-pages"
         }
       ]
     },
     {
-      "name": "HTML",
-      "items": [
+      "name": "Part 2",
+      "tasks": [
         {
-          "id": "three",
-          "title": "Adblockers test:",
-          "description": "Your website shows your content correctly with adblockers enabled",
-          "solutions": [],
-          "categories": [
-            "html",
-            "testing"
+          "name": "Apple meta-tags are present.",
+          "description": "This is for proper displaying of Apple icons.",
+          "solution": "```\n  <link rel=\"apple-touch-icon\" href=\"/custom-icon.png\">\n```\n\n```\n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n```\n\n```\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\">\n```",
+          "tags": [
+            "SEO",
+            "HTML"
           ],
-          "severity": 2,
-          "slug": "adblockers-test"
+          "severity": 1,
+          "slug": "apple-meta-tags-are-present"
         }
       ]
     }
-  ]
+  ],
+  "slug": "spa-basics"
 }

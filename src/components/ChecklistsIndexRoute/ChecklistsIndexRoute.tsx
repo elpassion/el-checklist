@@ -1,23 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { useApiData } from '../../hooks/useApiData';
-import { TChecklistsIndex } from '../../@types/checklist';
+import { ContentContext } from '../../contexts/ContentContext';
 import { ChecklistsIndex } from '../ChecklistsIndex/ChecklistsIndex';
 
 export const ChecklistsIndexRoute: React.FC = () => {
-  const { data, isLoading, hasError } = useApiData<TChecklistsIndex>('/checklists');
+  const { checklists } = useContext(ContentContext);
 
-  if (data) {
-    return <ChecklistsIndex checklists={data} />;
-  }
-
-  if (isLoading) {
-    return <p>loading</p>;
-  }
-
-  if (hasError) {
-    return <p>error</p>;
-  }
-
-  return null;
+  return <ChecklistsIndex checklists={checklists} />;
 };

@@ -9,14 +9,18 @@ const logError = require('../tools/logError');
 const CONTENT_SOURCE_DIR = 'content';
 const CONTENT_TARGET_FILENAME = '_prepared_content.json';
 
-const getCollection = collectionName => {
+const getCollection = (collectionName, fields) => {
   const checklists = [];
 
   try {
     const directory = `${CONTENT_SOURCE_DIR}/${collectionName}`;
     fs.readdirSync(directory).forEach(filename => {
       const checklist = require(`../${directory}/${filename}`);
-      checklists.push({ ...checklist, slug: _.kebabCase(checklist.name).toLowerCase() });
+      const checklistData = {
+        ..._.pick(checklist, fields),
+        slug: _.kebabCase(checklist.name).toLowerCase(),
+      };
+      checklists.push(checklistData);
     });
   } catch (e) {
     logError(e);
@@ -51,8 +55,9 @@ const fillChecklistsWithTasks = ({ checklistsCollection, tasksCollection }) =>
   });
 
 const prepareContent = () => {
-  const checklistsCollection = getCollection('checklists');
-  const tasksCollection = getCollection('tasks');
+  const checklistsCollection = getCollection('checklists', ['name', 'slug', 'sections']);
+  const tasksCollection = getCollection('tasks', ['name', 'description', 'solution', 'tags', 'severity', 'slug']);
+
   const data = { checklists: fillChecklistsWithTasks({ checklistsCollection, tasksCollection }) };
 
   const fileContent = JSON.stringify(data, null, 2);

@@ -1,23 +1,10 @@
 describe('checklist page', () => {
-  const validId = '7';
-  const invalidId = '8';
+  const validSlug = 'spa-basics';
+  const invalidSlug = 'worst-practices';
 
-  beforeEach(() => {
-    cy.server({force404: true});
-    cy.route({
-      method: 'GET',
-      url: `/checklist/${validId}`,
-      response: 'fixture:checklist.json'
-    });
-  });
-
-  context('valid id', () => {
+  context('valid slug', () => {
     beforeEach(() => {
-      cy.visit(`/checklist/${validId}`);
-    });
-
-    it('displays loader', () => {
-      cy.getByText('loading')
+      cy.visit(`/checklist/${validSlug}`);
     });
 
     it('displays all items', () => {
@@ -51,9 +38,9 @@ describe('checklist page', () => {
     });
   });
 
-  context('invalid id', () => {
+  context('invalid slug', () => {
     beforeEach(() => {
-      cy.visit(`/checklist/${invalidId}`);
+      cy.visit(`/checklist/${invalidSlug}`);
     });
 
     it('redirects to list ', () => {
