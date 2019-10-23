@@ -22,12 +22,14 @@
     "typescript": "3.5.3"
   },
   "scripts": {
-    "start": "node tools/prepareContent.js && react-scripts start",
-    "build": "node tools/prepareContent.js && react-scripts build",
-    "test": "node tools/prepareContent.js && react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts --collectCoverageFrom=!src/@types/* --collectCoverageFrom=!src/config/* --collectCoverageFrom=!src/index.tsx",
+    "start": "node scripts/prepareContent.js && react-scripts start",
+    "build": "node scripts/prepareContent.js && react-scripts build",
+    "test": "node scripts/prepareContent.js && react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts --collectCoverageFrom=!src/@types/* --collectCoverageFrom=!src/config/* --collectCoverageFrom=!src/index.tsx",
     "test:watch": "npm run test -- --watchAll --watch",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:js:fix": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
+    "lint:tools": "eslint --ext .js,.jsx,.ts,.tsx ./tools",
+    "lint:tools:fix": "eslint --ext .js,.jsx,.ts,.tsx ./tools --fix",
     "ts": "tsc -p ./tsconfig.json",
     "ts:watch": "npm run ts --watch",
     "e2e:dev": "npm-run-all --parallel start cy:open",
