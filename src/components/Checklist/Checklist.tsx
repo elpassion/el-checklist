@@ -14,6 +14,12 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
   const { isFulfilled, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
 
   const onChange = useCallback((slug, value) => setFulfillment({ name: slug, isDone: value }), [setFulfillment]);
+  const onClearClick = useCallback(() => {
+    const confirmed = window.confirm('Are you sure you want to clear all the data from this checklist?');
+    if (confirmed) {
+      clearFulfillments();
+    }
+  }, [clearFulfillments]);
 
   const getSectionCompletion = useCallback(
     ({ tasks }) =>
@@ -32,7 +38,7 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
     <Fragment>
       <h1>{checklist.name}</h1>
 
-      <button onClick={clearFulfillments}>clear</button>
+      <button onClick={onClearClick}>clear</button>
 
       {checklist.sections &&
         checklist.sections.map(section => {

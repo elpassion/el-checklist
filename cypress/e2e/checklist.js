@@ -1,3 +1,12 @@
+const setAllCheckboxes = (checklistFixture, value = false) => {
+  checklistFixture.sections.forEach(section => {
+    section.tasks.forEach(task => {
+      const checkbox = cy.getByLabelText(task.name, { exact: false });
+      checkbox[value ? 'check' : 'uncheck']({force: true});
+    })
+  });
+};
+
 describe('checklist page', () => {
   const validSlug = 'spa-basics';
   const invalidSlug = 'worst-practices';
@@ -23,6 +32,8 @@ describe('checklist page', () => {
 
     it('displays sections completion', () => {
       cy.fixture('checklist').then(f => {
+        setAllCheckboxes(f, false);
+
         const section = f.sections[0];
 
         const donePoints = section.tasks[0].severity;
@@ -34,6 +45,34 @@ describe('checklist page', () => {
         checkbox.check({force: true});
 
         cy.getAllByText(`Done: ${donePoints / totalPoints * 100}%`);
+      });
+    });
+
+    it('requires a confirmation on `clear` click', () => {
+      cy.fixture('checklist').then(f => {
+        let confirmed = false;
+        cy.on("window:confirm", msg => {
+          confirmed = msg.includes('Are you sure');
+        });
+
+        const clearButton = cy.getByText('clear', { exact: false });
+        clearButton.click()
+          .then(() => {
+            expect(confirmed).to.equal(true);
+          });
+      });
+    });
+
+    it('clears all data on click', () => {
+      cy.fixture('checklist').then(f => {
+        const sectionsLengthString =  f.sections.length.toString();
+        setAllCheckboxes(f, true);
+        cy.getAllByText(`Done: 100%`).should('have.length', sectionsLengthString);
+
+        const clearButton = cy.getByText('clear', { exact: false });
+        clearButton.click();
+
+        cy.getAllByText(`Done: 0%`).should('have.length', sectionsLengthString);
       });
     });
   });
