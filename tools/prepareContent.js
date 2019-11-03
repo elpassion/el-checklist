@@ -7,7 +7,10 @@ const storeFile = require('../tools/storeFile');
 const logError = require('../tools/logError');
 
 const CONTENT_SOURCE_DIR = 'content';
+
 const CONTENT_TARGET_FILENAME = '_prepared_content.json';
+const CONTENT_TARGET_PATH = '/../src';
+const TEST_TARGET_PATH = '/../cypress/fixtures';
 
 const getCollection = (collectionName, fields) => {
   const checklists = [];
@@ -54,15 +57,23 @@ const fillChecklistsWithTasks = ({ checklistsCollection, tasksCollection }) =>
     return { ...checklist, sections };
   });
 
+const storeData = data => {
+  const fileContent = JSON.stringify(data, null, 2);
+  storeFile(`${fileContent}\n`, CONTENT_TARGET_FILENAME, CONTENT_TARGET_PATH);
+};
+const storeTestData = data => {
+  const fileContent = JSON.stringify(data.checklists[0], null, 2);
+  storeFile(`${fileContent}\n`, 'checklist.json', TEST_TARGET_PATH);
+};
+
 const prepareContent = () => {
   const checklistsCollection = getCollection('checklists', ['name', 'slug', 'sections']);
   const tasksCollection = getCollection('tasks', ['name', 'description', 'solution', 'tags', 'severity', 'slug']);
 
   const data = { checklists: fillChecklistsWithTasks({ checklistsCollection, tasksCollection }) };
 
-  const fileContent = JSON.stringify(data, null, 2);
-
-  storeFile(`${fileContent}\n`, CONTENT_TARGET_FILENAME, `/../src`);
+  storeData(data);
+  storeTestData(data);
 };
 
 module.exports = prepareContent;
