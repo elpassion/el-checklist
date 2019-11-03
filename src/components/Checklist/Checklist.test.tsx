@@ -1,5 +1,6 @@
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
 import { TChecklistTask } from '../../@types/checklist';
@@ -65,33 +66,30 @@ const mockedFulfillmentContextValue = {
   setFulfillment: jest.fn(),
   clearFulfillments: jest.fn(),
 };
+const renderWrapped = (fulfillmentContext = mockedFulfillmentContextValue) =>
+  render(
+    <MemoryRouter>
+      <FulfillmentContext.Provider value={fulfillmentContext}>
+        <Checklist checklist={mockedChecklist} />
+      </FulfillmentContext.Provider>
+      ,
+    </MemoryRouter>,
+  );
 
 test('renders name', () => {
-  const { getByText } = render(
-    <FulfillmentContext.Provider value={mockedFulfillmentContextValue}>
-      <Checklist checklist={mockedChecklist} />
-    </FulfillmentContext.Provider>,
-  );
+  const { getByText } = renderWrapped();
 
   getByText(mockedChecklist.name, { exact: false });
 });
 
 test('renders "clear" button', () => {
-  const { getByText } = render(
-    <FulfillmentContext.Provider value={mockedFulfillmentContextValue}>
-      <Checklist checklist={mockedChecklist} />
-    </FulfillmentContext.Provider>,
-  );
+  const { getByText } = renderWrapped();
 
   getByText('clear');
 });
 
 test('renders all checkboxes', () => {
-  const { getByLabelText } = render(
-    <FulfillmentContext.Provider value={mockedFulfillmentContextValue}>
-      <Checklist checklist={mockedChecklist} />
-    </FulfillmentContext.Provider>,
-  );
+  const { getByLabelText } = renderWrapped();
 
   allItems.forEach(item => {
     getByLabelText(item.name, { exact: false });
@@ -105,11 +103,7 @@ test('checks if items are fulfilled when rendering', () => {
     isFulfilled: mockIsFulfilled,
   };
 
-  const { getByLabelText } = render(
-    <FulfillmentContext.Provider value={contextValue}>
-      <Checklist checklist={mockedChecklist} />
-    </FulfillmentContext.Provider>,
-  );
+  const { getByLabelText } = renderWrapped(contextValue);
 
   allItems.forEach(item => {
     const checkbox = getByLabelText(item.name, { exact: false }) as HTMLInputElement;
@@ -125,11 +119,7 @@ test('calls setFulfillment when fulfillment value changes', () => {
     setFulfillment: mockSetFulfillment,
   };
 
-  const { getByLabelText } = render(
-    <FulfillmentContext.Provider value={contextValue}>
-      <Checklist checklist={mockedChecklist} />
-    </FulfillmentContext.Provider>,
-  );
+  const { getByLabelText } = renderWrapped(contextValue);
   const item = allItems[0];
   const checkbox = getByLabelText(item.name, { exact: false }) as HTMLInputElement;
 

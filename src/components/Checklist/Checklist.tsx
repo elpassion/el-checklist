@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { FC, Fragment, useCallback, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { TChecklist, TChecklistTask } from '../../@types/checklist';
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
@@ -36,6 +37,8 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
 
   return (
     <Fragment>
+      <Link to="/checklists">&lsaquo;&nbsp;Back to list</Link>
+
       <h1>{checklist.name}</h1>
 
       <button onClick={onClearClick}>clear</button>

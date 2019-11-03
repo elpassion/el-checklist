@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { TChecklistsIndex } from '../../@types/checklist';
 import { Maybe } from '../../@types/utils';
@@ -12,14 +12,16 @@ export const ChecklistsIndex: React.FC<TProps> = ({ checklists }: TProps) => {
   }
 
   return (
-    <ul>
-      {checklists.map(item => (
-        <li key={item.slug}>
-          <NavLink to={`/checklist/${item.slug}`} className="link" activeClassName="link--active">
-            {item.name}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h1>Available checklists:</h1>
+
+      <ul>
+        {checklists.map(item => (
+          <li key={item.slug}>
+            <Link to={`/checklist/${item.slug}`}>{item.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
