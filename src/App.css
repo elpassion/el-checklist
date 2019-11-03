@@ -4,22 +4,6 @@
   display: flex;
 }
 
-.App__nav {
-  height: 60px;
-  flex: 0 0 60px;
-  align-items: center;
-  justify-content: space-between;
-  display: flex;
-  padding: 0 30px;
-  background-color: white;
-  box-shadow: 0 0 16px 0 rgba(0, 0, 0, .12);
-}
-
-.App__container {
-  position: relative;
-  flex: 1 1 auto;
-}
-
 .App__content {
   min-height: 100%;
   padding: 50px 30px;
