@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { FC, ReactDOM, Fragment, useCallback } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import { TChecklistTask } from '../../@types/checklist';
 import { Checkbox } from '../Checkbox/Checkbox';
@@ -46,15 +47,21 @@ export const ChecklistItem: FC<TProps> = ({
           ))}
         </ul>
       )}
+      
+      {description && (
+        <section>
+          <h4>Description:</h4>
 
-      {description && <p>{description}</p>}
+          <ReactMarkdown source={description} />
+        </section>
+      )}
 
       {solution && (
-        <Fragment>
+        <section>
           <h4>Solution:</h4>
 
-          <p> {solution}</p>
-        </Fragment>
+          <ReactMarkdown source={solution} />
+        </section>
       )}
     </Tag>
   );

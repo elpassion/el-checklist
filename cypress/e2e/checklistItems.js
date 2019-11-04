@@ -1,7 +1,7 @@
 describe('checklist item', () => {
   let checklist;
   const getItem = () => checklist.sections[0].tasks[0];
-  const getCheckbox = () => cy.getByLabelText(getItem(checklist).name, { exact: false });
+  const getCheckbox = () => cy.getByLabelText(getItem().name, { exact: false });
 
   beforeEach(() => {
     cy.fixture('checklist').then(f => {
@@ -57,6 +57,14 @@ describe('checklist item', () => {
     it('should be unchecked when refreshing', () => {
       const checkbox = getCheckbox();
       checkbox.should('not.be.checked');
+    });
+
+    it('should render description markdown as proper html', () => {
+      cy.contains('strong', 'would be around 55 characters');
+    });
+
+    it('should render solution markdown as proper html', () => {
+      cy.contains('code', '<title>Page Title</title>');
     });
   });
 });
