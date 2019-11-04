@@ -1,4 +1,4 @@
-type Color = string;
+export type Color = string;
 export type ColorsList = { [key: string]: Color };
 type FontFamily = string;
 
@@ -21,6 +21,12 @@ export type Theme = {
   fonts: {
     default: FontFamily;
     significant: FontFamily;
+  };
+
+  fontSizes: {
+    default: number;
+    small: number;
+    significant: number;
   };
 
   duration: {

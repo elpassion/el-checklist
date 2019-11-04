@@ -28,6 +28,12 @@ export const defaultTheme: Theme = {
     significant: 'source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace',
   },
 
+  fontSizes: {
+    default: 16,
+    significant: 20,
+    small: 14,
+  },
+
   duration: {
     default: 200,
   },
