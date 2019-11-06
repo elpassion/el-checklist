@@ -1,20 +1,30 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { FC } from 'react';
+import { FC, ReactDOM, ReactNode } from 'react';
 
-import { TInlineListProps } from '../../@types/inlineList';
 import { Pill } from '../Pill/Pill';
 
 import { wrapperStyle, itemStyle } from './InlineList.styles';
 
+type TInlineListProps<TItem = {}> = {
+  Tag?: keyof ReactDOM | FC;
+  ItemTag?: keyof ReactDOM | FC;
+  items: TItem[];
+  renderItem?: (item: TItem, i: number) => ReactNode;
+};
+
+function defaultRenderItem<T>(item: T, i: number): ReactNode {
+  return (
+    <div css={itemStyle} key={i}>
+      <Pill {...item} />
+    </div>
+  );
+}
+
 export const InlineList: FC<TInlineListProps> = ({
   Tag = 'ul',
   items = [],
-  renderItem = (item, i) => (
-    <div css={itemStyle}>
-      <Pill idx={i} {...item} />
-    </div>
-  ),
+  renderItem = defaultRenderItem,
   ...props
 }: TInlineListProps) => (
   <Tag {...props} css={wrapperStyle}>

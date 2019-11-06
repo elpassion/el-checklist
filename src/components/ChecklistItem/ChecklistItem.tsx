@@ -5,8 +5,8 @@ import ReactMarkdown from 'react-markdown';
 
 import { TChecklistTask } from '../../@types/checklist';
 import { Checkbox } from '../Checkbox/Checkbox';
-import { Pill } from '../Pill/Pill';
 import { InlineList } from '../InlineList/InlineList';
+import { Collapsible } from '../Collapsible/Collapsible';
 
 import { titleStyle, wrapperStyle } from './ChecklistItem.styles';
 
@@ -44,19 +44,15 @@ export const ChecklistItem: FC<TProps> = ({
       {tags.length > 0 && <InlineList items={tagsToRender} />}
 
       {description && (
-        <section>
-          <h4>Description:</h4>
-
+        <Collapsible header="Description">
           <ReactMarkdown source={description} />
-        </section>
+        </Collapsible>
       )}
 
       {solution && (
-        <section>
-          <h4>Solution:</h4>
-
+        <Collapsible header="Solution">
           <ReactMarkdown source={solution} />
-        </section>
+        </Collapsible>
       )}
     </Tag>
   );

@@ -1,10 +1,15 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { FC, PropsWithChildren, useMemo } from 'react';
+import { FC, PropsWithChildren, ReactDOM, useMemo } from 'react';
 
-import { TPill } from '../../@types/pill';
+import { Color } from '../../@types/styling';
 
 import { getWrapperStyle } from './Pill.styles';
+
+type TPill = {
+  colorName?: Color;
+  Tag?: keyof ReactDOM | FC;
+};
 
 type TProps = TPill;
 
