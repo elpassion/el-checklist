@@ -13,7 +13,8 @@ type TPill = {
 
 type TProps = TPill;
 
-export const Pill: FC<TProps> = ({ children, colorName = 'white', Tag = 'li' }: PropsWithChildren<TProps>) => {
+export const Pill: FC<TProps> = ({ children, colorName = 'white', Tag = 'span' }: PropsWithChildren<TProps>) => {
   const wrapperStyle = useMemo(() => getWrapperStyle({ colorName }), [colorName]);
+
   return <Tag css={wrapperStyle}>{children}</Tag>;
 };

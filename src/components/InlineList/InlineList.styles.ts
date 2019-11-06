@@ -13,6 +13,7 @@ export const wrapperStyle = (providedTheme: Theme): CSSObject => {
     padding: 0,
     margin: `${-space}px 0 0 ${-space}px`,
     display: 'flex',
+    flexWrap: 'wrap',
   };
 };
 

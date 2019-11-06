@@ -8,7 +8,7 @@ import { Checkbox } from '../Checkbox/Checkbox';
 import { InlineList } from '../InlineList/InlineList';
 import { Collapsible } from '../Collapsible/Collapsible';
 
-import { titleStyle, wrapperStyle } from './ChecklistItem.styles';
+import { titleStyle, wrapperStyle, sectionStyle, tagListStyle } from './ChecklistItem.styles';
 
 type TProps = TChecklistTask & {
   Tag?: keyof ReactDOM | FC;
@@ -41,18 +41,26 @@ export const ChecklistItem: FC<TProps> = ({
         </Checkbox>
       </h3>
 
-      {tags.length > 0 && <InlineList items={tagsToRender} />}
+      {tags.length > 0 && (
+        <section css={tagListStyle}>
+          <InlineList items={tagsToRender} />
+        </section>
+      )}
 
       {description && (
-        <Collapsible header="Description">
-          <ReactMarkdown source={description} />
-        </Collapsible>
+        <section css={sectionStyle}>
+          <Collapsible header="Description" WrapperTag="div">
+            <ReactMarkdown css={{ overflowX: 'auto' }} source={description} />
+          </Collapsible>
+        </section>
       )}
 
       {solution && (
-        <Collapsible header="Solution">
-          <ReactMarkdown source={solution} />
-        </Collapsible>
+        <section css={sectionStyle}>
+          <Collapsible header="Solution" WrapperTag="div">
+            <ReactMarkdown css={{ overflowX: 'auto' }} source={solution} />
+          </Collapsible>
+        </section>
       )}
     </Tag>
   );

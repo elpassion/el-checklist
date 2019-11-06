@@ -2,6 +2,8 @@
 import { jsx } from '@emotion/core';
 import { memo, FC, PropsWithChildren, useState, ReactDOM, useMemo, useRef } from 'react';
 
+import { Maybe } from '../../@types/utils';
+
 import {
   wrapperStyle,
   getHeaderStyle,
@@ -18,6 +20,19 @@ type TCollapsible = {
 };
 type TProps = TCollapsible;
 
+const getOuterHeight = (elem: Maybe<HTMLElement>): number => {
+  if (!elem) {
+    return 0;
+  }
+
+  const netHeight = elem.offsetHeight;
+  const computedStyle = window.getComputedStyle(elem);
+  const marginTop = parseInt(computedStyle.getPropertyValue('margin-top'));
+  const marginBottom = parseInt(computedStyle.getPropertyValue('margin-bottom'));
+
+  return netHeight + marginBottom + marginTop;
+};
+
 export const CollapsibleBase: FC<PropsWithChildren<TProps>> = ({
   children,
   header,
@@ -31,21 +46,10 @@ export const CollapsibleBase: FC<PropsWithChildren<TProps>> = ({
   };
 
   const headerStyle = useMemo(() => getHeaderStyle({ isOpen }), [isOpen]);
-  const contentOuterStyle = useMemo(() => getContentOuterStyle({}), []);
+  const contentOuterStyle = useMemo(() => getContentOuterStyle({ isOpen }), [isOpen]);
   const innerContentRef = useRef<HTMLDivElement>(null);
   const currentInnerContentRef = innerContentRef.current;
-  const innerContentHeight = useMemo(() => {
-    if (!currentInnerContentRef) {
-      return 0;
-    }
-
-    const netHeight = currentInnerContentRef.offsetHeight;
-    const computedStyle = window.getComputedStyle(currentInnerContentRef);
-    const marginTop = parseInt(computedStyle.getPropertyValue('margin-top'));
-    const marginBottom = parseInt(computedStyle.getPropertyValue('margin-bottom'));
-
-    return netHeight + marginBottom + marginTop;
-  }, [currentInnerContentRef]);
+  const innerContentHeight = useMemo(() => getOuterHeight(currentInnerContentRef), [currentInnerContentRef]);
   const outerContentHeight = useMemo(() => (isOpen ? innerContentHeight : 0), [isOpen, innerContentHeight]);
 
   return (

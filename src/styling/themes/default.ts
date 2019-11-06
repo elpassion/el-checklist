@@ -42,5 +42,15 @@ export const defaultTheme: Theme = {
     radii: {
       default: 8,
     },
+    inputSizes: {
+      default: {
+        standard: 16,
+        expanded: 18,
+      },
+      large: {
+        standard: 32,
+        expanded: 36,
+      },
+    },
   },
 };

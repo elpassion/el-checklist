@@ -37,5 +37,15 @@ export type Theme = {
     radii: {
       default: number;
     };
+    inputSizes: {
+      default: {
+        standard: number;
+        expanded: number;
+      };
+      large: {
+        standard: number;
+        expanded: number;
+      };
+    };
   };
 };

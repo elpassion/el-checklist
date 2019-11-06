@@ -15,9 +15,9 @@ type TInlineListProps<TItem = {}> = {
 
 function defaultRenderItem<T>(item: T, i: number): ReactNode {
   return (
-    <div css={itemStyle} key={i}>
+    <li css={itemStyle} key={i}>
       <Pill {...item} />
-    </div>
+    </li>
   );
 }
 
