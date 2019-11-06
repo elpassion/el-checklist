@@ -5,7 +5,7 @@ it('returns both vertical and horizontal rules when no params provided', () => {
 
   expect(result).toEqual(
     expect.objectContaining({
-      '&:first-child': {
+      '&first-child': {
         marginTop: 0,
         marginLeft: 0,
       },
@@ -22,7 +22,7 @@ it('returns only vertical rules when verticalOnly provided', () => {
 
   expect(result).toEqual(
     expect.objectContaining({
-      '&:first-child': {
+      '&first-child': {
         marginTop: 0,
       },
       '&:last-child': {
@@ -37,7 +37,7 @@ it('returns only horizontal rules when horizontalOnly provided', () => {
 
   expect(result).toEqual(
     expect.objectContaining({
-      '&:first-child': {
+      '&first-child': {
         marginLeft: 0,
       },
       '&:last-child': {

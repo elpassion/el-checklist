@@ -10,7 +10,7 @@ export const clearExtremeMargins: (args?: TArgs) => CSSObject = (args = {}) => {
   const { verticalOnly, horizontalOnly } = { ...defaultArgs, ...args };
 
   return {
-    '&:first-child': {
+    '&first-child': {
       ...(horizontalOnly ? {} : { marginTop: 0 }),
       ...(verticalOnly ? {} : { marginLeft: 0 }),
     },
