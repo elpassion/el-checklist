@@ -3,15 +3,16 @@
   "name": "SPA Basics",
   "sections": [
     {
-      "name": "Part 1",
+      "name": "Discoverability & SEO",
       "tasks": [
-        "A title is used on all pages"
+        "A title is used on all pages",
+        "Apple meta-tags are present."
       ]
     },
     {
-      "name": "Part 2",
+      "name": "Offline Behaviour",
       "tasks": [
-        "Apple meta-tags are present."
+        "All app URLs load while offline"
       ]
     }
   ]
