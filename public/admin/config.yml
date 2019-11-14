@@ -11,7 +11,6 @@ backend:
 site_url: https://el-checklist.netlify.com
 display_url: https://el-checklist.netlify.com
 logo_url: /admin/logo_elp.svg
-publish_mode: editorial_workflow
 media_folder: public/cms/uploads
 public_folder: /cms/uploads
 
@@ -39,7 +38,7 @@ collections:
       - { label: "Layout", name: "layout", widget: "hidden", default: "tasks"}
       - { label: "Task Name", name: "name", widget: "string"}
       - { label: "Task Tags", required: false, name: "tags", widget: "relation", multiple: true, collection: "tags", searchFields: "Name", valueField: "name", displayFields: "name" }
-      - { label: "Task Priority", name: "severity", widget: "select", options: [1, 2, 3] }
+      - { label: "Task Priority", name: "severity", widget: "select", options: [{ label: "Low", value: 1 }, { label: "Medium", value: 2 }, { label: "High", value: 3 }] }
       - { label: "Task Description", name: "description", widget: "markdown" }
       - { label: "Task Solution", required: false, name: "solution", widget: "markdown" }
   - name: "checklists"
