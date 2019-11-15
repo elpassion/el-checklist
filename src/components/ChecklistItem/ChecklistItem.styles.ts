@@ -2,6 +2,7 @@ import { CSSObject } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
 import { assureTheme } from '../../utils/misc/themedStyles';
+import { clearExtremeMargins } from '../../utils/styling/clearExtremeMargins';
 
 export const wrapperStyle = (providedTheme: Theme): CSSObject => {
   const theme = assureTheme(providedTheme);
@@ -15,9 +16,27 @@ export const wrapperStyle = (providedTheme: Theme): CSSObject => {
   };
 };
 
+export const sectionStyle = (providedTheme: Theme): CSSObject => {
+  const theme = assureTheme(providedTheme);
+  return {
+    margin: `${theme.spacing.unit}px 0`,
+    ...clearExtremeMargins({ verticalOnly: true }),
+  };
+};
+
+export const tagListStyle = (providedTheme: Theme): CSSObject => {
+  const theme = assureTheme(providedTheme);
+  return {
+    margin: `${1.5 * theme.spacing.unit}px 0 ${2 * theme.spacing.unit}px`,
+    paddingLeft: theme.shape.inputSizes.large.standard + 2 * theme.spacing.unit,
+    ...clearExtremeMargins({ verticalOnly: true }),
+  };
+};
+
 export const titleStyle = (providedTheme: Theme): CSSObject => {
   const theme = assureTheme(providedTheme);
   return {
-    margin: `0 0 ${2 * theme.spacing.unit}px`,
+    ...sectionStyle(theme),
+    marginBottom: 1.5 * theme.spacing.unit,
   };
 };

@@ -2,23 +2,23 @@ import { CSSObject, keyframes } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
 
-const DONE_FACTOR = 1.1;
-
-const check = keyframes`
-  0% { tranform: scale(1); }
-  50% { transform: scale(${DONE_FACTOR * DONE_FACTOR}); }
-  100% { transform: scale(${DONE_FACTOR}); }
-`;
-const uncheck = keyframes`
-  0% { tranform: scale(${DONE_FACTOR}); }
-  50% { transform: scale(${1 / DONE_FACTOR}); }
-  100% { transform: scale(1); }
-`;
-
 export const checkboxStyles = (theme: Theme): CSSObject => {
   const LINE_HEIGHT = 1.5;
-  const SIZE = theme.spacing.unit * 4;
+  const SIZE = theme.shape.inputSizes.large.standard;
   const DURATION = `${theme.duration.default}ms`;
+  const DONE_FACTOR = theme.shape.inputSizes.large.expanded / SIZE;
+
+  const check = keyframes`
+    0% { tranform: scale(1); }
+    50% { transform: scale(${DONE_FACTOR * DONE_FACTOR}); }
+    100% { transform: scale(${DONE_FACTOR}); }
+  `;
+
+  const uncheck = keyframes`
+    0% { tranform: scale(${DONE_FACTOR}); }
+    50% { transform: scale(${1 / DONE_FACTOR}); }
+    100% { transform: scale(1); }
+  `;
 
   return {
     'input[type=checkbox]': {
@@ -30,16 +30,16 @@ export const checkboxStyles = (theme: Theme): CSSObject => {
       '& + label': {
         position: 'relative',
         display: 'inline-block',
-        height: `${LINE_HEIGHT}em`,
+        minHeight: SIZE,
         lineHeight: LINE_HEIGHT,
         paddingLeft: SIZE + theme.spacing.unit * 2,
-        color: 'blue',
+        paddingTop: `calc((${SIZE}px - ${LINE_HEIGHT}em) / 2)`,
         userSelect: 'none',
       },
 
       '& + label:before, & + label:after': {
         position: 'absolute',
-        top: `calc((${LINE_HEIGHT}em - ${SIZE}px) / 2)`,
+        top: 0,
         left: 0,
         display: 'block',
         width: SIZE,
@@ -48,8 +48,6 @@ export const checkboxStyles = (theme: Theme): CSSObject => {
 
       '& + label:before': {
         position: 'absolute',
-        top: `calc((${LINE_HEIGHT}em - ${SIZE}px) / 2)`,
-        left: 0,
         display: 'block',
         width: SIZE,
         height: SIZE,

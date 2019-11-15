@@ -1,12 +1,27 @@
 /*eslint-disable @typescript-eslint/no-var-requires*/
 const fs = require('fs');
+const getDirName = require('path').dirname;
+
+const mkdirp = require('mkdirp');
+
+const onError = (fileName, err) => {
+  console.error(`Something went wrong writing file '${fileName}': ${err}`);
+};
 
 module.exports = (content, fileName, path) => {
-  fs.writeFile(__dirname + `${path}/${fileName}`, content, function(err) {
+  const fullPath = __dirname + `${path}/${fileName}`;
+
+  mkdirp(getDirName(fullPath), function(err) {
     if (err) {
-      console.error(`Something went wrong writing file '${fileName}': ${err}`);
-    } else {
-      console.error(`File '${fileName}' saved.`);
+      return onError(fileName, err);
     }
+
+    fs.writeFile(fullPath, content, function(err) {
+      if (err) {
+        onError(fileName, err);
+      } else {
+        console.error(`File '${fileName}' saved.`);
+      }
+    });
   });
 };

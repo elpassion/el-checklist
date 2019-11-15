@@ -4,6 +4,7 @@ import { Theme } from '../../@types/styling';
 
 export const listStyles = (theme: Theme): CSSObject => ({
   ul: {
+    margin: 0,
     paddingLeft: 0,
     listStyle: 'none',
   },

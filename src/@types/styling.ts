@@ -1,4 +1,4 @@
-type Color = string;
+export type Color = string;
 export type ColorsList = { [key: string]: Color };
 type FontFamily = string;
 
@@ -23,6 +23,12 @@ export type Theme = {
     significant: FontFamily;
   };
 
+  fontSizes: {
+    default: number;
+    small: number;
+    significant: number;
+  };
+
   duration: {
     default: number;
   };
@@ -30,6 +36,16 @@ export type Theme = {
   shape: {
     radii: {
       default: number;
+    };
+    inputSizes: {
+      default: {
+        standard: number;
+        expanded: number;
+      };
+      large: {
+        standard: number;
+        expanded: number;
+      };
     };
   };
 };

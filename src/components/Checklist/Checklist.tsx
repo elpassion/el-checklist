@@ -8,8 +8,22 @@ import { FulfillmentContext } from '../../contexts/FulfillmentContext';
 import { ChecklistItem } from '../ChecklistItem/ChecklistItem';
 import { TCompletion } from '../../@types/completion';
 import { Completion } from '../Completion/Completion';
+import { Collapsible } from '../Collapsible/Collapsible';
+
+import { titleStyle } from './Checklist.styles';
 
 type TProps = { checklist: TChecklist };
+
+type THeaderProps = {
+  name: TChecklist['name'];
+  completion: TCompletion;
+};
+
+const renderHeader: FC<THeaderProps> = ({ name, completion }: THeaderProps) => (
+  <header css={titleStyle}>
+    <h2>{name}</h2> <Completion {...completion} />
+  </header>
+);
 
 export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
   const { isFulfilled, setFulfillment, clearFulfillments } = useContext(FulfillmentContext);
@@ -47,11 +61,14 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
         checklist.sections.map(section => {
           const completion = getSectionCompletion(section);
           return (
-            <section key={section.name}>
-              <h2>{section.name}</h2>
-
-              <Completion {...completion} />
-
+            <Collapsible
+              header={renderHeader({ name: section.name, completion })}
+              WrapperTag="section"
+              HeaderTag="div"
+              ContentTag="ul"
+              key={section.name}
+              isInitiallyOpen={completion.doneUnits < completion.totalUnits}
+            >
               <ul>
                 {section.tasks.map(task => (
                   <ChecklistItem
@@ -63,7 +80,7 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
                   />
                 ))}
               </ul>
-            </section>
+            </Collapsible>
           );
         })}
     </Fragment>
