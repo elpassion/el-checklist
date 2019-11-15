@@ -37,7 +37,7 @@ export const ChecklistItem: FC<TProps> = ({
     <Tag {...rest} css={wrapperStyle}>
       <h3 css={titleStyle}>
         <Checkbox id={slug} isChecked={isFulfilled} onChange={onCheckboxChange}>
-          {name} ({severity})
+          {name} (severity: {severity})
         </Checkbox>
       </h3>
 
