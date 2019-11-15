@@ -23,9 +23,10 @@
     "typescript": "3.5.3"
   },
   "scripts": {
-    "start": "node scripts/prepareContent.js && react-scripts start",
-    "build": "node scripts/prepareContent.js && react-scripts build",
-    "test": "node scripts/prepareContent.js && react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts --collectCoverageFrom=!src/@types/* --collectCoverageFrom=!src/config/* --collectCoverageFrom=!src/index.tsx",
+    "generate:data": "node scripts/prepareContent.js",
+    "start": "npm run generate:data && react-scripts start",
+    "build": "npm run generate:data && react-scripts build",
+    "test": "npm run generate:data && react-scripts test --coverage --watchAll=false --collectCoverageFrom=src/**/*.{js,ts,tsx} --collectCoverageFrom=!src/**/*.d.ts --collectCoverageFrom=!src/@types/* --collectCoverageFrom=!src/config/* --collectCoverageFrom=!src/index.tsx",
     "test:watch": "npm run test -- --watchAll --watch",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx ./src",
     "lint:js:fix": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
@@ -36,8 +37,8 @@
     "e2e:dev": "npm-run-all --parallel start cy:open",
     "pree2e": "npm run build",
     "e2e": "npm-run-all --parallel --race start cy:run",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "cy:open": "npm run generate:data && cypress open",
+    "cy:run": "npm run generate:data && cypress run",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
