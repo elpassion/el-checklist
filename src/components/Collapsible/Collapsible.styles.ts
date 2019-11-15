@@ -41,12 +41,14 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     textAlign: 'left',
     border: 0,
     backgroundColor: 'transparent',
+    cursor: 'pointer',
 
     '&:before': {
       position: 'absolute',
-      top: 0.45 * LINE_HEIGHT * FONT_SIZE,
+      top: `${LINE_HEIGHT / 2}em`,
       width: 0,
       height: 0,
+      fontSize: 'inherit',
       borderTop: `${ARROW_SIZE / 2}em solid transparent`,
       borderLeft: `${0.867 * ARROW_SIZE}em solid currentColor`,
       borderBottom: `${ARROW_SIZE / 2}em solid transparent`,

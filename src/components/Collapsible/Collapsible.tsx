@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import { memo, FC, PropsWithChildren, useState, ReactDOM, useMemo, useRef } from 'react';
-
-import { Maybe } from '../../@types/utils';
+import { FC, PropsWithChildren, useState, ReactDOM, ReactNode } from 'react';
 
 import {
   wrapperStyle,
@@ -13,58 +11,43 @@ import {
 } from './Collapsible.styles';
 
 type TCollapsible = {
-  header: string;
+  header: ReactNode;
   HeaderTag?: keyof ReactDOM | FC;
   ContentTag?: keyof ReactDOM | FC;
   WrapperTag?: keyof ReactDOM | FC;
+  isInitiallyOpen?: boolean;
 };
 type TProps = TCollapsible;
 
-const getOuterHeight = (elem: Maybe<HTMLElement>): number => {
-  if (!elem) {
-    return 0;
-  }
-
-  const netHeight = elem.offsetHeight;
-  const computedStyle = window.getComputedStyle(elem);
-  const marginTop = parseInt(computedStyle.getPropertyValue('margin-top'));
-  const marginBottom = parseInt(computedStyle.getPropertyValue('margin-bottom'));
-
-  return netHeight + marginBottom + marginTop;
-};
-
-export const CollapsibleBase: FC<PropsWithChildren<TProps>> = ({
+export const Collapsible: FC<PropsWithChildren<TProps>> = ({
   children,
   header,
   HeaderTag = 'h4',
   ContentTag = 'div',
   WrapperTag = 'section',
+  isInitiallyOpen = false,
 }: PropsWithChildren<TProps>) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const onHeaderClick = () => {
-    setIsOpen(!isOpen);
+  const [isOpen, setIsOpen] = useState(isInitiallyOpen);
+  const [outerContentHeight, setOuterContentHeight] = useState<number | 'auto'>(isOpen ? 'auto' : 0);
+
+  const onIsOpenUpdate = (isOpen: boolean) => {
+    setIsOpen(isOpen);
+    setOuterContentHeight(isOpen ? 'auto' : 0);
   };
 
-  const headerStyle = useMemo(() => getHeaderStyle({ isOpen }), [isOpen]);
-  const contentOuterStyle = useMemo(() => getContentOuterStyle({ isOpen }), [isOpen]);
-  const innerContentRef = useRef<HTMLDivElement>(null);
-  const currentInnerContentRef = innerContentRef.current;
-  const innerContentHeight = useMemo(() => getOuterHeight(currentInnerContentRef), [currentInnerContentRef]);
-  const outerContentHeight = useMemo(() => (isOpen ? innerContentHeight : 0), [isOpen, innerContentHeight]);
+  const onHeaderClick = () => {
+    onIsOpenUpdate(!isOpen);
+  };
 
   return (
     <WrapperTag css={wrapperStyle}>
-      <button css={headerStyle} onClick={onHeaderClick}>
+      <button css={getHeaderStyle({ isOpen })} onClick={onHeaderClick}>
         <HeaderTag css={innerHeaderStyle}>{header}</HeaderTag>
       </button>
 
-      <ContentTag css={contentOuterStyle} style={{ height: outerContentHeight }}>
-        <div ref={innerContentRef} css={contentInnerStyle}>
-          {children}
-        </div>
+      <ContentTag css={getContentOuterStyle({ isOpen })} style={{ height: outerContentHeight }}>
+        <div css={contentInnerStyle}>{children}</div>
       </ContentTag>
     </WrapperTag>
   );
 };
-
-export const Collapsible = memo(CollapsibleBase);
