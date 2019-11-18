@@ -65,7 +65,6 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
               header={renderHeader({ name: section.name, completion })}
               WrapperTag="section"
               HeaderTag="div"
-              ContentTag="ul"
               key={section.name}
               isInitiallyOpen={completion.doneUnits < completion.totalUnits}
             >
