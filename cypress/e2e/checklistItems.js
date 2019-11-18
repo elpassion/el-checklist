@@ -11,7 +11,6 @@ describe('checklist item', () => {
   });
 
   context('rendering', () => {
-
     context('description', () => {
       const content = 'would be around 55 characters';
 
@@ -20,12 +19,12 @@ describe('checklist item', () => {
       });
 
       it('hide description specifics initially', () => {
-        cy.contains( content).should('be.not.visible');
+        cy.contains(content).should('be.not.visible');
       });
 
       it('show description specifics after label click', () => {
-        cy.contains( 'Description').click();
-        cy.contains( content).should('be.visible');
+        cy.contains('Description').click();
+        cy.contains(content).should('be.visible');
       });
     });
 
@@ -37,12 +36,12 @@ describe('checklist item', () => {
       });
 
       it('hide solution specifics initially', () => {
-        cy.contains( content).should('be.not.visible');
+        cy.contains(content).should('be.not.visible');
       });
 
       it('show solution specifics after label click', () => {
-        cy.contains( 'Solution').click();
-        cy.contains( content).should('be.visible');
+        cy.contains('Solution').click();
+        cy.contains(content).should('be.visible');
       });
     });
   });
@@ -50,13 +49,13 @@ describe('checklist item', () => {
   context('checking and unchecking', () => {
     it('should be unchecked at the beginning', () => {
       const checkbox = getCheckbox();
-      checkbox.uncheck({force: true});
+      checkbox.uncheck({ force: true });
       checkbox.should('not.be.checked');
     });
 
     it('should be checked after first click', () => {
       const checkbox = getCheckbox();
-      checkbox.click({force: true});
+      checkbox.click({ force: true });
       checkbox.should('be.checked');
     });
 
@@ -67,7 +66,7 @@ describe('checklist item', () => {
 
     it('should be unchecked after second click', () => {
       const checkbox = getCheckbox();
-      checkbox.click({force: true});
+      checkbox.click({ force: true });
       checkbox.should('not.be.checked');
     });
 

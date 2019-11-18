@@ -7,11 +7,11 @@ describe('checklists index page', () => {
     });
 
     it('renders title', () => {
-      cy.getByText('Available Checklists', { exact: false })
+      cy.getByText('Available Checklists', { exact: false });
     });
 
     it('renders links to specific cheklists', () => {
-      cy.getByText('SPA Basics', { exact: false })
+      cy.getByText('SPA Basics', { exact: false });
     });
   });
 
@@ -21,9 +21,7 @@ describe('checklists index page', () => {
     });
 
     it('redirects to `checklists` path', () => {
-      cy
-        .location('pathname')
-        .should('eq', CHECKLISTS_PATH);
+      cy.location('pathname').should('eq', CHECKLISTS_PATH);
     });
   });
 });
