@@ -1,19 +1,13 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { FC, PropsWithChildren, useState, ReactDOM, ReactNode } from 'react';
+import AnimateHeight from 'react-animate-height';
 
-import {
-  wrapperStyle,
-  getHeaderStyle,
-  innerHeaderStyle,
-  getContentOuterStyle,
-  contentInnerStyle,
-} from './Collapsible.styles';
+import { wrapperStyle, getHeaderStyle, innerHeaderStyle } from './Collapsible.styles';
 
 type TCollapsible = {
   header: ReactNode;
   HeaderTag?: keyof ReactDOM | FC;
-  ContentTag?: keyof ReactDOM | FC;
   WrapperTag?: keyof ReactDOM | FC;
   isInitiallyOpen?: boolean;
 };
@@ -23,7 +17,6 @@ export const Collapsible: FC<PropsWithChildren<TProps>> = ({
   children,
   header,
   HeaderTag = 'h4',
-  ContentTag = 'div',
   WrapperTag = 'section',
   isInitiallyOpen = false,
 }: PropsWithChildren<TProps>) => {
@@ -45,9 +38,9 @@ export const Collapsible: FC<PropsWithChildren<TProps>> = ({
         <HeaderTag css={innerHeaderStyle}>{header}</HeaderTag>
       </button>
 
-      <ContentTag css={getContentOuterStyle({ isOpen })} style={{ height: outerContentHeight }}>
-        <div css={contentInnerStyle}>{children}</div>
-      </ContentTag>
+      <AnimateHeight duration={200} height={outerContentHeight} easing="ease-in-out">
+        {children}
+      </AnimateHeight>
     </WrapperTag>
   );
 };
