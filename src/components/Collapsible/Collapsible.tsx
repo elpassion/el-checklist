@@ -38,11 +38,7 @@ export const Collapsible: FC<PropsWithChildren<TProps>> = ({
         <HeaderTag css={innerHeaderStyle}>{header}</HeaderTag>
       </button>
 
-      <AnimateHeight
-        duration={200}
-        height={outerContentHeight} // see props documentation below
-        easing="ease-in-out"
-      >
+      <AnimateHeight duration={200} height={outerContentHeight} easing="ease-in-out">
         {children}
       </AnimateHeight>
     </WrapperTag>
