@@ -73,7 +73,7 @@ const storeChecklistIndexTestData = data => {
 };
 
 const prepareContent = () => {
-  const checklistsCollection = getCollection('checklists', ['name', 'slug', 'sections']);
+  const checklistsCollection = getCollection('checklists', ['name', 'slug', 'description', 'sections']);
   const tasksCollection = getCollection('tasks', ['name', 'description', 'solution', 'tags', 'severity', 'slug']);
 
   const data = { checklists: fillChecklistsWithTasks({ checklistsCollection, tasksCollection }) };

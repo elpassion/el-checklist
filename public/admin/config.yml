@@ -52,6 +52,7 @@ collections:
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "checklist"}
       - { label: "Checklist Name", name: "name", widget: "string"}
+      - { label: "Checklist Description", name: "description", widget: "markdown"}
       - label: "Sections"
         name: "sections"
         widget: "list"

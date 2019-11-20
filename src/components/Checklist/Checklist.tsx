@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core';
 import { FC, Fragment, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 import { TChecklist, TChecklistTask } from '../../@types/checklist';
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
@@ -56,6 +57,8 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
       <h1>{checklist.name}</h1>
 
       <button onClick={onClearClick}>clear</button>
+
+      {checklist.description && <ReactMarkdown>{checklist.description}</ReactMarkdown>}
 
       {checklist.sections &&
         checklist.sections.map(section => {

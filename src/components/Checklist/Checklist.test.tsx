@@ -14,6 +14,7 @@ afterEach(() => {
 const mockedChecklist = {
   id: '7',
   name: 'Best Practices 7',
+  description: 'description goes here',
   slug: 'best-practices-7',
   sections: [
     {
@@ -80,6 +81,12 @@ test('renders name', () => {
   const { getByText } = renderWrapped();
 
   getByText(mockedChecklist.name, { exact: false });
+});
+
+test('renders description', () => {
+  const { getByText } = renderWrapped();
+
+  getByText(mockedChecklist.description, { exact: false });
 });
 
 test('renders "clear" button', () => {
