@@ -1,0 +1,10 @@
+{
+  "layout": "tasks",
+  "name": "Pages are responsive on tablets & mobile devices",
+  "tags": [
+    "RWD"
+  ],
+  "severity": 3,
+  "description": "Check the [Mobile Friendly Test](https://search.google.com/test/mobile-friendly)",
+  "solution": "Look at implementing a [responsive design](https://developers.google.com/web/fundamentals/design-and-ux/responsive/), or adaptively serving a viewport-friendly site."
+}

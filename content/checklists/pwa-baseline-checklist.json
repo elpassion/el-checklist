@@ -1,0 +1,29 @@
+{
+  "layout": "checklist",
+  "name": "PWA Baseline Checklist",
+  "sections": [
+    {
+      "name": "Configuration",
+      "tasks": [
+        "Site is served over HTTPS",
+        "Metadata provided for Add to Home screen",
+        "Each page has a URL"
+      ]
+    },
+    {
+      "name": "Performance",
+      "tasks": [
+        "All app URLs load while offline",
+        "First load fast even on 3G"
+      ]
+    },
+    {
+      "name": "Appearance",
+      "tasks": [
+        "Pages are responsive on tablets & mobile devices",
+        "Site works cross-browser",
+        "Page transitions don't feel like they block on the network"
+      ]
+    }
+  ]
+}

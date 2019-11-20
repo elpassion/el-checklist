@@ -1,0 +1,10 @@
+{
+  "layout": "tasks",
+  "name": "Metadata provided for Add to Home screen",
+  "tags": [
+    "Metadata"
+  ],
+  "severity": 1,
+  "description": "Use Lighthouse to verify **User can be prompted to Add to Home screen** is all Yes.",
+  "solution": "Add a [Web App Manifest](https://developers.google.com/web/fundamentals/web-app-manifest) file to your project."
+}

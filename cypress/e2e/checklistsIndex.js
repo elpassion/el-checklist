@@ -1,5 +1,6 @@
 describe('checklists index page', () => {
   const CHECKLISTS_PATH = '/checklists';
+  const CHECKLIST_PATH = '/checklist';
 
   context('valid path', () => {
     beforeEach(() => {
@@ -10,8 +11,14 @@ describe('checklists index page', () => {
       cy.getByText('Available Checklists', { exact: false });
     });
 
-    it('renders links to specific cheklists', () => {
-      cy.getByText('SPA Basics', { exact: false });
+    it('renders links to specific checklists', () => {
+      cy.fixture('_checklists-index').then(checklists => {
+        checklists.forEach(checklist => {
+          cy.getByText(checklist.name, { exact: false })
+            .should('have.attr', 'href')
+            .and('eq', `${CHECKLIST_PATH}/${checklist.slug}`);
+        });
+      });
     });
   });
 

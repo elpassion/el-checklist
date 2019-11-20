@@ -13,7 +13,7 @@ describe('checklist page', () => {
 
   context('valid slug', () => {
     beforeEach(() => {
-      cy.fixture('checklist').then(f => {
+      cy.fixture('_checklist').then(f => {
         validSlug = f.slug;
         cy.visit(`/checklist/${validSlug}`);
       });
@@ -26,7 +26,7 @@ describe('checklist page', () => {
       });
 
       it('renders all items', () => {
-        cy.fixture('checklist').then(f => {
+        cy.fixture('_checklist').then(f => {
           cy.contains('h1', f.name);
 
           f.sections.forEach(section => {
@@ -40,7 +40,7 @@ describe('checklist page', () => {
       });
 
       it('renders section as closed if was fully completed on previous visit', () => {
-        cy.fixture('checklist').then(f => {
+        cy.fixture('_checklist').then(f => {
           const content = f.sections[0].tasks[0].name;
           setAllCheckboxes(f, true);
 
@@ -51,7 +51,7 @@ describe('checklist page', () => {
       });
 
       it('renders section as open if not fully completed on previous visit', () => {
-        cy.fixture('checklist').then(f => {
+        cy.fixture('_checklist').then(f => {
           const content = f.sections[0].tasks[0].name;
           setAllCheckboxes(f, false);
 
@@ -62,7 +62,7 @@ describe('checklist page', () => {
       });
 
       it('displays sections completion', () => {
-        cy.fixture('checklist').then(f => {
+        cy.fixture('_checklist').then(f => {
           setAllCheckboxes(f, false);
 
           const section = f.sections[0];
@@ -93,7 +93,7 @@ describe('checklist page', () => {
       });
 
       it('clears all data on click', () => {
-        cy.fixture('checklist').then(f => {
+        cy.fixture('_checklist').then(f => {
           const sectionsLengthString = f.sections.length.toString();
           setAllCheckboxes(f, true);
           cy.getAllByText(`Done: 100%`).should('have.length', sectionsLengthString);

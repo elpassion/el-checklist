@@ -1,10 +1,20 @@
+import removeMd from 'remove-markdown';
+
 describe('checklist item', () => {
   let checklist;
   const getItem = () => checklist.sections[0].tasks[0];
   const getCheckbox = () => cy.getByLabelText(getItem().name, { exact: false });
+  const getTaskProperty = property =>
+    checklist.sections.reduce((acc, section) => {
+      if (acc) {
+        return acc;
+      }
+      const taskWithDescription = section.tasks.find(task => !!task[property]);
+      return taskWithDescription ? removeMd(taskWithDescription[property]) : null;
+    }, null);
 
   beforeEach(() => {
-    cy.fixture('checklist').then(f => {
+    cy.fixture('_checklist').then(f => {
       checklist = f;
       cy.visit(`/checklist/${checklist.slug}`);
     });
@@ -12,42 +22,48 @@ describe('checklist item', () => {
 
   context('rendering', () => {
     context('description', () => {
-      const content = 'would be around 55 characters';
-
-      it('should render description markdown as proper html', () => {
-        cy.contains('strong', content);
+      let content;
+      beforeEach(() => {
+        content = getTaskProperty('description');
       });
 
       it('hide description specifics initially', () => {
-        cy.contains(content).should('be.not.visible');
+        if (content) {
+          cy.contains(content).should('be.not.visible');
+        }
       });
 
       it('show description specifics after label click', () => {
-        cy.contains('Description').click();
-        cy.contains(content).should('be.visible');
+        if (content) {
+          cy.contains('Description').click();
+          cy.contains(content).should('be.visible');
+        }
       });
     });
 
     context('solution', () => {
-      const content = '<title>Page Title</title>';
-
-      it('should render solution markdown as proper html', () => {
-        cy.contains('code', content);
+      let content;
+      beforeEach(() => {
+        content = getTaskProperty('solution');
       });
 
       it('hide solution specifics initially', () => {
-        cy.contains(content).should('be.not.visible');
+        if (content) {
+          cy.contains(content).should('be.not.visible');
+        }
       });
 
       it('show solution specifics after label click', () => {
-        cy.contains('Solution').click();
-        cy.contains(content).should('be.visible');
+        if (content) {
+          cy.contains('Solution').click();
+          cy.contains(content).should('be.visible');
+        }
       });
     });
   });
 
   context('checking and unchecking', () => {
-    it('should be unchecked at the beginning', () => {
+    it('should be unchecked at the beginning (for test purposes)', () => {
       const checkbox = getCheckbox();
       checkbox.uncheck({ force: true });
       checkbox.should('not.be.checked');

@@ -61,9 +61,14 @@ const storeData = data => {
   const fileContent = JSON.stringify(data, null, 2);
   storeFile(`${fileContent}\n`, CONTENT_TARGET_FILENAME, CONTENT_TARGET_PATH);
 };
-const storeTestData = data => {
+const storeChecklistTestData = data => {
   const fileContent = JSON.stringify(data.checklists[0], null, 2);
-  storeFile(`${fileContent}\n`, 'checklist.json', TEST_TARGET_PATH);
+  storeFile(`${fileContent}\n`, '_checklist.json', TEST_TARGET_PATH);
+};
+const storeChecklistIndexTestData = data => {
+  const checklistsIndexData = data.checklists.map(checklist => _.pick(checklist, ['name', 'slug']));
+  const fileContent = JSON.stringify(checklistsIndexData, null, 2);
+  storeFile(`${fileContent}\n`, '_checklists-index.json', TEST_TARGET_PATH);
 };
 
 const prepareContent = () => {
@@ -73,7 +78,8 @@ const prepareContent = () => {
   const data = { checklists: fillChecklistsWithTasks({ checklistsCollection, tasksCollection }) };
 
   storeData(data);
-  storeTestData(data);
+  storeChecklistTestData(data);
+  storeChecklistIndexTestData(data);
 };
 
 module.exports = prepareContent;
