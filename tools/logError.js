@@ -1,3 +1,6 @@
+/*eslint-disable @typescript-eslint/no-var-requires*/
+const chalk = require('chalk');
+
 module.exports = e => {
-  console.error(`Error an error occured: ${e}`);
+  console.error(chalk.bold.black.bgRed('[!]') + chalk.red(` An error occured: ${e}`));
 };
