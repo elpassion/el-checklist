@@ -1,0 +1,13 @@
+{
+  "name": "Fulfill all base PWA requirements",
+  "tags": [
+    "Performance",
+    "Routing",
+    "Service Worker",
+    "Offline",
+    "RWD"
+  ],
+  "severity": 3,
+  "description": "",
+  "solution": "Conquer [PWA Baseline Checklist](/checklist/pwa-baseline-checklist)"
+}

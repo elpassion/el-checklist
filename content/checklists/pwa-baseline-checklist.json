@@ -1,0 +1,30 @@
+{
+  "layout": "checklist",
+  "name": "PWA Baseline Checklist",
+  "description": "Based on [Google guide to Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)",
+  "sections": [
+    {
+      "name": "Configuration",
+      "tasks": [
+        "Site is served over HTTPS",
+        "Metadata provided for Add to Home screen",
+        "Each page has a URL"
+      ]
+    },
+    {
+      "name": "Performance",
+      "tasks": [
+        "All app URLs load while offline",
+        "First load fast even on 3G"
+      ]
+    },
+    {
+      "name": "Appearance",
+      "tasks": [
+        "Pages are responsive on tablets & mobile devices",
+        "Site works cross-browser",
+        "Page transitions don't feel like they block on the network"
+      ]
+    }
+  ]
+}

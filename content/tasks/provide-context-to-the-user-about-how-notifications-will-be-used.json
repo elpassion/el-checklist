@@ -1,0 +1,10 @@
+{
+  "name": "Provide context to the user about how notifications will be used",
+  "tags": [
+    "UX",
+    "UI"
+  ],
+  "severity": 2,
+  "description": "",
+  "solution": "[Guide to push notification flows](https://docs.google.com/document/d/1WNPIS_2F0eyDm5SS2E6LZ_75tk6XtBSnR1xNjWJ_DPE/view)"
+}

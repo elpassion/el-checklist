@@ -1,0 +1,10 @@
+{
+  "name": "Site uses cache-first networking",
+  "tags": [
+    "Service Worker",
+    "Offline"
+  ],
+  "severity": 2,
+  "description": "",
+  "solution": ""
+}

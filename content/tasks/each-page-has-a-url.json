@@ -1,0 +1,10 @@
+{
+  "layout": "tasks",
+  "name": "Each page has a URL",
+  "tags": [
+    "Routing"
+  ],
+  "severity": 2,
+  "description": "Ensure individual pages are deep linkable via the URLs and that URLs are unique for the purpose of shareability on social media by testing with individual pages can be opened and directly accessed via new browser windows.",
+  "solution": "If building a single-page app, make sure the client-side router can re-construct app state from a given URL."
+}

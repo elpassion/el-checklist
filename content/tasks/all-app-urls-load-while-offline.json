@@ -2,9 +2,10 @@
   "layout": "tasks",
   "name": "All app URLs load while offline",
   "tags": [
-    "Service Worker"
+    "Service Worker",
+    "Offline"
   ],
   "severity": 3,
   "description": "Load various pages in the PWA with an airplane mode enabled. Ensure the app presents some content even when offline.\n\nUse Lighthouse to verify the start URL responds with a 200 when offline.",
-  "solution": "Use a <a href=\"https://developers.google.com/web/fundamentals/primers/service-workers/\">Service Worker</a>."
+  "solution": "Use a [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/)."
 }

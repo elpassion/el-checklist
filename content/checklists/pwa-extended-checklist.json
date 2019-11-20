@@ -1,0 +1,52 @@
+{
+  "layout": "checklist",
+  "name": "PWA Extended Checklist",
+  "description": "Based on [Google guide to Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)",
+  "sections": [
+    {
+      "name": "Baseline",
+      "tasks": [
+        "Fulfill all base PWA requirements"
+      ]
+    },
+    {
+      "name": "Indexability & social",
+      "tasks": [
+        "Site's content is indexed by Google",
+        "Schema.org metadata is provided where appropriate",
+        "Social metadata is provided where appropriate",
+        "Canonical URLs are provided when necessary",
+        "Pages use the History API"
+      ]
+    },
+    {
+      "name": "User experience",
+      "tasks": [
+        "Content doesn't jump as the page loads",
+        "Pressing back from a detail page retains scroll position on the previous list page",
+        "When tapped, inputs aren't obscured by the on screen keyboard",
+        "Content is easily shareable from standalone or full screen mode",
+        "Site is responsive across phone, tablet and desktop screen sizes",
+        "Any app install prompts are not used excessively",
+        "The Add to Home Screen prompt is intercepted"
+      ]
+    },
+    {
+      "name": "Caching",
+      "tasks": [
+        "Site uses cache-first networking",
+        "Site appropriately informs the user when they're offline"
+      ]
+    },
+    {
+      "name": "Push notifications",
+      "tasks": [
+        "Provide context to the user about how notifications will be used",
+        "Site appropriately informs the user when they're offline",
+        "Site dims the screen when permission request is showing",
+        "Push notifications must be timely, precise and relevant",
+        "Provides controls to enable and disable notifications"
+      ]
+    }
+  ]
+}

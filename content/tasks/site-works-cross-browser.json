@@ -1,0 +1,9 @@
+{
+  "layout": "tasks",
+  "name": "Site works cross-browser",
+  "tags": [
+    "Performance"
+  ],
+  "severity": 3,
+  "solution": "Test site in Chrome, Edge, Firefox and Safari. Fix issues that occur when running the app cross-browser"
+}

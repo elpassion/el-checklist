@@ -12,6 +12,7 @@ export type TChecklistSection = {
 };
 export type TChecklist = {
   name: string;
+  description?: string;
   slug: string;
   sections: TChecklistSection[];
 };

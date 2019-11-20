@@ -1,0 +1,9 @@
+{
+  "name": "Site's content is indexed by Google",
+  "tags": [
+    "SEO"
+  ],
+  "severity": 2,
+  "description": "Use the [Fetch as Google](https://support.google.com/webmasters/answer/6066468) tool to preview how Google will see your site when it is crawled.",
+  "solution": "Google's indexing system does run JavaScript but some issues may need to be fixed to make content accessible. For example, if you are using new browser features like the Fetch API, ensure that they are polyfilled in browsers without support."
+}

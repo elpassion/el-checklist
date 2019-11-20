@@ -14,7 +14,8 @@
 
 #generated files
 src/_prepared_content.json
-cypress/fixtures/checklist.json
+cypress/fixtures/_checklist.json
+cypress/fixtures/_checklists-index.json
 
 # misc
 .idea

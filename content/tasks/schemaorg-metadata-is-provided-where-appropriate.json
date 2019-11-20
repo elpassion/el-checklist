@@ -1,0 +1,9 @@
+{
+  "name": "Schema.org metadata is provided where appropriate",
+  "tags": [
+    "SEO"
+  ],
+  "severity": 3,
+  "description": "[Schema.org] metadata can help improve the appearance of your site in search engines.",
+  "solution": "Use the [testing tool](https://search.google.com/structured-data/testing-tool) to ensure title, image, description etc. are available."
+}

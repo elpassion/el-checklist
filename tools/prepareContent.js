@@ -3,8 +3,9 @@ const fs = require('fs');
 
 const _ = require('lodash');
 
-const storeFile = require('../tools/storeFile');
-const logError = require('../tools/logError');
+const storeFile = require('./storeFile');
+const logError = require('./logError');
+const objectToJson = require('./objectToJson');
 
 const CONTENT_SOURCE_DIR = 'content';
 
@@ -58,22 +59,28 @@ const fillChecklistsWithTasks = ({ checklistsCollection, tasksCollection }) =>
   });
 
 const storeData = data => {
-  const fileContent = JSON.stringify(data, null, 2);
-  storeFile(`${fileContent}\n`, CONTENT_TARGET_FILENAME, CONTENT_TARGET_PATH);
+  const fileContent = objectToJson(data);
+  storeFile(fileContent, CONTENT_TARGET_FILENAME, CONTENT_TARGET_PATH);
 };
-const storeTestData = data => {
+const storeChecklistTestData = data => {
   const fileContent = JSON.stringify(data.checklists[0], null, 2);
-  storeFile(`${fileContent}\n`, 'checklist.json', TEST_TARGET_PATH);
+  storeFile(fileContent, '_checklist.json', TEST_TARGET_PATH);
+};
+const storeChecklistIndexTestData = data => {
+  const checklistsIndexData = data.checklists.map(checklist => _.pick(checklist, ['name', 'slug']));
+  const fileContent = JSON.stringify(checklistsIndexData, null, 2);
+  storeFile(fileContent, '_checklists-index.json', TEST_TARGET_PATH);
 };
 
 const prepareContent = () => {
-  const checklistsCollection = getCollection('checklists', ['name', 'slug', 'sections']);
+  const checklistsCollection = getCollection('checklists', ['name', 'slug', 'description', 'sections']);
   const tasksCollection = getCollection('tasks', ['name', 'description', 'solution', 'tags', 'severity', 'slug']);
 
   const data = { checklists: fillChecklistsWithTasks({ checklistsCollection, tasksCollection }) };
 
   storeData(data);
-  storeTestData(data);
+  storeChecklistTestData(data);
+  storeChecklistIndexTestData(data);
 };
 
 module.exports = prepareContent;

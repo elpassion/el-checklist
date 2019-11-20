@@ -1,0 +1,10 @@
+{
+  "layout": "tasks",
+  "name": "First load fast even on 3G",
+  "tags": [
+    "Performance"
+  ],
+  "severity": 2,
+  "description": "Use Lighthouse on a Nexus 5 (or similar) to verify time to interactive <10s for first visit on a simulated 3G network.",
+  "solution": "There are many ways to improve performance.\nYou can understand your performance better by using Pagespeed Insights (aim for score >85) and SpeedIndex on WebPageTest (aim for <4000 first view on Mobile 3G Nexus 5 Chrome)\nA few tips are to focus on loading less script, make sure as much script is loaded asynchronously as possible using <script async> and make sure render blocking CSS is marked as such.\nYou can also look into using the PRPL pattern and tools like PageSpeed Module on the server."
+}

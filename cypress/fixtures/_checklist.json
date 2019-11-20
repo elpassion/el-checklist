@@ -1,0 +1,102 @@
+{
+  "name": "PWA Baseline Checklist",
+  "description": "Based on [Google guide to Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)",
+  "sections": [
+    {
+      "name": "Configuration",
+      "tasks": [
+        {
+          "name": "Site is served over HTTPS",
+          "solution": "[Implement HTTPS](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/enable-https)",
+          "tags": [
+            "Security"
+          ],
+          "severity": 1,
+          "slug": "site-is-served-over-https"
+        },
+        {
+          "name": "Metadata provided for Add to Home screen",
+          "description": "Use Lighthouse to verify **User can be prompted to Add to Home screen** is all Yes.",
+          "solution": "Add a [Web App Manifest](https://developers.google.com/web/fundamentals/web-app-manifest) file to your project.",
+          "tags": [
+            "Metadata"
+          ],
+          "severity": 1,
+          "slug": "metadata-provided-for-add-to-home-screen"
+        },
+        {
+          "name": "Each page has a URL",
+          "description": "Ensure individual pages are deep linkable via the URLs and that URLs are unique for the purpose of shareability on social media by testing with individual pages can be opened and directly accessed via new browser windows.",
+          "solution": "If building a single-page app, make sure the client-side router can re-construct app state from a given URL.",
+          "tags": [
+            "Routing"
+          ],
+          "severity": 2,
+          "slug": "each-page-has-a-url"
+        }
+      ]
+    },
+    {
+      "name": "Performance",
+      "tasks": [
+        {
+          "name": "All app URLs load while offline",
+          "description": "Load various pages in the PWA with an airplane mode enabled. Ensure the app presents some content even when offline.\n\nUse Lighthouse to verify the start URL responds with a 200 when offline.",
+          "solution": "Use a [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/).",
+          "tags": [
+            "Service Worker",
+            "Offline"
+          ],
+          "severity": 3,
+          "slug": "all-app-ur-ls-load-while-offline"
+        },
+        {
+          "name": "First load fast even on 3G",
+          "description": "Use Lighthouse on a Nexus 5 (or similar) to verify time to interactive <10s for first visit on a simulated 3G network.",
+          "solution": "There are many ways to improve performance.\nYou can understand your performance better by using Pagespeed Insights (aim for score >85) and SpeedIndex on WebPageTest (aim for <4000 first view on Mobile 3G Nexus 5 Chrome)\nA few tips are to focus on loading less script, make sure as much script is loaded asynchronously as possible using <script async> and make sure render blocking CSS is marked as such.\nYou can also look into using the PRPL pattern and tools like PageSpeed Module on the server.",
+          "tags": [
+            "Performance"
+          ],
+          "severity": 2,
+          "slug": "first-load-fast-even-on-3-g"
+        }
+      ]
+    },
+    {
+      "name": "Appearance",
+      "tasks": [
+        {
+          "name": "Pages are responsive on tablets & mobile devices",
+          "description": "Check the [Mobile Friendly Test](https://search.google.com/test/mobile-friendly)",
+          "solution": "Look at implementing a [responsive design](https://developers.google.com/web/fundamentals/design-and-ux/responsive/), or adaptively serving a viewport-friendly site.",
+          "tags": [
+            "RWD"
+          ],
+          "severity": 3,
+          "slug": "pages-are-responsive-on-tablets-mobile-devices"
+        },
+        {
+          "name": "Site works cross-browser",
+          "solution": "Test site in Chrome, Edge, Firefox and Safari. Fix issues that occur when running the app cross-browser",
+          "tags": [
+            "Performance"
+          ],
+          "severity": 3,
+          "slug": "site-works-cross-browser"
+        },
+        {
+          "name": "Page transitions don't feel like they block on the network",
+          "description": "Transitions should feel snappy as you tap around, even on a slow network, a key to perceived performance.",
+          "solution": "Open the app on a simulated very slow network. Every time you tap a link/button in the app the page should respond immediately, either by:\n- Transitioning immediately to the next screen and showing a placeholder loading screen while waiting for content from the network.\n- A loading indicator is shown while the app waits for a response from the network.\n\nIf using a single-page-app (client rendered), transition the user to the next page immediately and show a skeleton screen and use any content such as title or thumbnail already available while content loads.",
+          "tags": [
+            "Performance",
+            "Routing"
+          ],
+          "severity": 2,
+          "slug": "page-transitions-dont-feel-like-they-block-on-the-network"
+        }
+      ]
+    }
+  ],
+  "slug": "pwa-baseline-checklist"
+}

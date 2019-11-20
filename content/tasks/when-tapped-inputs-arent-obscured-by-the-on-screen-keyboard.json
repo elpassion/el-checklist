@@ -1,0 +1,10 @@
+{
+  "name": "When tapped, inputs aren't obscured by the on screen keyboard",
+  "tags": [
+    "UI",
+    "UX"
+  ],
+  "severity": 2,
+  "description": "Find a page with text inputs. Scroll to put the text input as low on the screen as you can make it. Tap the input and verify it is not covered when the keyboard appears.",
+  "solution": "Explore using features like Element.scrollIntoView() and Element.scrollIntoViewIfNeeded() to ensure the input is visible when tapped."
+}
