@@ -1,0 +1,10 @@
+{
+  "name": "Site is responsive across phone, tablet and desktop screen sizes",
+  "tags": [
+    "UI",
+    "RWD"
+  ],
+  "severity": 1,
+  "description": "View the PWA on small, medium and large screens and ensure it works reasonably on all.",
+  "solution": "Review the guide on [implementing responsive UIs](https://developers.google.com/web/fundamentals/design-and-ux/responsive/)"
+}

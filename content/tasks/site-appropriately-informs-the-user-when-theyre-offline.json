@@ -1,0 +1,10 @@
+{
+  "name": "Site appropriately informs the user when they're offline",
+  "tags": [
+    "UI",
+    "Offline"
+  ],
+  "severity": 2,
+  "description": "",
+  "solution": "Use the [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API) to show the user an indication when they're offline."
+}

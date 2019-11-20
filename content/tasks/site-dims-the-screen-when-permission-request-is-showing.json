@@ -1,0 +1,9 @@
+{
+  "name": "Site dims the screen when permission request is showing",
+  "tags": [
+    "UI"
+  ],
+  "severity": 1,
+  "description": "When the browser  is showing the permission request, ensure that the page is \"dimming\" (placing a dark overlay over) all content not relevant to explaining why the site needs push notifications",
+  "solution": ""
+}

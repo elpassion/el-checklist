@@ -1,0 +1,9 @@
+{
+  "name": "The Add to Home Screen prompt is intercepted",
+  "tags": [
+    "UX"
+  ],
+  "severity": 3,
+  "description": "Check the browser doesn't display the A2HS at an inopportune moment, such as when the user is in the middle of a flow that shouldn't be interrupted, or when another prompt is already displayed on the screen.",
+  "solution": "Intercept the beforeinstallprompt event and prompt later"
+}

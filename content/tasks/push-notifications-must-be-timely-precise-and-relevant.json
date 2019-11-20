@@ -1,0 +1,9 @@
+{
+  "name": "Push notifications must be timely, precise and relevant",
+  "tags": [
+    "UX"
+  ],
+  "severity": 3,
+  "description": "",
+  "solution": "See the guide on [creating great push notifications](https://developers.google.com/web/fundamentals/push-notifications/) for advice. If your content is not timely and relevant to this user, consider using email instead"
+}

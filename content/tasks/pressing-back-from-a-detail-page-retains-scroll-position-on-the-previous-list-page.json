@@ -1,0 +1,11 @@
+{
+  "name": "Pressing back from a detail page retains scroll position on the previous list page",
+  "tags": [
+    "Routing",
+    "UI",
+    "UX"
+  ],
+  "severity": 3,
+  "description": "Find a list view in the app. Scroll down. Tap an item to enter the detail page. Scroll around on the detail page. Press back and ensure the list view is scrolled to the same place it was at before the detail link/button was tapped.",
+  "solution": "Restore the scroll position in lists when the user presses 'back'. Some routing libraries have a feature to do this for you."
+}

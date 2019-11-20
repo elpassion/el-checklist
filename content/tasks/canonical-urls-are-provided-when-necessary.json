@@ -1,0 +1,9 @@
+{
+  "name": "Canonical URLs are provided when necessary",
+  "tags": [
+    "SEO"
+  ],
+  "severity": 1,
+  "description": "This is only necessary if your content is available at multiple URLs. \nOpen both of these pages and ensure they use <link rel=canonical> tags in the head to indicate the canonical version",
+  "solution": "Add a canonical link tag to the <head> of each page, pointing to the canonical source document. See [Use canonical URLs](https://support.google.com/webmasters/answer/139066) for more information."
+}

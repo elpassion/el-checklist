@@ -1,0 +1,10 @@
+{
+  "name": "Content doesn't jump as the page loads",
+  "tags": [
+    "UI",
+    "UX"
+  ],
+  "severity": 3,
+  "description": "",
+  "solution": "Ensure all content, especially images and ads, have fixed sizing in CSS or inline on the element. Before the image loads you may want to show a grey square or blurred/small version (if available) as a placeholder."
+}

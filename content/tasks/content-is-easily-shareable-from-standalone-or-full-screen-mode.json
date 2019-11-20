@@ -1,0 +1,9 @@
+{
+  "name": "Content is easily shareable from standalone or full screen mode",
+  "tags": [
+    "Social"
+  ],
+  "severity": 3,
+  "description": "Ensure from standalone mode (after adding the app to your home screen) that you are able to share content, if appropriate, from within the app's UI.",
+  "solution": "Provide social share buttons, or a generic share button within your UI. If a generic button, you may want to directly copy the URL to the user's clipboard when tapped, offer them social networks to share to, or try out the new [Web Share API](https://developers.google.com/web/updates/2016/10/navigator-share) to integrate with the native sharing system on Android."
+}

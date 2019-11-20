@@ -1,0 +1,10 @@
+{
+  "name": "Social metadata is provided where appropriate",
+  "tags": [
+    "SEO",
+    "Social"
+  ],
+  "severity": 2,
+  "description": "Open a representative page in [Facebook's crawler](https://developers.facebook.com/tools/debug/) and ensure it looks reasonable.\nCheck that [Twitter Cards meta data](https://dev.twitter.com/cards/overview) is present (for example `<meta name=\"twitter:card\" content=\"summary\" />`) if you feel it would be appropriate.",
+  "solution": "Mark up content with [Open Graph](http://ogp.me/) tags and as advised by Twitter."
+}

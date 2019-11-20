@@ -1,0 +1,10 @@
+{
+  "name": "Pages use the History API",
+  "tags": [
+    "SEO",
+    "Routing"
+  ],
+  "severity": 1,
+  "description": "For single page apps, ensure the site doesn't use fragment identifiers. For example everything after the #! in https://example.com/#!user/26601.",
+  "solution": "Use the History API instead of page fragments."
+}

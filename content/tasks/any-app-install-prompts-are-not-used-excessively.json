@@ -1,0 +1,9 @@
+{
+  "name": "Any app install prompts are not used excessively",
+  "tags": [
+    "UX"
+  ],
+  "severity": 3,
+  "description": "There should only be one top or bottom app install banner.",
+  "solution": "After the PWA is added to the user's home screen, any top/bottom banners should be removed"
+}
