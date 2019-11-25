@@ -4,7 +4,7 @@ const colors: ColorsList = {
   emerald: '#28c23e',
   navy: '#1d2738',
   white: '#ffffff',
-  dove: '#f5f5f5',
+  dove: '#F5F5F5',
   gray: '#676767',
 };
 
@@ -23,9 +23,8 @@ export const defaultTheme: Theme = {
   },
 
   fonts: {
-    default:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    significant: 'source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace',
+    default: 'Montserrat, sans-serif',
+    significant: 'Montserrat, sans-serif',
   },
 
   fontSizes: {
