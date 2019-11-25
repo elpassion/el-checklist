@@ -5,6 +5,7 @@ import { Theme } from '../@types/styling';
 import { listStyles } from './global/list';
 import { headingStyles } from './global/heading';
 import { checkboxStyles } from './global/checkbox';
+import { linkStyles } from './global/link';
 
 export const globalStyles = (theme: Theme): CSSObject => ({
   '*': {
@@ -21,4 +22,5 @@ export const globalStyles = (theme: Theme): CSSObject => ({
   ...listStyles(theme),
   ...headingStyles(theme),
   ...checkboxStyles(theme),
+  ...linkStyles(theme),
 });

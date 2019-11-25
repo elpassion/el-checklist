@@ -11,7 +11,7 @@ import { TCompletion } from '../../@types/completion';
 import { Completion } from '../Completion/Completion';
 import { Collapsible } from '../Collapsible/Collapsible';
 
-import { titleStyle } from './Checklist.styles';
+import { itemStyle, titleStyle } from './Checklist.styles';
 
 type TProps = { checklist: TChecklist };
 
@@ -60,31 +60,36 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
 
       {checklist.description && <ReactMarkdown>{checklist.description}</ReactMarkdown>}
 
-      {checklist.sections &&
-        checklist.sections.map(section => {
-          const completion = getSectionCompletion(section);
-          return (
-            <Collapsible
-              header={renderHeader({ name: section.name, completion })}
-              WrapperTag="section"
-              HeaderTag="div"
-              key={section.name}
-              isInitiallyOpen={completion.doneUnits < completion.totalUnits}
-            >
-              <ul>
-                {section.tasks.map(task => (
-                  <ChecklistItem
-                    {...task}
-                    key={task.slug}
-                    Tag="li"
-                    isFulfilled={isFulfilled(task.slug)}
-                    onChange={onChange}
-                  />
-                ))}
-              </ul>
-            </Collapsible>
-          );
-        })}
+      {checklist.sections && (
+        <ul>
+          {checklist.sections.map(section => {
+            const completion = getSectionCompletion(section);
+            return (
+              <li css={itemStyle} key={section.name}>
+                <Collapsible
+                  header={renderHeader({ name: section.name, completion })}
+                  WrapperTag="section"
+                  HeaderTag="div"
+                  isInitiallyOpen={completion.doneUnits < completion.totalUnits}
+                  css={{ margin: 20 }}
+                >
+                  <ul>
+                    {section.tasks.map(task => (
+                      <ChecklistItem
+                        {...task}
+                        key={task.slug}
+                        Tag="li"
+                        isFulfilled={isFulfilled(task.slug)}
+                        onChange={onChange}
+                      />
+                    ))}
+                  </ul>
+                </Collapsible>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </Fragment>
   );
 };

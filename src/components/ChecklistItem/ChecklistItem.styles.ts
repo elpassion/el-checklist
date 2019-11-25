@@ -9,7 +9,7 @@ export const wrapperStyle = (theme: Theme): CSSObject => {
     backgroundColor: theme.palette.backgroundHoisted,
     borderRadius: theme.shape.radii.default,
     '&+&': {
-      marginTop: theme.spacing.unit,
+      marginTop: 2 * theme.spacing.unit,
     },
   };
 };
