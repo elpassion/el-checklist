@@ -1,5 +1,4 @@
 import { CSSObject } from '@emotion/core';
-import { lighten } from 'polished';
 
 import { Theme } from '../../@types/styling';
 
@@ -55,7 +54,7 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     '&:hover, &:focus': {
       backgroundColor: 'transparent',
       outline: 'none',
-      color: lighten(0.3, theme.palette.heading),
+      color: theme.palette.headingActivated,
     },
   };
 };

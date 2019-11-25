@@ -5,7 +5,7 @@ import { clearExtremeMargins } from '../../utils/styling/clearExtremeMargins';
 
 export const wrapperStyle = (theme: Theme): CSSObject => {
   return {
-    padding: 2 * theme.spacing.unit,
+    padding: `${2 * theme.spacing.unit}px ${3 * theme.spacing.unit}px`,
     backgroundColor: theme.palette.backgroundHoisted,
     borderRadius: theme.shape.radii.default,
     '&+&': {
@@ -33,5 +33,29 @@ export const titleStyle = (theme: Theme): CSSObject => {
   return {
     ...sectionStyle(theme),
     marginBottom: 1.5 * theme.spacing.unit,
+  };
+};
+
+export const subtitleStyle = (theme: Theme): CSSObject => {
+  return {
+    position: 'relative',
+    display: 'inline-block',
+    lineHeight: 'normal',
+
+    '&:after': {
+      bottom: -theme.shape.underline.default,
+      left: 0,
+      display: 'block',
+      content: '""',
+      width: '100%',
+      height: theme.shape.underline.default,
+      backgroundColor: 'currentColor',
+      opacity: 0,
+      transition: `opacity ${theme.duration.default}ms`,
+    },
+
+    'button:focus &:after': {
+      opacity: 1,
+    },
   };
 };

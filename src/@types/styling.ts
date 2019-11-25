@@ -15,11 +15,13 @@ export type Theme = {
 
   palette: {
     primary: Color;
+    primaryActivated: Color;
     secondary: Color;
     background: Color;
     backgroundHoisted: Color;
     text: Color;
     heading: Color;
+    headingActivated: Color;
   };
 
   fonts: {
@@ -39,6 +41,9 @@ export type Theme = {
 
   shape: {
     radii: {
+      default: number;
+    };
+    underline: {
       default: number;
     };
     inputSizes: {

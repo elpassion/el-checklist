@@ -18,6 +18,7 @@ export const headerStyle = (theme: Theme): CSSObject => {
 export const backLinkStyle = (theme: Theme): CSSObject => {
   return {
     gridArea: 'back',
+    justifySelf: 'start',
     display: 'inline-block',
     fontSize: theme.fontSizes.small,
   };
@@ -54,6 +55,28 @@ export const itemHeaderStyle = (): CSSObject => {
 
     'h1, h2, h3, h4, h5, h6': {
       color: 'inherit',
+    },
+  };
+};
+
+export const itemTitleStyle = (theme: Theme): CSSObject => {
+  return {
+    lineHeight: 'normal',
+
+    '&:after': {
+      bottom: -theme.shape.underline.default,
+      left: 0,
+      display: 'block',
+      content: '""',
+      width: '100%',
+      height: theme.shape.underline.default,
+      backgroundColor: 'currentColor',
+      opacity: 0,
+      transition: `opacity ${theme.duration.default}ms`,
+    },
+
+    'button:focus &:after': {
+      opacity: 1,
     },
   };
 };

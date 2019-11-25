@@ -1,18 +1,37 @@
 import { CSSObject } from '@emotion/core';
-import { lighten } from 'polished';
 
 import { Theme } from '../../@types/styling';
 
 export const linkStyles = (theme: Theme): CSSObject => ({
   a: {
+    position: 'relative',
+    display: 'inline-block',
     textDecoration: 'none',
     fontWeight: 700,
     color: theme.palette.primary,
     transition: `color ${theme.duration.default}ms`,
 
+    '&:after': {
+      bottom: -theme.shape.underline.default,
+      left: 0,
+      display: 'block',
+      content: '""',
+      width: '100%',
+      height: theme.shape.underline.default,
+      backgroundColor: 'currentColor',
+      opacity: 0,
+      transition: `opacity ${theme.duration.default}ms`,
+    },
+
     '&:hover, &:focus': {
       outline: 'none',
-      color: lighten(0.1, theme.palette.primary),
+      color: theme.palette.primaryActivated,
+    },
+
+    '&:focus': {
+      '&:after': {
+        opacity: 1,
+      },
     },
   },
 });

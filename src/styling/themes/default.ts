@@ -1,3 +1,5 @@
+import { lighten } from 'polished';
+
 import { ColorsList, Theme } from '../../@types/styling';
 
 const colors: ColorsList = {
@@ -19,11 +21,13 @@ export const defaultTheme: Theme = {
 
   palette: {
     primary: colors.emerald,
+    primaryActivated: lighten(0.1, colors.emerald),
     secondary: colors.navy,
     background: colors.dove,
     backgroundHoisted: colors.white,
     text: colors.gray,
     heading: colors.navy,
+    headingActivated: lighten(0.25, colors.navy),
   },
 
   fonts: {
@@ -44,6 +48,9 @@ export const defaultTheme: Theme = {
   shape: {
     radii: {
       default: 8,
+    },
+    underline: {
+      default: 2,
     },
     inputSizes: {
       default: {

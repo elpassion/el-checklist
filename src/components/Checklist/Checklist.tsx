@@ -15,6 +15,7 @@ import {
   backLinkStyle,
   itemStyle,
   itemHeaderStyle,
+  itemTitleStyle,
   headingStyle,
   headerStyle,
   clearButtonStyle,
@@ -29,7 +30,7 @@ type THeaderProps = {
 
 const renderItemHeader: FC<THeaderProps> = ({ name, completion }: THeaderProps) => (
   <header css={itemHeaderStyle}>
-    <h2>{name}</h2> <Completion {...completion} />
+    <h2 css={itemTitleStyle}>{name}</h2> <Completion {...completion} />
   </header>
 );
 
