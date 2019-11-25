@@ -11,7 +11,14 @@ import { Completion } from '../Completion/Completion';
 import { Collapsible } from '../Collapsible/Collapsible';
 import { Markdown } from '../Markdown/Markdown';
 
-import { itemStyle, titleStyle } from './Checklist.styles';
+import {
+  backLinkStyle,
+  itemStyle,
+  itemHeaderStyle,
+  headingStyle,
+  headerStyle,
+  clearButtonStyle,
+} from './Checklist.styles';
 
 type TProps = { checklist: TChecklist };
 
@@ -20,8 +27,8 @@ type THeaderProps = {
   completion: TCompletion;
 };
 
-const renderHeader: FC<THeaderProps> = ({ name, completion }: THeaderProps) => (
-  <header css={titleStyle}>
+const renderItemHeader: FC<THeaderProps> = ({ name, completion }: THeaderProps) => (
+  <header css={itemHeaderStyle}>
     <h2>{name}</h2> <Completion {...completion} />
   </header>
 );
@@ -52,11 +59,17 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
 
   return (
     <Fragment>
-      <Link to="/checklists">&lsaquo;&nbsp;Back to list</Link>
+      <header css={headerStyle}>
+        <Link to="/checklists" css={backLinkStyle}>
+          &lsaquo;&nbsp;Back to all checklists
+        </Link>
 
-      <h1>{checklist.name}</h1>
+        <h1 css={headingStyle}>{checklist.name}</h1>
 
-      <button onClick={onClearClick}>clear</button>
+        <button onClick={onClearClick} css={clearButtonStyle}>
+          clear
+        </button>
+      </header>
 
       {checklist.description && <Markdown>{checklist.description}</Markdown>}
 
@@ -67,7 +80,7 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
             return (
               <li css={itemStyle} key={section.name}>
                 <Collapsible
-                  header={renderHeader({ name: section.name, completion })}
+                  header={renderItemHeader({ name: section.name, completion })}
                   WrapperTag="section"
                   HeaderTag="div"
                   isInitiallyOpen={completion.doneUnits < completion.totalUnits}

@@ -12,7 +12,7 @@ export const defaultTheme: Theme = {
   spacing: { unit: 8 },
 
   breakpoints: {
-    'sm': 600,
+    sm: 600,
   },
 
   colors: colors,
@@ -33,7 +33,7 @@ export const defaultTheme: Theme = {
 
   fontSizes: {
     default: 16,
-    significant: 20,
+    significant: 24,
     small: 14,
   },
 

@@ -1,13 +1,9 @@
 import { CSSObject } from '@emotion/core';
+import { lighten } from 'polished';
 
 import { Theme } from '../../@types/styling';
 
 type TGetHeaderStyleArgs = {
-  isOpen?: boolean;
-  transitionDuration?: number;
-};
-
-type TGetContentOuterStyleArgs = {
   isOpen?: boolean;
   transitionDuration?: number;
 };
@@ -39,6 +35,7 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     border: 0,
     backgroundColor: 'transparent',
     cursor: 'pointer',
+    transition: `color ${theme.duration.default}ms`,
 
     '&:before': {
       position: 'absolute',
@@ -58,11 +55,16 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
       backgroundColor: 'transparent',
       outline: 'none',
     },
+
+    '&:focus': {
+      color: lighten(0.3, theme.palette.heading),
+    },
   };
 };
 
 export const innerHeaderStyle = (): CSSObject => {
   return {
     margin: 0,
+    color: 'inherit',
   };
 };

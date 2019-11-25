@@ -11,6 +11,7 @@ export const linkStyles = (theme: Theme): CSSObject => ({
     transition: `color ${theme.duration.default}ms`,
 
     '&:hover, &:focus': {
+      outline: 'none',
       color: lighten(0.1, theme.palette.primary),
     },
   },

@@ -20,8 +20,8 @@ describe('checklist page', () => {
     });
 
     context('rendering', () => {
-      it('renders `back to list` link', () => {
-        cy.getByText('Back to list', { exact: false }).click();
+      it('renders `back to all` link', () => {
+        cy.getByText('Back to all', { exact: false }).click();
         cy.location('pathname').should('eq', '/checklists');
       });
 
