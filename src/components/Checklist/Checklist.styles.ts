@@ -20,10 +20,6 @@ export const backLinkStyle = (theme: Theme): CSSObject => {
     gridArea: 'back',
     display: 'inline-block',
     fontSize: theme.fontSizes.small,
-
-    '&:before': {
-      content: '"&rsaquo;&nbsp;"',
-    },
   };
 };
 
