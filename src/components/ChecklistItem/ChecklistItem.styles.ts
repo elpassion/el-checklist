@@ -1,11 +1,9 @@
 import { CSSObject } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
-import { assureTheme } from '../../utils/misc/themedStyles';
 import { clearExtremeMargins } from '../../utils/styling/clearExtremeMargins';
 
-export const wrapperStyle = (providedTheme: Theme): CSSObject => {
-  const theme = assureTheme(providedTheme);
+export const wrapperStyle = (theme: Theme): CSSObject => {
   return {
     padding: 2 * theme.spacing.unit,
     backgroundColor: theme.palette.backgroundHoisted,
@@ -16,16 +14,14 @@ export const wrapperStyle = (providedTheme: Theme): CSSObject => {
   };
 };
 
-export const sectionStyle = (providedTheme: Theme): CSSObject => {
-  const theme = assureTheme(providedTheme);
+export const sectionStyle = (theme: Theme): CSSObject => {
   return {
     margin: `${theme.spacing.unit}px 0`,
     ...clearExtremeMargins({ verticalOnly: true }),
   };
 };
 
-export const tagListStyle = (providedTheme: Theme): CSSObject => {
-  const theme = assureTheme(providedTheme);
+export const tagListStyle = (theme: Theme): CSSObject => {
   return {
     margin: `${1.5 * theme.spacing.unit}px 0 ${2 * theme.spacing.unit}px`,
     paddingLeft: theme.shape.inputSizes.large.standard + 2 * theme.spacing.unit,
@@ -33,8 +29,7 @@ export const tagListStyle = (providedTheme: Theme): CSSObject => {
   };
 };
 
-export const titleStyle = (providedTheme: Theme): CSSObject => {
-  const theme = assureTheme(providedTheme);
+export const titleStyle = (theme: Theme): CSSObject => {
   return {
     ...sectionStyle(theme),
     marginBottom: 1.5 * theme.spacing.unit,

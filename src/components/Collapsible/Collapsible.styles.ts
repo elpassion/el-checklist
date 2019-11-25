@@ -1,7 +1,6 @@
 import { CSSObject } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
-import { assureTheme } from '../../utils/misc/themedStyles';
 
 type TGetHeaderStyleArgs = {
   isOpen?: boolean;
@@ -22,10 +21,8 @@ export const wrapperStyle = (): CSSObject => {
 };
 
 export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGetHeaderStyleArgs) => (
-  providedTheme: Theme,
+  theme: Theme,
 ): CSSObject => {
-  const theme = assureTheme(providedTheme);
-
   const ARROW_SIZE = 0.7;
   const ARROW_SPACING = theme.spacing.unit;
   const LINE_HEIGHT = 2;
