@@ -15,7 +15,6 @@ export const globalStyles = (theme: Theme): CSSObject => ({
   body: {
     margin: 0,
     fontFamily: theme.fonts.default,
-    backgroundColor: theme.palette.background,
     color: theme.palette.text,
   },
 

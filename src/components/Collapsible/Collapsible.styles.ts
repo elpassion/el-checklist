@@ -28,6 +28,7 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     position: 'relative',
     display: 'block',
     width: '100%',
+    marginBottom: theme.spacing.unit,
     padding: `0 0 0 calc(${ARROW_SIZE}em + ${ARROW_SPACING}px)`,
     fontSize: FONT_SIZE,
     lineHeight: LINE_HEIGHT,
@@ -51,12 +52,9 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
       transition: `transform ${transitionDuration}ms ${TRANSITION_TIMING}`,
     },
 
-    '&:active, &:focus': {
+    '&:hover, &:focus': {
       backgroundColor: 'transparent',
       outline: 'none',
-    },
-
-    '&:focus': {
       color: lighten(0.3, theme.palette.heading),
     },
   };

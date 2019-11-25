@@ -2,11 +2,12 @@ import { CSSObject } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
 
-export const wrapperStyle = (): CSSObject => {
+export const wrapperStyle = (theme: Theme): CSSObject => {
   return {
     height: '100vh',
     flexDirection: 'column',
     display: 'flex',
+    backgroundColor: theme.palette.background,
   };
 };
 

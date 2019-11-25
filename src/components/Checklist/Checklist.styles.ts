@@ -1,5 +1,4 @@
 import { CSSObject } from '@emotion/core';
-import { lighten } from 'polished';
 
 import { Theme } from '../../@types/styling';
 
@@ -23,7 +22,7 @@ export const backLinkStyle = (theme: Theme): CSSObject => {
     fontSize: theme.fontSizes.small,
 
     '&:before': {
-      content: '&rsaquo;&nbsp;',
+      content: '"&rsaquo;&nbsp;"',
     },
   };
 };
@@ -50,13 +49,12 @@ export const itemStyle = (theme: Theme): CSSObject => {
   };
 };
 
-export const itemHeaderStyle = (theme: Theme): CSSObject => {
+export const itemHeaderStyle = (): CSSObject => {
   return {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    marginBottom: theme.spacing.unit,
 
     'h1, h2, h3, h4, h5, h6': {
       color: 'inherit',
