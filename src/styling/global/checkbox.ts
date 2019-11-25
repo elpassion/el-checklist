@@ -3,7 +3,7 @@ import { CSSObject, keyframes } from '@emotion/core';
 import { Theme } from '../../@types/styling';
 
 export const checkboxStyles = (theme: Theme): CSSObject => {
-  const LINE_HEIGHT = 1.5;
+  const LINE_HEIGHT = 1.15;
   const SIZE = theme.shape.inputSizes.large.standard;
   const DURATION = `${theme.duration.default}ms`;
   const DONE_FACTOR = theme.shape.inputSizes.large.expanded / SIZE;
@@ -33,7 +33,7 @@ export const checkboxStyles = (theme: Theme): CSSObject => {
         minHeight: SIZE,
         lineHeight: LINE_HEIGHT,
         paddingLeft: SIZE + theme.spacing.unit * 2,
-        paddingTop: `calc((${SIZE}px - ${LINE_HEIGHT}em) / 2)`,
+        paddingTop: `calc((${SIZE}px - ${LINE_HEIGHT}em) / 2 + .15em)`,
         userSelect: 'none',
       },
 
@@ -51,10 +51,12 @@ export const checkboxStyles = (theme: Theme): CSSObject => {
         display: 'block',
         width: SIZE,
         height: SIZE,
-        backgroundColor: 'red',
+        backgroundColor: 'white',
+        border: `${theme.shape.underline.default}px solid currentColor`,
         borderRadius: theme.shape.radii.default,
         animation: `${uncheck} ${DURATION} ease-in 1`,
         content: '""',
+        transition: `background-color ${theme.duration.default}ms`,
       },
 
       '& + label:after': {
@@ -66,7 +68,7 @@ export const checkboxStyles = (theme: Theme): CSSObject => {
       },
 
       '&:checked + label:before': {
-        backgroundColor: 'green',
+        backgroundColor: 'currentcolor',
         transform: `scale(${DONE_FACTOR})`,
         animation: `${check} ${DURATION} ease-out 1`,
       },

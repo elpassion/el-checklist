@@ -3,16 +3,16 @@ import { CSSObject } from '@emotion/core';
 import { Theme } from '../../@types/styling';
 import { clearExtremeMargins } from '../../utils/styling/clearExtremeMargins';
 
-export const wrapperStyle = (theme: Theme): CSSObject => {
-  return {
-    padding: `${2 * theme.spacing.unit}px ${3 * theme.spacing.unit}px`,
-    backgroundColor: theme.palette.backgroundHoisted,
-    borderRadius: theme.shape.radii.default,
-    '&+&': {
-      marginTop: 2 * theme.spacing.unit,
-    },
-  };
-};
+export const wrapperStyle = (theme: Theme): CSSObject => ({
+  padding: `${2 * theme.spacing.unit}px ${3 * theme.spacing.unit}px`,
+  backgroundColor: theme.palette.backgroundHoisted,
+  borderRadius: theme.shape.radii.default,
+  transition: `opacity ${theme.duration.default}ms`,
+
+  '&:nth-of-type(n+2)': {
+    marginTop: 2 * theme.spacing.unit,
+  },
+});
 
 export const sectionStyle = (theme: Theme): CSSObject => {
   return {
@@ -59,3 +59,5 @@ export const subtitleStyle = (theme: Theme): CSSObject => {
     },
   };
 };
+
+export const getFulfillmentStyle = (isFulfilled: boolean) => (): CSSObject => ({ opacity: isFulfilled ? 0.5 : 1 });

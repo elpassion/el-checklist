@@ -2,12 +2,16 @@ import { lighten } from 'polished';
 
 import { ColorsList, Theme } from '../../@types/styling';
 
-const colors: ColorsList = {
+const COLORS: ColorsList = {
   emerald: '#28c23e',
   navy: '#1d2738',
   white: '#ffffff',
   dove: '#F5F5F5',
   gray: '#676767',
+  silver: '#a7a7a7',
+  lime: '#A6DB68',
+  amber: '#ffcb86',
+  coral: '#FF8787',
 };
 
 export const defaultTheme: Theme = {
@@ -17,17 +21,21 @@ export const defaultTheme: Theme = {
     sm: 600,
   },
 
-  colors: colors,
+  colors: COLORS,
 
   palette: {
-    primary: colors.emerald,
-    primaryActivated: lighten(0.1, colors.emerald),
-    secondary: colors.navy,
-    background: colors.dove,
-    backgroundHoisted: colors.white,
-    text: colors.gray,
-    heading: colors.navy,
-    headingActivated: lighten(0.25, colors.navy),
+    primary: COLORS.emerald,
+    primaryActivated: lighten(0.1, COLORS.emerald),
+    secondary: COLORS.navy,
+    disabled: COLORS.silver,
+    background: COLORS.dove,
+    backgroundHoisted: COLORS.white,
+    text: COLORS.gray,
+    heading: COLORS.navy,
+    headingActivated: lighten(0.25, COLORS.navy),
+    success: COLORS.lime,
+    warning: COLORS.amber,
+    error: COLORS.coral,
   },
 
   fonts: {
@@ -51,6 +59,7 @@ export const defaultTheme: Theme = {
     },
     underline: {
       default: 2,
+      thick: 8,
     },
     inputSizes: {
       default: {

@@ -8,6 +8,7 @@ export const wrapperStyle = (theme: Theme): CSSObject => {
     flexDirection: 'column',
     display: 'flex',
     backgroundColor: theme.palette.background,
+    overflow: 'auto',
   };
 };
 
@@ -16,7 +17,6 @@ export const contentStyle = (theme: Theme): CSSObject => {
     width: '100%',
     maxWidth: '800px',
     margin: '0 auto',
-    minHeight: '100%',
     padding: `${2 * theme.spacing.unit}px ${2 * theme.spacing.unit}px`,
 
     [`@media (min-width: ${theme.breakpoints.sm}px)`]: {

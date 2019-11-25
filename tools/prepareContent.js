@@ -52,7 +52,7 @@ const fillChecklistsWithTasks = ({ checklistsCollection, tasksCollection }) =>
         }
       }
 
-      return { ...section, tasks };
+      return { ...section, tasks: _.orderBy(tasks, 'severity', 'desc') };
     });
 
     return { ...checklist, sections };

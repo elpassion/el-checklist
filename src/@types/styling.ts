@@ -17,11 +17,15 @@ export type Theme = {
     primary: Color;
     primaryActivated: Color;
     secondary: Color;
+    disabled: Color;
     background: Color;
     backgroundHoisted: Color;
     text: Color;
     heading: Color;
     headingActivated: Color;
+    success: Color;
+    warning: Color;
+    error: Color;
   };
 
   fonts: {
@@ -45,6 +49,7 @@ export type Theme = {
     };
     underline: {
       default: number;
+      thick: number;
     };
     inputSizes: {
       default: {

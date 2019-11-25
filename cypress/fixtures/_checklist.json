@@ -11,18 +11,8 @@
           "tags": [
             "Security"
           ],
-          "severity": 1,
+          "severity": 3,
           "slug": "site-is-served-over-https"
-        },
-        {
-          "name": "Metadata provided for Add to Home screen",
-          "description": "Use Lighthouse to verify **User can be prompted to Add to Home screen** is all Yes.",
-          "solution": "Add a [Web App Manifest](https://developers.google.com/web/fundamentals/web-app-manifest) file to your project.",
-          "tags": [
-            "Metadata"
-          ],
-          "severity": 1,
-          "slug": "metadata-provided-for-add-to-home-screen"
         },
         {
           "name": "Each page has a URL",
@@ -33,6 +23,16 @@
           ],
           "severity": 2,
           "slug": "each-page-has-a-url"
+        },
+        {
+          "name": "Metadata provided for Add to Home screen",
+          "description": "Use Lighthouse to verify **User can be prompted to Add to Home screen** is all Yes.",
+          "solution": "Add a [Web App Manifest](https://developers.google.com/web/fundamentals/web-app-manifest) file to your project.",
+          "tags": [
+            "Metadata"
+          ],
+          "severity": 1,
+          "slug": "metadata-provided-for-add-to-home-screen"
         }
       ]
     },

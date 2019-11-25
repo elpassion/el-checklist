@@ -4,6 +4,6 @@
   "tags": [
     "Security"
   ],
-  "severity": 1,
+  "severity": 3,
   "solution": "[Implement HTTPS](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/enable-https)"
 }
