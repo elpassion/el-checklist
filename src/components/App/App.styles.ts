@@ -16,6 +16,10 @@ export const contentStyle = (theme: Theme): CSSObject => {
     maxWidth: '800px',
     margin: '0 auto',
     minHeight: '100%',
-    padding: `${8 * theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
+    padding: `${2 * theme.spacing.unit}px ${2 * theme.spacing.unit}px`,
+
+    [`@media (min-width: ${theme.breakpoints.sm}px)`]: {
+      padding: `${8 * theme.spacing.unit}px ${4 * theme.spacing.unit}px`,
+    },
   };
 };

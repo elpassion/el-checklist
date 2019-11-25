@@ -87,6 +87,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,ts,tsx}",
       "!src/**/*.d.ts",
+      "!src/**/*.styles.ts",
       "!src/@types/**/*",
       "!src/styling/**/*",
       "!src/config/**/*",

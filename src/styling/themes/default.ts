@@ -11,6 +11,10 @@ const colors: ColorsList = {
 export const defaultTheme: Theme = {
   spacing: { unit: 8 },
 
+  breakpoints: {
+    'sm': 600,
+  },
+
   colors: colors,
 
   palette: {

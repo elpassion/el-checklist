@@ -3,6 +3,10 @@ export type ColorsList = { [key: string]: Color };
 type FontFamily = string;
 
 export type Theme = {
+  breakpoints: {
+    sm: number;
+  };
+
   spacing: {
     unit: number;
   };
