@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core';
 import { FC, Fragment, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 
 import { TChecklist, TChecklistTask } from '../../@types/checklist';
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
@@ -10,6 +9,7 @@ import { ChecklistItem } from '../ChecklistItem/ChecklistItem';
 import { TCompletion } from '../../@types/completion';
 import { Completion } from '../Completion/Completion';
 import { Collapsible } from '../Collapsible/Collapsible';
+import { Markdown } from '../Markdown/Markdown';
 
 import { itemStyle, titleStyle } from './Checklist.styles';
 
@@ -58,7 +58,7 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
 
       <button onClick={onClearClick}>clear</button>
 
-      {checklist.description && <ReactMarkdown>{checklist.description}</ReactMarkdown>}
+      {checklist.description && <Markdown>{checklist.description}</Markdown>}
 
       {checklist.sections && (
         <ul>

@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { FC, ReactDOM, Fragment, useCallback, useMemo } from 'react';
-import ReactMarkdown from 'react-markdown';
 
 import { TChecklistTask } from '../../@types/checklist';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { InlineList } from '../InlineList/InlineList';
 import { Collapsible } from '../Collapsible/Collapsible';
+import { Markdown } from '../Markdown/Markdown';
 
 import { titleStyle, wrapperStyle, sectionStyle, tagListStyle } from './ChecklistItem.styles';
 
@@ -50,7 +50,7 @@ export const ChecklistItem: FC<TProps> = ({
       {description && (
         <section css={sectionStyle}>
           <Collapsible header="Description" WrapperTag="div">
-            <ReactMarkdown css={{ overflowX: 'auto' }} source={description} />
+            <Markdown css={{ overflowX: 'auto' }} source={description} />
           </Collapsible>
         </section>
       )}
@@ -58,7 +58,7 @@ export const ChecklistItem: FC<TProps> = ({
       {solution && (
         <section css={sectionStyle}>
           <Collapsible header="Solution" WrapperTag="div">
-            <ReactMarkdown css={{ overflowX: 'auto' }} source={solution} />
+            <Markdown css={{ overflowX: 'auto' }} source={solution} />
           </Collapsible>
         </section>
       )}
