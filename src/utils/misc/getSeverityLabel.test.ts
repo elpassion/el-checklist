@@ -1,4 +1,4 @@
-import getSeverityLabel from './getSeverityLabel';
+import { getSeverityLabel } from './getSeverityLabel';
 
 it('responds with proper default severity', () => {
   const result = getSeverityLabel(1500);
