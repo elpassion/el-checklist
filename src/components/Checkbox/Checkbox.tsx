@@ -22,7 +22,7 @@ export const Checkbox: FC<TProps> = ({ id, children, isChecked = false, color = 
 
       <label htmlFor={id} css={labelStyle(color)}>
         <svg css={getCheckMarkStyle(isChecked)} viewBox="0 0 32 32">
-          <polyline css={checkMarkLineStyle} points="8.6,15.6 14.2,22.2 23.4,9.6 " />
+          <polyline css={checkMarkLineStyle} points="7.6,15.6 14.2,22.2 24.4,9.6 " />
         </svg>
 
         <span css={labelTextStyle}>{children}</span>

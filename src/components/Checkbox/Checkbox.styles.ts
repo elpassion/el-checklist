@@ -110,6 +110,5 @@ export const checkMarkLineStyle = (theme: Theme): CSSObject => {
     fill: 'none',
     stroke: theme.palette.heading,
     strokeWidth: 4,
-    strokeLinecap: 'round' as 'round',
   };
 };
