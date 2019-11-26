@@ -24,7 +24,7 @@ export const sectionStyle = (theme: Theme): CSSObject => {
 export const tagListStyle = (theme: Theme): CSSObject => {
   return {
     margin: `${1.5 * theme.spacing.unit}px 0 ${2 * theme.spacing.unit}px`,
-    paddingLeft: theme.shape.inputSizes.large.standard + 2 * theme.spacing.unit,
+    paddingLeft: theme.shape.inputSizes.large.standard + 3 * theme.spacing.unit,
     ...clearExtremeMargins({ verticalOnly: true }),
   };
 };
@@ -61,3 +61,11 @@ export const subtitleStyle = (theme: Theme): CSSObject => {
 };
 
 export const getFulfillmentStyle = (isFulfilled: boolean) => (): CSSObject => ({ opacity: isFulfilled ? 0.5 : 1 });
+
+export const severityTextStyle = (theme: Theme): CSSObject => {
+  return {
+    display: 'block',
+    fontWeight: 'normal',
+    fontSize: theme.fontSizes.small,
+  };
+};

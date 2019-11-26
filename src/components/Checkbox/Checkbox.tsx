@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import { FC, Fragment, useCallback, PropsWithChildren } from 'react';
 
-import { labelStyle, labelTextStyle } from './Checkbox.styles';
+import { checkboxStyles, checkMarkLineStyle, getCheckMarkStyle, labelStyle, labelTextStyle } from './Checkbox.styles';
 
 type TProps = PropsWithChildren<{
   id: string;
@@ -18,9 +18,13 @@ export const Checkbox: FC<TProps> = ({ id, children, isChecked = false, color = 
 
   return (
     <Fragment>
-      <input type="checkbox" id={id} checked={isChecked} onChange={onCheckboxChange} />
+      <input type="checkbox" css={checkboxStyles} id={id} checked={isChecked} onChange={onCheckboxChange} />
 
       <label htmlFor={id} css={labelStyle(color)}>
+        <svg css={getCheckMarkStyle(isChecked)} viewBox="0 0 32 32">
+          <polyline css={checkMarkLineStyle} points="8.6,15.6 14.2,22.2 23.4,9.6 " />
+        </svg>
+
         <span css={labelTextStyle}>{children}</span>
       </label>
     </Fragment>

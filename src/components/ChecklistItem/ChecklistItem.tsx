@@ -4,11 +4,12 @@ import { FC, ReactDOM, Fragment, useCallback, useMemo } from 'react';
 import { useTheme } from 'emotion-theming';
 
 import { TChecklistTask } from '../../@types/checklist';
+import { Color, Theme } from '../../@types/styling';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { InlineList } from '../InlineList/InlineList';
 import { Collapsible } from '../Collapsible/Collapsible';
 import { Markdown } from '../Markdown/Markdown';
-import { Color, Theme } from '../../@types/styling';
+import { getSeverityLabel } from '../../utils/misc/getSeverityLabel';
 
 import {
   titleStyle,
@@ -17,6 +18,7 @@ import {
   subtitleStyle,
   wrapperStyle,
   getFulfillmentStyle,
+  severityTextStyle,
 } from './ChecklistItem.styles';
 
 type TProps = TChecklistTask & {
@@ -61,17 +63,17 @@ export const ChecklistItem: FC<TProps> = ({
   const tagsToRender = useMemo(() => tags.map(tag => ({ children: tag })), [tags]);
   const theme = useTheme<Theme>();
   const fulfillmentStyle = getFulfillmentStyle(isFulfilled);
+  const severityColor = getSeverityColor({ severity, theme });
 
   return (
     <Tag {...rest} css={wrapperStyle}>
       <h3 css={titleStyle}>
-        <Checkbox
-          id={slug}
-          isChecked={isFulfilled}
-          onChange={onCheckboxChange}
-          color={getSeverityColor({ severity, theme })}
-        >
+        <Checkbox id={slug} isChecked={isFulfilled} onChange={onCheckboxChange} color={severityColor}>
           <span css={fulfillmentStyle}>{name}</span>
+
+          <span css={[severityTextStyle(theme), fulfillmentStyle()]}>
+            severity:&nbsp;<span css={{ color: severityColor }}>{getSeverityLabel(severity)}</span>
+          </span>
         </Checkbox>
       </h3>
 
