@@ -21,6 +21,7 @@ export type Theme = {
     background: Color;
     backgroundHoisted: Color;
     text: Color;
+    textOverBg: Color;
     heading: Color;
     headingActivated: Color;
     success: Color;

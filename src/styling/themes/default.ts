@@ -31,6 +31,7 @@ export const defaultTheme: Theme = {
     background: COLORS.dove,
     backgroundHoisted: COLORS.white,
     text: COLORS.gray,
+    textOverBg: COLORS.white,
     heading: COLORS.navy,
     headingActivated: lighten(0.25, COLORS.navy),
     success: COLORS.lime,

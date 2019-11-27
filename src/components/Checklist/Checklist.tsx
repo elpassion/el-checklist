@@ -10,6 +10,7 @@ import { TCompletion } from '../../@types/completion';
 import { Completion } from '../Completion/Completion';
 import { Collapsible } from '../Collapsible/Collapsible';
 import { Markdown } from '../Markdown/Markdown';
+import { Button } from '../Button/Button';
 
 import {
   backLinkStyle,
@@ -67,9 +68,9 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
 
         <h1 css={headingStyle}>{checklist.name}</h1>
 
-        <button onClick={onClearClick} css={clearButtonStyle}>
+        <Button onClick={onClearClick} css={clearButtonStyle} colorName="error">
           clear
-        </button>
+        </Button>
       </header>
 
       {checklist.description && <Markdown>{checklist.description}</Markdown>}
