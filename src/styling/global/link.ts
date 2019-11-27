@@ -7,7 +7,7 @@ export const linkStyles = (theme: Theme): CSSObject => ({
     position: 'relative',
     display: 'inline-block',
     textDecoration: 'none',
-    fontWeight: 700,
+    fontWeight: theme.fontWeights.bold,
     color: theme.palette.primary,
     transition: `color ${theme.duration.default}ms`,
 

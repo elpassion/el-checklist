@@ -8,7 +8,7 @@ const COLORS: ColorsList = {
   white: '#ffffff',
   dove: '#F5F5F5',
   gray: '#676767',
-  silver: '#a7a7a7',
+  silver: '#c7c7c7',
   lime: '#A6DB68',
   amber: '#ffcb86',
   coral: '#FF8787',
@@ -47,6 +47,11 @@ export const defaultTheme: Theme = {
     default: 16,
     significant: 24,
     small: 14,
+  },
+
+  fontWeights: {
+    default: 400,
+    bold: 700,
   },
 
   duration: {

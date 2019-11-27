@@ -27,6 +27,7 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     position: 'relative',
     display: 'block',
     width: '100%',
+    minHeight: `${LINE_HEIGHT}em`,
     marginBottom: theme.spacing.unit,
     padding: `0 0 0 calc(${ARROW_SIZE}em + ${ARROW_SPACING}px)`,
     fontSize: FONT_SIZE,

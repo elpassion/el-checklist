@@ -39,6 +39,11 @@ export type Theme = {
     significant: number;
   };
 
+  fontWeights: {
+    default: number;
+    bold: number;
+  };
+
   duration: {
     default: number;
   };
