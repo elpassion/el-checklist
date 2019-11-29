@@ -1,14 +1,8 @@
 import { CSSObject } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
-import { assureTheme } from '../../utils/misc/themedStyles';
 
 type TGetHeaderStyleArgs = {
-  isOpen?: boolean;
-  transitionDuration?: number;
-};
-
-type TGetContentOuterStyleArgs = {
   isOpen?: boolean;
   transitionDuration?: number;
 };
@@ -22,10 +16,8 @@ export const wrapperStyle = (): CSSObject => {
 };
 
 export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGetHeaderStyleArgs) => (
-  providedTheme: Theme,
+  theme: Theme,
 ): CSSObject => {
-  const theme = assureTheme(providedTheme);
-
   const ARROW_SIZE = 0.7;
   const ARROW_SPACING = theme.spacing.unit;
   const LINE_HEIGHT = 2;
@@ -35,6 +27,8 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     position: 'relative',
     display: 'block',
     width: '100%',
+    minHeight: `${LINE_HEIGHT}em`,
+    marginBottom: theme.spacing.unit,
     padding: `0 0 0 calc(${ARROW_SIZE}em + ${ARROW_SPACING}px)`,
     fontSize: FONT_SIZE,
     lineHeight: LINE_HEIGHT,
@@ -42,6 +36,7 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
     border: 0,
     backgroundColor: 'transparent',
     cursor: 'pointer',
+    transition: `color ${theme.duration.default}ms`,
 
     '&:before': {
       position: 'absolute',
@@ -57,9 +52,10 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
       transition: `transform ${transitionDuration}ms ${TRANSITION_TIMING}`,
     },
 
-    '&:active, &:focus': {
+    '&:hover, &:focus': {
       backgroundColor: 'transparent',
       outline: 'none',
+      color: theme.palette.headingActivated,
     },
   };
 };
@@ -67,5 +63,6 @@ export const getHeaderStyle = ({ isOpen = false, transitionDuration = 200 }: TGe
 export const innerHeaderStyle = (): CSSObject => {
   return {
     margin: 0,
+    color: 'inherit',
   };
 };

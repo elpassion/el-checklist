@@ -4,12 +4,13 @@ import { FC } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider } from 'emotion-theming';
 
-import { ContentContextProvider } from './contexts/ContentContext';
-import { ChecklistsIndexRoute } from './components/ChecklistsIndexRoute/ChecklistsIndexRoute';
-import { ChecklistRoute } from './components/ChecklistRoute/ChecklistRoute';
-import { defaultTheme } from './styling/themes/default';
-import { globalStyles } from './styling/global';
-import './App.css';
+import { ContentContextProvider } from '../../contexts/ContentContext';
+import { ChecklistsIndexRoute } from '../ChecklistsIndexRoute/ChecklistsIndexRoute';
+import { ChecklistRoute } from '../ChecklistRoute/ChecklistRoute';
+import { defaultTheme } from '../../styling/themes/default';
+import { globalStyles } from '../../styling/global';
+
+import { contentStyle, wrapperStyle } from './App.styles';
 
 export const App: FC = () => (
   <ThemeProvider theme={defaultTheme}>
@@ -17,8 +18,8 @@ export const App: FC = () => (
       <Global styles={globalStyles} />
 
       <Router>
-        <div className="App">
-          <main className="App__content">
+        <div css={wrapperStyle}>
+          <main css={contentStyle}>
             <Switch>
               <Route path="/checklists" component={ChecklistsIndexRoute} />
               <Route path="/checklist/:slug" component={ChecklistRoute} />

@@ -1,37 +1,58 @@
+import { lighten } from 'polished';
+
 import { ColorsList, Theme } from '../../@types/styling';
 
-const colors: ColorsList = {
+const COLORS: ColorsList = {
   emerald: '#28c23e',
   navy: '#1d2738',
   white: '#ffffff',
-  dove: '#f5f5f5',
+  dove: '#F5F5F5',
   gray: '#676767',
+  silver: '#c7c7c7',
+  lime: '#A6DB68',
+  amber: '#ffcb86',
+  coral: '#FF8787',
 };
 
 export const defaultTheme: Theme = {
   spacing: { unit: 8 },
 
-  colors: colors,
+  breakpoints: {
+    sm: 600,
+  },
+
+  colors: COLORS,
 
   palette: {
-    primary: colors.emerald,
-    secondary: colors.navy,
-    background: colors.dove,
-    backgroundHoisted: colors.white,
-    text: colors.gray,
-    heading: colors.navy,
+    primary: COLORS.emerald,
+    primaryActivated: lighten(0.1, COLORS.emerald),
+    secondary: COLORS.navy,
+    disabled: COLORS.silver,
+    background: COLORS.dove,
+    backgroundHoisted: COLORS.white,
+    text: COLORS.gray,
+    textOverBg: COLORS.white,
+    heading: COLORS.navy,
+    headingActivated: lighten(0.25, COLORS.navy),
+    success: COLORS.lime,
+    warning: COLORS.amber,
+    error: COLORS.coral,
   },
 
   fonts: {
-    default:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    significant: 'source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace',
+    default: 'Montserrat, sans-serif',
+    significant: 'Montserrat, sans-serif',
   },
 
   fontSizes: {
     default: 16,
-    significant: 20,
+    significant: 24,
     small: 14,
+  },
+
+  fontWeights: {
+    default: 400,
+    bold: 700,
   },
 
   duration: {
@@ -41,6 +62,10 @@ export const defaultTheme: Theme = {
   shape: {
     radii: {
       default: 8,
+    },
+    underline: {
+      default: 2,
+      thick: 8,
     },
     inputSizes: {
       default: {

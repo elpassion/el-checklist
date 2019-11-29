@@ -1,9 +1,10 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup } from '@testing-library/react';
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
 import { TChecklistTask } from '../../@types/checklist';
+import { renderWithTheme } from '../../utils/tests/renderWithTheme';
 
 import { Checklist } from './Checklist';
 
@@ -68,12 +69,11 @@ const mockedFulfillmentContextValue = {
   clearFulfillments: jest.fn(),
 };
 const renderWrapped = (fulfillmentContext = mockedFulfillmentContextValue) =>
-  render(
+  renderWithTheme(
     <MemoryRouter>
       <FulfillmentContext.Provider value={fulfillmentContext}>
         <Checklist checklist={mockedChecklist} />
       </FulfillmentContext.Provider>
-      ,
     </MemoryRouter>,
   );
 

@@ -20,8 +20,8 @@ describe('checklist page', () => {
     });
 
     context('rendering', () => {
-      it('renders `back to list` link', () => {
-        cy.getByText('Back to list', { exact: false }).click();
+      it('renders `back to all` link', () => {
+        cy.getByText('Back to all', { exact: false }).click();
         cy.location('pathname').should('eq', '/checklists');
       });
 
@@ -76,6 +76,26 @@ describe('checklist page', () => {
           checkbox.check({ force: true });
 
           cy.getAllByText(`Done: ${Math.round((donePoints / totalPoints) * 100)}%`);
+        });
+      });
+
+      it('renders checkmark when section is completed', () => {
+        cy.fixture('_checklist').then(f => {
+          setAllCheckboxes(f, true);
+
+          cy.getAllByText('Done: 100%').should(([...elements]) => {
+              cy.get('svg', { withinSubject: elements[0].parentNode }).should('be.visible');
+          });
+        });
+      });
+
+      it('does not render checkmark when section is not completed', () => {
+        cy.fixture('_checklist').then(f => {
+          setAllCheckboxes(f, false);
+
+          cy.getAllByText('Done: 0%').should(([...elements]) => {
+              cy.get('svg', { withinSubject: elements[0].parentNode }).should('be.not.visible');
+          });
         });
       });
     });

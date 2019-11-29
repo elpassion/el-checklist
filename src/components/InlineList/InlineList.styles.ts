@@ -1,12 +1,10 @@
 import { CSSObject } from '@emotion/core';
 
 import { Theme } from '../../@types/styling';
-import { assureTheme } from '../../utils/misc/themedStyles';
 
 const SPACE_RATIO = 1;
 
-export const wrapperStyle = (providedTheme: Theme): CSSObject => {
-  const theme = assureTheme(providedTheme);
+export const wrapperStyle = (theme: Theme): CSSObject => {
   const space = SPACE_RATIO * theme.spacing.unit;
 
   return {
@@ -17,8 +15,7 @@ export const wrapperStyle = (providedTheme: Theme): CSSObject => {
   };
 };
 
-export const itemStyle = (providedTheme: Theme): CSSObject => {
-  const theme = assureTheme(providedTheme);
+export const itemStyle = (theme: Theme): CSSObject => {
   const space = SPACE_RATIO * theme.spacing.unit;
 
   return {

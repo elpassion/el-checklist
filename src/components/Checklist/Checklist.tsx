@@ -2,7 +2,6 @@
 import { jsx } from '@emotion/core';
 import { FC, Fragment, useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 
 import { TChecklist, TChecklistTask } from '../../@types/checklist';
 import { FulfillmentContext } from '../../contexts/FulfillmentContext';
@@ -10,8 +9,18 @@ import { ChecklistItem } from '../ChecklistItem/ChecklistItem';
 import { TCompletion } from '../../@types/completion';
 import { Completion } from '../Completion/Completion';
 import { Collapsible } from '../Collapsible/Collapsible';
+import { Markdown } from '../Markdown/Markdown';
+import { Button } from '../Button/Button';
 
-import { titleStyle } from './Checklist.styles';
+import {
+  backLinkStyle,
+  itemStyle,
+  itemHeaderStyle,
+  itemTitleStyle,
+  headingStyle,
+  headerStyle,
+  clearButtonStyle,
+} from './Checklist.styles';
 
 type TProps = { checklist: TChecklist };
 
@@ -20,9 +29,9 @@ type THeaderProps = {
   completion: TCompletion;
 };
 
-const renderHeader: FC<THeaderProps> = ({ name, completion }: THeaderProps) => (
-  <header css={titleStyle}>
-    <h2>{name}</h2> <Completion {...completion} />
+const renderItemHeader: FC<THeaderProps> = ({ name, completion }: THeaderProps) => (
+  <header css={itemHeaderStyle}>
+    <h2 css={itemTitleStyle}>{name}</h2> <Completion {...completion} />
   </header>
 );
 
@@ -52,39 +61,50 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
 
   return (
     <Fragment>
-      <Link to="/checklists">&lsaquo;&nbsp;Back to list</Link>
+      <header css={headerStyle}>
+        <Link to="/checklists" css={backLinkStyle}>
+          &lsaquo;&nbsp;Back to all checklists
+        </Link>
 
-      <h1>{checklist.name}</h1>
+        <h1 css={headingStyle}>{checklist.name}</h1>
 
-      <button onClick={onClearClick}>clear</button>
+        <Button onClick={onClearClick} css={clearButtonStyle} colorName="error">
+          clear
+        </Button>
+      </header>
 
-      {checklist.description && <ReactMarkdown>{checklist.description}</ReactMarkdown>}
+      {checklist.description && <Markdown>{checklist.description}</Markdown>}
 
-      {checklist.sections &&
-        checklist.sections.map(section => {
-          const completion = getSectionCompletion(section);
-          return (
-            <Collapsible
-              header={renderHeader({ name: section.name, completion })}
-              WrapperTag="section"
-              HeaderTag="div"
-              key={section.name}
-              isInitiallyOpen={completion.doneUnits < completion.totalUnits}
-            >
-              <ul>
-                {section.tasks.map(task => (
-                  <ChecklistItem
-                    {...task}
-                    key={task.slug}
-                    Tag="li"
-                    isFulfilled={isFulfilled(task.slug)}
-                    onChange={onChange}
-                  />
-                ))}
-              </ul>
-            </Collapsible>
-          );
-        })}
+      {checklist.sections && (
+        <ul>
+          {checklist.sections.map(section => {
+            const completion = getSectionCompletion(section);
+            return (
+              <li css={itemStyle} key={section.name}>
+                <Collapsible
+                  header={renderItemHeader({ name: section.name, completion })}
+                  WrapperTag="section"
+                  HeaderTag="div"
+                  isInitiallyOpen={completion.doneUnits < completion.totalUnits}
+                  css={{ margin: 20 }}
+                >
+                  <ul>
+                    {section.tasks.map(task => (
+                      <ChecklistItem
+                        {...task}
+                        key={task.slug}
+                        Tag="li"
+                        isFulfilled={isFulfilled(task.slug)}
+                        onChange={onChange}
+                      />
+                    ))}
+                  </ul>
+                </Collapsible>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </Fragment>
   );
 };
