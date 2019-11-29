@@ -43,3 +43,30 @@ export const textStyles = (theme: Theme): CSSObject => ({
   fontSize: theme.fontSizes.small,
   zIndex: 1,
 });
+
+export const getCheckMarkStyle = (checked: boolean) => (theme: Theme): CSSObject => {
+  const size = '1em';
+  const duration = theme.duration.default;
+
+  return {
+    position: 'absolute',
+    width: size,
+    height: size,
+    right: 0,
+    bottom: '0',
+    opacity: checked ? 1 : 0,
+    transform: `scale(${checked ? 1 : 0})`,
+    visibility: checked ? 'visible' : 'hidden',
+    transition: `opacity ${duration}ms ease-out ${checked ? duration : 0}ms,  transform ${duration}ms ease-out ${
+      checked ? duration : 0
+    }ms`,
+  };
+};
+
+export const checkMarkLineStyle = (theme: Theme): CSSObject => {
+  return {
+    fill: 'none',
+    stroke: theme.palette.primary,
+    strokeWidth: 4,
+  };
+};
