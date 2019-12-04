@@ -12,7 +12,8 @@ export const linkStyles = (theme: Theme): CSSObject => ({
     transition: `color ${theme.duration.default}ms`,
 
     '&:after': {
-      bottom: -theme.shape.underline.default,
+      position: 'absolute',
+      top: `calc(50% + .5em)`,
       left: 0,
       display: 'block',
       content: '""',

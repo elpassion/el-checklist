@@ -11,6 +11,8 @@ export const headingStyle = (theme: Theme): CSSObject => {
 
 export const itemStyle = (theme: Theme): CSSObject => {
   return {
+    lineHeight: `2em`,
+
     '&+&': {
       marginTop: theme.spacing.unit,
     },
