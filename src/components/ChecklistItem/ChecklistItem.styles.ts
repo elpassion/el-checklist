@@ -1,11 +1,13 @@
 import { CSSObject } from '@emotion/core';
+import { darken } from 'polished';
 
 import { Theme } from '../../@types/styling';
 import { clearExtremeMargins } from '../../utils/styling/clearExtremeMargins';
 
 export const wrapperStyle = (theme: Theme): CSSObject => ({
   padding: `${2 * theme.spacing.unit}px ${3 * theme.spacing.unit}px`,
-  backgroundColor: theme.palette.backgroundHoisted,
+  backgroundColor: theme.palette.background,
+  border: `1px solid ${darken(0.1, theme.palette.background)}`,
   borderRadius: theme.shape.radii.default,
   transition: `opacity ${theme.duration.default}ms`,
 
