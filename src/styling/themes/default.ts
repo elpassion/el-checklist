@@ -29,7 +29,6 @@ export const defaultTheme: Theme = {
     disabled: COLORS.silver,
     background: COLORS.white,
     text: COLORS.gray,
-    textOverBg: COLORS.white,
     heading: COLORS.navy,
     headingActivated: lighten(0.25, COLORS.navy),
     success: COLORS.lime,

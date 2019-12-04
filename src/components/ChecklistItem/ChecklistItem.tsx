@@ -72,7 +72,7 @@ export const ChecklistItem: FC<TProps> = ({
           <span css={fulfillmentStyle}>{name}</span>
 
           <span css={[severityTextStyle(theme), fulfillmentStyle()]}>
-            severity:&nbsp;<span css={{ color: severityColor }}>{getSeverityLabel(severity)}</span>
+            severity:&nbsp;<span css={{ backgroundColor: severityColor }}>{getSeverityLabel(severity)}</span>
           </span>
         </Checkbox>
       </h3>
@@ -86,7 +86,7 @@ export const ChecklistItem: FC<TProps> = ({
 
         {description && (
           <section css={sectionStyle}>
-            <Collapsible header={<span css={subtitleStyle}>Description</span>} WrapperTag="div">
+            <Collapsible header={<span css={subtitleStyle}>Description</span>} WrapperTag="div" headerLabel="description">
               <Markdown css={{ overflowX: 'auto' }} source={description} />
             </Collapsible>
           </section>
@@ -94,7 +94,7 @@ export const ChecklistItem: FC<TProps> = ({
 
         {solution && (
           <section css={sectionStyle}>
-            <Collapsible header={<span css={subtitleStyle}>Solution</span>} WrapperTag="div">
+            <Collapsible header={<span css={subtitleStyle}>Solution</span>} WrapperTag="div" headerLabel="solution">
               <Markdown css={{ overflowX: 'auto' }} source={solution} />
             </Collapsible>
           </section>

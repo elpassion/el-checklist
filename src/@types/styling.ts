@@ -20,7 +20,6 @@ export type Theme = {
     disabled: Color;
     background: Color;
     text: Color;
-    textOverBg: Color;
     heading: Color;
     headingActivated: Color;
     success: Color;

@@ -83,6 +83,7 @@ export const Checklist: FC<TProps> = ({ checklist }: TProps) => {
               <li css={itemStyle} key={section.name}>
                 <Collapsible
                   header={renderItemHeader({ name: section.name, completion })}
+                  headerLabel={section.name}
                   WrapperTag="section"
                   HeaderTag="div"
                   isInitiallyOpen={completion.doneUnits < completion.totalUnits}
