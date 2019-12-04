@@ -86,7 +86,11 @@ export const ChecklistItem: FC<TProps> = ({
 
         {description && (
           <section css={sectionStyle}>
-            <Collapsible header={<span css={subtitleStyle}>Description</span>} WrapperTag="div" headerLabel="description">
+            <Collapsible
+              header={<span css={subtitleStyle}>Description</span>}
+              WrapperTag="div"
+              headerLabel="description"
+            >
               <Markdown css={{ overflowX: 'auto' }} source={description} />
             </Collapsible>
           </section>
