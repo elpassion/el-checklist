@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { offlineIndicatorStyles } from './OfflineIndicator.styles';
 
 export const OfflineIndicator: FC = () => {
-  const isVisible = !navigator!.onLine;
+  const isVisible = navigator && !navigator.onLine;
 
   if (!isVisible) {
     return null;
