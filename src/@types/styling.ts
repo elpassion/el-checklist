@@ -19,9 +19,7 @@ export type Theme = {
     secondary: Color;
     disabled: Color;
     background: Color;
-    backgroundHoisted: Color;
     text: Color;
-    textOverBg: Color;
     heading: Color;
     headingActivated: Color;
     success: Color;

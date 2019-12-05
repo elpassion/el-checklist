@@ -31,7 +31,7 @@ export const wrapperStyles = (theme: Theme): CSSObject => {
     },
 
     '&:after': {
-      backgroundColor: theme.palette.primary,
+      backgroundColor: theme.palette.primaryActivated,
       transformOrigin: '0 center',
       transform: 'scaleX(0.5)',
     },

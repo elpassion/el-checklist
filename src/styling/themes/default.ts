@@ -1,4 +1,4 @@
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 import { ColorsList, Theme } from '../../@types/styling';
 
@@ -6,7 +6,6 @@ const COLORS: ColorsList = {
   emerald: '#28c23e',
   navy: '#1d2738',
   white: '#ffffff',
-  dove: '#F5F5F5',
   gray: '#676767',
   silver: '#c7c7c7',
   lime: '#A6DB68',
@@ -24,14 +23,12 @@ export const defaultTheme: Theme = {
   colors: COLORS,
 
   palette: {
-    primary: COLORS.emerald,
-    primaryActivated: lighten(0.1, COLORS.emerald),
+    primary: darken(0.15, COLORS.emerald),
+    primaryActivated: COLORS.emerald,
     secondary: COLORS.navy,
     disabled: COLORS.silver,
-    background: COLORS.dove,
-    backgroundHoisted: COLORS.white,
+    background: COLORS.white,
     text: COLORS.gray,
-    textOverBg: COLORS.white,
     heading: COLORS.navy,
     headingActivated: lighten(0.25, COLORS.navy),
     success: COLORS.lime,

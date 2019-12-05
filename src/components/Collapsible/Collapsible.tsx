@@ -8,6 +8,7 @@ import { wrapperStyle, getHeaderStyle, innerHeaderStyle } from './Collapsible.st
 type TCollapsible = {
   header: ReactNode;
   HeaderTag?: keyof ReactDOM | FC;
+  headerLabel?: string;
   WrapperTag?: keyof ReactDOM | FC;
   isInitiallyOpen?: boolean;
 };
@@ -17,6 +18,7 @@ export const Collapsible: FC<PropsWithChildren<TProps>> = ({
   children,
   header,
   HeaderTag = 'h4',
+  headerLabel = '',
   WrapperTag = 'section',
   isInitiallyOpen = false,
 }: PropsWithChildren<TProps>) => {
@@ -34,7 +36,7 @@ export const Collapsible: FC<PropsWithChildren<TProps>> = ({
 
   return (
     <WrapperTag css={wrapperStyle}>
-      <button css={getHeaderStyle({ isOpen })} onClick={onHeaderClick}>
+      <button css={getHeaderStyle({ isOpen })} onClick={onHeaderClick} aria-label={headerLabel}>
         <HeaderTag css={innerHeaderStyle}>{header}</HeaderTag>
       </button>
 

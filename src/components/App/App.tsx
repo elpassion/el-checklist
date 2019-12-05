@@ -9,6 +9,7 @@ import { ChecklistsIndexRoute } from '../ChecklistsIndexRoute/ChecklistsIndexRou
 import { ChecklistRoute } from '../ChecklistRoute/ChecklistRoute';
 import { defaultTheme } from '../../styling/themes/default';
 import { globalStyles } from '../../styling/global';
+import { OfflineIndicator } from '../OfflineIndicator/OfflineIndicator';
 
 import { contentStyle, wrapperStyle } from './App.styles';
 
@@ -29,5 +30,7 @@ export const App: FC = () => (
         </div>
       </Router>
     </ContentContextProvider>
+
+    <OfflineIndicator />
   </ThemeProvider>
 );

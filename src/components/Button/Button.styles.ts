@@ -22,9 +22,7 @@ export const getButtonStyles = (colorName: keyof Theme['palette'] = 'primary') =
     borderColor: getBorderColor(backgroundColor),
     borderRadius: lineHeight,
     whiteSpace: 'nowrap',
-    color: theme.palette.textOverBg,
     transition: `border-color ${duration}ms, background-color ${duration}ms, transform ${duration}ms`,
-
     cursor: 'pointer',
     '&:hover, &:focus': {
       backgroundColor: backgroundColorActivated,
