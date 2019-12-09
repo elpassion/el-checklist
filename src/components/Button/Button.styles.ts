@@ -16,7 +16,10 @@ export const getButtonStyles = (colorName: keyof Theme['palette'] = 'primary') =
     display: 'inline-block',
     padding: '0 1em',
     lineHeight: lineHeight,
+    fontFamily: theme.fonts.default,
     fontSize: theme.fontSizes.small,
+    fontWeight: theme.fontWeights.default,
+    color: theme.palette.heading,
     backgroundColor,
     border: `1px solid black`,
     borderColor: getBorderColor(backgroundColor),
@@ -24,7 +27,13 @@ export const getButtonStyles = (colorName: keyof Theme['palette'] = 'primary') =
     whiteSpace: 'nowrap',
     transition: `border-color ${duration}ms, background-color ${duration}ms, transform ${duration}ms`,
     cursor: 'pointer',
+
+    '&:after': {
+      display: 'none',
+    },
+
     '&:hover, &:focus': {
+      color: theme.palette.heading,
       backgroundColor: backgroundColorActivated,
       borderColor: getBorderColor(backgroundColorActivated),
       outline: 'none',

@@ -12,15 +12,15 @@ const getConstantsFromTheme = (theme: Theme) => {
     DONE_FACTOR,
     KEYFRAMES: {
       check: keyframes`
-      0% { tranform: scale(1); }
-      50% { transform: scale(${DONE_FACTOR * DONE_FACTOR}); }
-      100% { transform: scale(${DONE_FACTOR}); }
+        0% { tranform: scale(1); }
+        50% { transform: scale(${DONE_FACTOR * DONE_FACTOR}); }
+        100% { transform: scale(${DONE_FACTOR}); }
        `,
       uncheck: keyframes`
-    0% { tranform: scale(${DONE_FACTOR}); }
-    50% { transform: scale(${1 / DONE_FACTOR}); }
-    100% { transform: scale(1); }
-    `,
+        0% { tranform: scale(${DONE_FACTOR}); }
+        50% { transform: scale(${1 / DONE_FACTOR}); }
+        100% { transform: scale(1); }
+      `,
     },
   };
 };
